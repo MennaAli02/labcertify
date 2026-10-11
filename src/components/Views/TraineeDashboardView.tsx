@@ -160,7 +160,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
   };
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-200">
+    <div className="space-y-4 animate-in fade-in duration-200">
       
       {/* 1. Clinical Onboarding Passport / Employee Dossier Card */}
       <div className="bg-white rounded-2xl border border-[#c0cad8] shadow-xs overflow-hidden">
@@ -420,7 +420,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
         </div>
 
         {/* Sequential Course Cards List */}
-        <div className="mt-6 space-y-4">
+        <div className="mt-5 space-y-3.5">
           {courses.map((course) => {
             const isCompleted = course.status === 'Completed';
             const isInProgress = course.status === 'In Progress';
@@ -494,11 +494,11 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                         )}
                       </div>
 
-                      <h3 className="text-base font-bold text-[#485261] hover:text-[#0B96C7] transition-colors truncate">
+                      <h3 className="text-sm sm:text-base font-bold text-[#485261] hover:text-[#0B96C7] transition-colors truncate">
                         {isRTL && course.titleAr ? course.titleAr : course.title}
                       </h3>
 
-                      <p className="text-xs text-[#9995A6] line-clamp-1 leading-relaxed">
+                      <p className="text-[11px] sm:text-xs text-[#9995A6] truncate leading-normal">
                         {isRTL && course.descriptionAr ? course.descriptionAr : course.description}
                       </p>
 

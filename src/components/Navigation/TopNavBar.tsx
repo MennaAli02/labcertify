@@ -3,7 +3,6 @@ import { ViewType, UserProfile, UserRole } from '../../types';
 import { 
   Search, 
   Bell, 
-  Award, 
   Menu, 
   Globe, 
   ChevronDown, 
@@ -189,16 +188,11 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                   className="w-9 h-9 object-contain shrink-0 rounded-lg transition-transform group-hover:scale-105"
                 />
                 <div className="min-w-0 flex-1 pr-1">
-                  <div className="flex items-center gap-1.5 leading-none">
-                    <span className="text-sm font-bold text-[#485261] tracking-tight font-heading whitespace-nowrap">
-                      LabCertify
-                    </span>
-                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8] leading-none shrink-0">
-                      CLINICAL
-                    </span>
-                  </div>
+                  <span className="text-xs sm:text-[13px] font-bold text-[#0B96C7] tracking-wider uppercase block whitespace-nowrap">
+                    {isRTL ? 'نظام LabCertify Clinical LMS' : 'LABCERTIFY CLINICAL LMS'}
+                  </span>
                   <span className="text-[11px] text-[#9995a6] font-medium leading-tight mt-0.5 block whitespace-nowrap">
-                    {isRTL ? 'معامل شلبي للتحاليل الطبية' : 'Shalaby Labs Training'}
+                    {isRTL ? 'معامل شلبي للتحاليل الطبية - مركز التدريب' : 'Shalaby Labs Training Center'}
                   </span>
                 </div>
               </div>
@@ -255,25 +249,24 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
               alt="Shalaby Labs"
               className="w-7 h-7 object-contain rounded-md"
             />
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-bold text-[#485261] font-heading">
-                LabCertify
+            <div className="flex flex-col">
+              <span className="text-[11px] font-bold text-[#0B96C7] tracking-wider uppercase whitespace-nowrap">
+                {isRTL ? 'نظام LabCertify Clinical LMS' : 'LABCERTIFY CLINICAL LMS'}
               </span>
-              <span className="text-[9px] font-mono font-bold px-1 py-0.2 rounded bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8]">
-                CLINICAL
+              <span className="text-[9px] text-[#9995a6] font-medium leading-tight whitespace-nowrap">
+                {isRTL ? 'معامل شلبي للتحاليل الطبية' : 'Shalaby Labs Training Center'}
               </span>
             </div>
           </div>
         </div>
 
         {/* ========================================================
-            Main Top Bar Body: Flexible Search & Right Controls
-            Organized into a rock-solid, non-overlapping flex layout
+            Main Top Bar Body: Centered Search & Right Controls
            ======================================================== */}
         <div className="flex-1 flex items-center justify-between gap-3 px-3 sm:px-5 lg:px-6 h-14 min-w-0">
 
-          {/* Flexible Search Container (in-flow flex item: NEVER overlaps with right controls) */}
-          <div className="hidden md:flex items-center flex-1 max-w-[380px] lg:max-w-[440px] min-w-[180px]">
+          {/* Centered Search Container */}
+          <div className="hidden md:flex items-center justify-center flex-1 max-w-[420px] lg:max-w-[480px] mx-auto min-w-[180px]">
             <button
               onClick={onOpenSearch}
               className="w-full flex items-center gap-2.5 px-3.5 py-1.5 sm:py-2 bg-[#dee2e8]/45 hover:bg-[#dee2e8] text-[#485261] rounded-xl border border-[#c0cad8] hover:border-[#0b96c7] text-xs transition-all shadow-2xs hover:shadow-xs cursor-pointer group"
@@ -288,8 +281,8 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
             </button>
           </div>
 
-          {/* Right Section: Language, Cert, Notifications, Support & Profile Dropdown */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 ml-auto">
+          {/* Right Section: Language, Notifications, Support & Profile Dropdown */}
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
 
             {/* Mobile Search Trigger Button (mobile only) */}
             <button
@@ -301,29 +294,17 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
               <Search className="w-4 h-4 text-[#0b96c7]" />
             </button>
 
-            {/* Language Switcher */}
+            {/* Language Switcher (No border) */}
             <button
               onClick={toggleLanguage}
               title={language === 'en' ? "التحويل للغة العربية" : "Switch to English"}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border border-[#c0cad8] bg-white hover:bg-[#dee2e8] text-[#485261] active:scale-95 cursor-pointer shrink-0"
+              aria-label={language === 'en' ? "التحويل للغة العربية" : "Switch to English"}
+              className="p-2 rounded-lg hover:bg-[#dee2e8] text-[#0b96c7] active:scale-95 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
             >
-              <Globe className="w-3.5 h-3.5 text-[#0b96c7]" />
-              <span className="font-bold">{t.switchLanguage}</span>
+              <Globe className="w-4 h-4 text-[#0b96c7]" />
             </button>
 
-            {/* Quick Certificate View Link (compact on 1024-1280px, full label on 1280px+) */}
-            <button
-              onClick={() => onNavigate('certificate')}
-              className={`hidden lg:flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border cursor-pointer shrink-0 ${
-                currentView === 'certificate'
-                  ? 'bg-[#0b96c7] text-white border-[#0b96c7]'
-                  : 'bg-white text-[#485261] border-[#c0cad8] hover:border-[#0b96c7] hover:bg-[#dee2e8]'
-              }`}
-              title={t.officialCert}
-            >
-              <Award className={`w-3.5 h-3.5 ${currentView === 'certificate' ? 'text-white' : 'text-[#0b96c7]'}`} />
-              <span className="hidden xl:inline">{t.officialCert}</span>
-            </button>
+
 
             {/* Notifications Trigger */}
             <button
@@ -394,24 +375,24 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                     onClick={() => setShowRoleMenu(false)}
                   />
                   <div
-                    className={`absolute top-full mt-2 ${isRTL ? 'left-0' : 'right-0'} z-50 w-80 bg-white rounded-2xl shadow-xl border border-[#c0cad8] p-3`}
+                    className={`absolute top-full mt-2 ${isRTL ? 'left-0' : 'right-0'} z-50 w-[350px] sm:w-[380px] bg-white rounded-2xl shadow-xl border border-[#c0cad8] p-3`}
                     style={{ animation: 'fadeInUp 0.18s ease-out both' }}
                   >
                     {/* Current user summary card */}
-                    <div className="flex items-center gap-3 px-3 py-2.5 mb-3 rounded-xl bg-[#dee2e8]/40 border border-[#c0cad8]">
+                    <div className="flex items-center gap-2.5 px-3 py-2 mb-2 rounded-xl bg-[#dee2e8]/40 border border-[#c0cad8]">
                       <div className="relative shrink-0">
                         <img
                           src={user.avatarUrl}
                           alt={user.name}
-                          className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
+                          className="w-9 h-9 rounded-full object-cover border-2 border-white shadow-2xs"
                         />
                         <span className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full ring-2 ring-white ${user.role === 'training_admin' ? 'bg-[#0b96c7]' : user.role === 'system_admin' ? 'bg-[#485261]' : 'bg-[#6bbada]'}`} />
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-xs font-bold text-[#485261] truncate">{isRTL && user.nameAr ? user.nameAr : user.name}</p>
-                        <p className={`text-[11px] font-semibold truncate ${activeBadge.color.split(' ').filter(c => c.startsWith('text-')).join(' ')}`}>{activeBadge.label}</p>
+                        <p className={`text-[10px] font-semibold truncate ${activeBadge.color.split(' ').filter(c => c.startsWith('text-')).join(' ')}`}>{activeBadge.label}</p>
                       </div>
-                      <ActiveIcon className="w-4 h-4 shrink-0 text-[#9995a6]" />
+                      <ActiveIcon className="w-3.5 h-3.5 shrink-0 text-[#9995a6]" />
                     </div>
 
                     <div className="px-1 pb-2 border-b border-[#dee2e8] mb-2">
@@ -425,80 +406,80 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                     <div className="space-y-1">
                       <button
                         onClick={() => handleRoleSelect('trainee')}
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition-all text-xs ${user.role === 'trainee' ? 'bg-[#dee2e8] text-[#0b96c7] font-semibold' : 'hover:bg-[#dee2e8]/40 text-[#485261]'}`}
+                        className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-start transition-all ${user.role === 'trainee' ? 'bg-[#dee2e8] text-[#0b96c7] font-semibold' : 'hover:bg-[#dee2e8]/40 text-[#485261]'}`}
                       >
-                        <div className="w-8 h-8 rounded-lg bg-[#dee2e8] text-[#0b96c7] flex items-center justify-center shrink-0">
-                          <FlaskConical className="w-4 h-4" />
+                        <div className="w-7 h-7 rounded-lg bg-[#dee2e8] text-[#0b96c7] flex items-center justify-center shrink-0">
+                          <FlaskConical className="w-3.5 h-3.5" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between">
-                            <span className="font-semibold truncate">{t.roleTrainee}</span>
+                            <span className="text-xs font-semibold">{t.roleTrainee}</span>
                             {user.role === 'trainee' && <Check className="w-3.5 h-3.5 text-[#0b96c7]" />}
                           </div>
-                          <p className="text-[11px] text-[#9995a6] truncate">Ahmed Mohamed · SL-2024-0482</p>
+                          <p className="text-[10px] text-[#9995a6]">Ahmed Mohamed · SL-2024-0482</p>
                         </div>
                       </button>
 
                       <button
                         onClick={() => handleRoleSelect('training_admin')}
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition-all text-xs ${user.role === 'training_admin' ? 'bg-[#dee2e8] text-[#0b96c7] font-semibold' : 'hover:bg-[#dee2e8]/40 text-[#485261]'}`}
+                        className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-start transition-all ${user.role === 'training_admin' ? 'bg-[#dee2e8] text-[#0b96c7] font-semibold' : 'hover:bg-[#dee2e8]/40 text-[#485261]'}`}
                       >
-                        <div className="w-8 h-8 rounded-lg bg-[#dee2e8] text-[#0b96c7] flex items-center justify-center shrink-0">
-                          <UserCheck className="w-4 h-4" />
+                        <div className="w-7 h-7 rounded-lg bg-[#dee2e8] text-[#0b96c7] flex items-center justify-center shrink-0">
+                          <UserCheck className="w-3.5 h-3.5" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between">
-                            <span className="font-semibold truncate">{t.roleTrainingAdmin}</span>
+                            <span className="text-xs font-semibold">{t.roleTrainingAdmin}</span>
                             {user.role === 'training_admin' && <Check className="w-3.5 h-3.5 text-[#0b96c7]" />}
                           </div>
-                          <p className="text-[11px] text-[#9995a6] truncate">Dr. Sarah Mansour · Training Director</p>
+                          <p className="text-[10px] text-[#9995a6]">Dr. Sarah Mansour · Training Director</p>
                         </div>
                       </button>
 
                       <button
                         onClick={() => handleRoleSelect('system_admin')}
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-start transition-all text-xs ${user.role === 'system_admin' ? 'bg-[#dee2e8] text-[#485261] font-semibold' : 'hover:bg-[#dee2e8]/40 text-[#485261]'}`}
+                        className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-start transition-all ${user.role === 'system_admin' ? 'bg-[#dee2e8] text-[#485261] font-semibold' : 'hover:bg-[#dee2e8]/40 text-[#485261]'}`}
                       >
-                        <div className="w-8 h-8 rounded-lg bg-[#c0cad8] text-[#485261] flex items-center justify-center shrink-0">
-                          <Settings className="w-4 h-4" />
+                        <div className="w-7 h-7 rounded-lg bg-[#c0cad8] text-[#485261] flex items-center justify-center shrink-0">
+                          <Settings className="w-3.5 h-3.5" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between">
-                            <span className="font-semibold truncate">{t.roleSystemAdmin}</span>
+                            <span className="text-xs font-semibold">{t.roleSystemAdmin}</span>
                             {user.role === 'system_admin' && <Check className="w-3.5 h-3.5 text-[#485261]" />}
                           </div>
-                          <p className="text-[11px] text-[#9995a6] truncate">Eng. Khaled El-Sayed · LIMS & QA Admin</p>
+                          <p className="text-[10px] text-[#9995a6]">Eng. Khaled El-Sayed · LIMS & QA Admin</p>
                         </div>
                       </button>
                     </div>
 
                     {/* Sample Trainees */}
-                    <div className="mt-3 pt-2 border-t border-[#dee2e8]">
-                      <p className="text-[10px] font-bold text-[#9995a6] uppercase tracking-wider px-3 mb-1.5 flex items-center gap-1.5">
+                    <div className="mt-2.5 pt-2 border-t border-[#dee2e8]">
+                      <p className="text-[10px] font-bold text-[#9995a6] uppercase tracking-wider px-2 mb-1 flex items-center gap-1.5">
                         <Users className="w-3 h-3" />
                         <span>{t.sampleTrainees}</span>
                       </p>
-                      <div className="space-y-0.5">
+                      <div className="space-y-1">
                         <button
                           onClick={() => handleSampleTraineeSelect('trn-01')}
-                          className="w-full text-start px-3 py-1.5 rounded-lg text-xs hover:bg-[#dee2e8]/50 flex items-center justify-between"
+                          className="w-full text-start px-2.5 py-1.5 rounded-lg hover:bg-[#dee2e8]/50 flex items-center justify-between transition-colors"
                         >
-                          <span className="text-[#485261] truncate">{isRTL ? 'أحمد محمد (20% قيد التدريب)' : 'Ahmed Mohamed (20% In Progress)'}</span>
-                          <span className="font-mono text-[11px] text-[#0b96c7] font-medium">20%</span>
+                          <span className="text-xs text-[#485261] font-medium">{isRTL ? 'أحمد محمد' : 'Ahmed Mohamed'}</span>
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8]">20% In Progress</span>
                         </button>
                         <button
                           onClick={() => handleSampleTraineeSelect('trn-02')}
-                          className="w-full text-start px-3 py-1.5 rounded-lg text-xs hover:bg-[#dee2e8]/50 flex items-center justify-between"
+                          className="w-full text-start px-2.5 py-1.5 rounded-lg hover:bg-[#dee2e8]/50 flex items-center justify-between transition-colors"
                         >
-                          <span className="text-[#485261] truncate">{isRTL ? 'د. منى فاروق (100% مكتمل)' : 'Dr. Mona Farouk (100% Completed)'}</span>
-                          <span className="font-mono text-[11px] text-emerald-600 font-medium">100%</span>
+                          <span className="text-xs text-[#485261] font-medium">{isRTL ? 'د. منى فاروق' : 'Dr. Mona Farouk'}</span>
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300">100% Completed</span>
                         </button>
                         <button
                           onClick={() => handleSampleTraineeSelect('trn-03')}
-                          className="w-full text-start px-3 py-1.5 rounded-lg text-xs hover:bg-[#dee2e8]/50 flex items-center justify-between"
+                          className="w-full text-start px-2.5 py-1.5 rounded-lg hover:bg-[#dee2e8]/50 flex items-center justify-between transition-colors"
                         >
-                          <span className="text-[#485261] truncate">{isRTL ? 'يوسف كريم (متأخر 40%)' : 'Youssef Karim (Overdue 40%)'}</span>
-                          <span className="font-mono text-[11px] text-rose-600 font-medium">Overdue</span>
+                          <span className="text-xs text-[#485261] font-medium">{isRTL ? 'يوسف كريم' : 'Youssef Karim'}</span>
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">Overdue (40%)</span>
                         </button>
                       </div>
                     </div>

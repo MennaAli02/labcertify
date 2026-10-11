@@ -286,11 +286,11 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
         <div className="lg:col-span-2 space-y-4">
           
           {/* Content Mode Navigation Bar */}
-          <div className="flex items-center justify-between gap-2.5 bg-white rounded-xl p-1.5 border border-[#c0cad8] shadow-2xs">
-            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
+          <div className="flex items-center justify-between gap-2 bg-white rounded-xl p-1 border border-[#c0cad8] shadow-2xs overflow-hidden">
+            <div className="flex items-center gap-1 overflow-hidden py-0.5 flex-wrap sm:flex-nowrap">
               <button
                 onClick={() => setActiveTab('video')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'video'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -302,7 +302,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
               <button
                 onClick={() => setActiveTab('sop')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'sop'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -314,7 +314,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
               <button
                 onClick={() => setActiveTab('slides')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'slides'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -326,7 +326,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
               <button
                 onClick={() => setActiveTab('notes')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'notes'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -341,8 +341,8 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
             </div>
 
             {/* Resolution indicator: strict nowrap pill badge */}
-            <div className="hidden md:flex items-center gap-1.5 text-[11px] text-[#9995A6] font-mono shrink-0 whitespace-nowrap px-2.5 py-1 bg-[#dee2e8]/40 rounded-md border border-[#c0cad8]">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+            <div className="hidden lg:flex items-center gap-1 text-[10px] text-[#9995A6] font-mono shrink-0 whitespace-nowrap px-2 py-0.5 bg-[#dee2e8]/40 rounded-md border border-[#c0cad8]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
               <span>1080p Full HD</span>
             </div>
           </div>
@@ -781,13 +781,13 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
             {/* Ready for Assessment CTA */}
             <div className="pt-3 border-t border-slate-100 space-y-2">
-              <div className="p-3 bg-[#dee2e8]/70 border border-[#c0cad8] rounded-xl text-xs space-y-1">
-                <p className="font-bold text-[#0B96C7]">
+              <div className="p-3.5 bg-[#6BBADA]/10 border border-[#6BBADA] rounded-2xl text-xs space-y-1">
+                <p className="font-bold text-[#0B96C7] text-xs">
                   {isRTL ? 'جاهز للاختبار التقييمي؟' : 'Ready for Knowledge Check?'}
                 </p>
-                <p className="text-[11px] text-slate-600">
+                <p className="text-[11px] text-[#485261] leading-relaxed">
                   {isRTL 
-                    ? `يتكون الاختبار من 4 أسئلة بدرجة نجاح لا تقل عن ${currentCourse.passScore}%.` 
+                    ? `يتكون الاختبار من 4 أسئلة. الحد الأدنى للنجاح ≥ ${currentCourse.passScore}%.` 
                     : `The exam contains 4 questions. Required passing score is ≥ ${currentCourse.passScore}%.`}
                 </p>
               </div>
