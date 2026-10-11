@@ -205,7 +205,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                 </div>
 
                 <div className="space-y-1">
-                  <h1 className="text-2xl sm:text-3xl font-bold font-sans text-[#485261] tracking-tight leading-tight">
+                  <h1 className="text-lg sm:text-xl lg:text-2xl font-bold font-sans text-[#485261] tracking-tight leading-snug">
                     {t.welcomeBack}, {isRTL && user.nameAr ? user.nameAr : user.name}
                   </h1>
 

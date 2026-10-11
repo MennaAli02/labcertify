@@ -154,13 +154,13 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
       <aside
         className={`hidden lg:flex flex-col shrink-0 bg-white ${
           isRTL ? 'border-l' : 'border-r'
-        } border-[#c0cad8] h-full select-none transition-all duration-300 ease-in-out ${
-          isOpen ? 'w-[272px]' : 'w-[72px]'
+        } border-[#c0cad8] h-full select-none transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'w-[290px]' : 'w-[72px]'
         }`}
       >
         {isOpen ? (
-          /* ================= EXPANDED VIEW (272px) ================= */
-          <div className="flex flex-col h-full py-3 px-3.5 overflow-y-auto">
+          /* ================= EXPANDED VIEW (290px) ================= */
+          <div className="flex flex-col h-full py-3 px-3.5 overflow-y-auto overflow-x-hidden">
             
             {/* Trainee Progress Bar (only for trainee) */}
             {user.role === 'trainee' && (
@@ -203,9 +203,9 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
                     <span className="flex-1 text-start font-medium leading-snug whitespace-nowrap">{item.label}</span>
                     
                     {item.badge && (
-                      <span className={`text-[11px] px-2 py-0.5 rounded-full font-mono tabular-nums transition-colors shrink-0 whitespace-nowrap ${
+                      <span className={`text-[10.5px] px-2 py-0.5 rounded-md font-mono tabular-nums transition-colors shrink-0 whitespace-nowrap font-bold ${
                         isActive 
-                          ? 'bg-[#0b96c7] text-white font-bold' 
+                          ? 'bg-white text-[#0b96c7] border border-[#c0cad8]/80 shadow-2xs' 
                           : 'text-[#0b96c7] bg-[#dee2e8]'
                       }`}>
                         {item.badge}
@@ -232,7 +232,7 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
           </div>
         ) : (
           /* ================= COLLAPSED RAIL VIEW (72px) ================= */
-          <div className="flex flex-col items-center h-full py-3 px-2 overflow-y-auto">
+          <div className="flex flex-col items-center h-full py-3 px-2 overflow-y-auto overflow-x-hidden">
 
             {/* Trainee Mini Progress Indicator */}
             {user.role === 'trainee' && (
@@ -251,14 +251,14 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
                 const isActive = currentView === item.id || (item.id === 'trainee_dashboard' && currentView === 'dashboard');
 
                 return (
-                  <div key={item.id} className="relative group flex justify-center w-full">
+                  <div key={item.id} className="flex justify-center w-full">
                     <button
                       onClick={() => handleItemClick(item.id)}
                       title={item.label}
                       aria-label={item.label}
                       className={`w-11 h-11 flex items-center justify-center rounded-xl transition-all relative cursor-pointer ${
                         isActive 
-                          ? 'bg-[#dee2e8] text-[#0b96c7] font-bold border-s-3 border-[#0b96c7] shadow-2xs' 
+                          ? 'bg-[#dee2e8] text-[#0b96c7] font-bold border border-[#0b96c7] shadow-2xs' 
                           : 'text-[#485261] hover:bg-[#dee2e8] hover:text-[#0b96c7]'
                       }`}
                     >
@@ -267,10 +267,6 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
                         <span className="absolute top-1.5 end-1.5 w-2 h-2 rounded-full bg-[#0b96c7]" />
                       )}
                     </button>
-                    {/* Tooltip on hover/focus */}
-                    <div className={`absolute ${isRTL ? 'right-full mr-2.5' : 'left-full ml-2.5'} top-1/2 -translate-y-1/2 px-2.5 py-1 bg-[#485261] text-white text-xs font-semibold rounded-md shadow-md opacity-0 pointer-events-none group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-50 whitespace-nowrap`}>
-                      {item.label}
-                    </div>
                   </div>
                 );
               })}

@@ -56,23 +56,14 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
     <div className="space-y-8 animate-in fade-in duration-300">
       
       {/* Top Controls Header (Hidden in Print) */}
-      <div className="print:hidden bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-start">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => onNavigate('trainee_dashboard')}
-            className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
-            title="Back to dashboard"
-          >
-            <ChevronLeft className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
-          </button>
-          <div>
-            <span className="text-[11px] font-bold text-[#0B96C7] uppercase tracking-wider block font-mono">
-              {t.officialCert} · ISO 15189:2022
-            </span>
-            <h1 className="font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">
-              {t.certOfCompletion}
-            </h1>
-          </div>
+      <div className="print:hidden bg-white rounded-2xl p-5 border border-[#c0cad8] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-start">
+        <div>
+          <span className="text-[11px] font-bold text-[#0B96C7] uppercase tracking-wider block font-mono">
+            {t.officialCert} · ISO 15189:2022
+          </span>
+          <h1 className="font-bold text-xl sm:text-2xl text-[#485261] tracking-tight">
+            {t.certOfCompletion}
+          </h1>
         </div>
 
         <div className="flex items-center gap-2.5 w-full sm:w-auto">

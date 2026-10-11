@@ -160,9 +160,9 @@ optgroup {
 h1, .h1 {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(1.75rem, 2.5vw + 0.25rem, 2.375rem); /* 28px mobile, 36-40px desktop */
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem); /* 20px mobile, 24px desktop */
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: var(--color-text-heading);
 }
 
@@ -209,6 +209,8 @@ p, .body-text {
 /* Dense clinical tables & compact dashboard cards can use standard text sizing */
 .card p, .clinical-card p, .compact-text p, table p, nav p, header p, aside p {
   max-width: none;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* Navigation links: "Nunito Sans", 15-16px, weight 600 */
@@ -543,16 +545,18 @@ small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 12px;
-  border-radius: var(--radius-btn);
+  padding: 8px 12px;
+  border-radius: 10px;
   color: #485261;
-  font-size: 14px;
-  margin-bottom: 3px;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 2px;
   text-decoration: none;
-  transition: all 0.15s;
+  transition: all 0.15s ease;
   width: 100%;
   cursor: pointer;
   text-align: start;
+  border: 1px solid transparent;
 }
 
 .nav-link svg {
@@ -574,7 +578,8 @@ small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
   background: #DEE2E8 !important;
   color: #0B96C7 !important;
   font-weight: 700 !important;
-  border-inline-start: 3px solid #0B96C7 !important;
+  border: 1px solid #C0CAD8 !important;
+  box-shadow: 0 1px 2px rgba(11, 150, 199, 0.08);
 }
 
 .nav-link-active svg {

@@ -173,7 +173,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
           className={`hidden lg:flex items-center justify-between shrink-0 transition-all duration-300 ease-in-out ${
             isRTL ? 'border-l' : 'border-r'
           } border-[#c0cad8] ${
-            isSidebarOpen ? 'w-[272px] px-3.5' : 'w-[72px] px-2.5 justify-center'
+            isSidebarOpen ? 'w-[290px] px-3.5' : 'w-[72px] px-2.5 justify-center'
           } h-14`}
         >
           {isSidebarOpen ? (
@@ -186,20 +186,20 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                 <img
                   src={LOGO_URL}
                   alt="Shalaby Labs"
-                  className="w-8 h-8 object-contain shrink-0 rounded-md transition-transform group-hover:scale-105"
+                  className="w-9 h-9 object-contain shrink-0 rounded-lg transition-transform group-hover:scale-105"
                 />
                 <div className="min-w-0 flex-1 pr-1">
                   <div className="flex items-center gap-1.5 leading-none">
-                    <span className="text-[13px] font-bold text-[#485261] tracking-tight font-heading whitespace-nowrap">
+                    <span className="text-sm font-bold text-[#485261] tracking-tight font-heading whitespace-nowrap">
                       LabCertify
                     </span>
-                    <span className="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8] leading-none shrink-0">
+                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8] leading-none shrink-0">
                       CLINICAL
                     </span>
                   </div>
-                  <p className="text-[10.5px] text-[#9995a6] font-medium truncate leading-tight mt-0.5">
+                  <span className="text-[11px] text-[#9995a6] font-medium leading-tight mt-0.5 block whitespace-nowrap">
                     {isRTL ? 'معامل شلبي للتحاليل الطبية' : 'Shalaby Labs Training'}
-                  </p>
+                  </span>
                 </div>
               </div>
 
@@ -221,7 +221,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                 src={LOGO_URL}
                 alt="Shalaby Labs"
                 onClick={() => onNavigate('dashboard')}
-                className="w-7 h-7 object-contain rounded-md cursor-pointer hover:scale-105 transition-transform"
+                className="w-8 h-8 object-contain rounded-lg cursor-pointer hover:scale-105 transition-transform"
                 title="LabCertify Clinical"
               />
               <button

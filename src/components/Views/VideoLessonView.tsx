@@ -286,63 +286,64 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
         <div className="lg:col-span-2 space-y-4">
           
           {/* Content Mode Navigation Bar */}
-          <div className="flex items-center justify-between bg-white rounded-xl p-1.5 border border-slate-200/90 shadow-2xs">
-            <div className="flex items-center gap-1 overflow-x-auto">
+          <div className="flex items-center justify-between gap-2.5 bg-white rounded-xl p-1.5 border border-[#c0cad8] shadow-2xs">
+            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
               <button
                 onClick={() => setActiveTab('video')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'video'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
                 }`}
               >
-                <Video className="w-3.5 h-3.5" />
+                <Video className="w-3.5 h-3.5 shrink-0" />
                 <span>{t.tabVideo}</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('sop')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'sop'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
                 }`}
               >
-                <FileText className="w-3.5 h-3.5" />
+                <FileText className="w-3.5 h-3.5 shrink-0" />
                 <span>{t.tabSOPDocument}</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('slides')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'slides'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
                 }`}
               >
-                <Layers className="w-3.5 h-3.5" />
+                <Layers className="w-3.5 h-3.5 shrink-0" />
                 <span>{t.tabPresentation}</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('notes')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'notes'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
                 }`}
               >
-                <Edit3 className="w-3.5 h-3.5" />
+                <Edit3 className="w-3.5 h-3.5 shrink-0" />
                 <span>{t.tabNotes}</span>
-                <span className="font-mono text-[10px] bg-slate-100 text-slate-700 px-1.5 rounded-full">
+                <span className="font-mono text-[10px] bg-[#dee2e8] text-[#485261] px-1.5 py-0.2 rounded-full font-bold">
                   {notes.length}
                 </span>
               </button>
             </div>
 
-            <div className="hidden sm:flex items-center gap-1 text-[11px] text-slate-500 font-mono pr-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span>Full HD 1080p</span>
+            {/* Resolution indicator: strict nowrap pill badge */}
+            <div className="hidden md:flex items-center gap-1.5 text-[11px] text-[#9995A6] font-mono shrink-0 whitespace-nowrap px-2.5 py-1 bg-[#dee2e8]/40 rounded-md border border-[#c0cad8]">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+              <span>1080p Full HD</span>
             </div>
           </div>
 
