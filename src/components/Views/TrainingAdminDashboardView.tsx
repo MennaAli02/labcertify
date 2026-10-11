@@ -201,7 +201,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#006672] text-white px-4.5 py-2.5 rounded-xl shadow-lg flex items-center gap-2.5 text-xs font-semibold animate-in slide-in-from-bottom duration-150">
+        <div className="fixed bottom-6 right-6 z-50 bg-[#0B96C7] text-white px-4.5 py-2.5 rounded-xl shadow-lg flex items-center gap-2.5 text-xs font-semibold animate-in slide-in-from-bottom duration-150">
           <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
           <span>{toastMessage}</span>
         </div>
@@ -225,7 +225,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsCreateAccountOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#006672] hover:bg-[#00525c] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer active:scale-95"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer active:scale-95"
           >
             <UserPlus className="w-4 h-4" />
             <span>{t.createNewTrainee}</span>
@@ -242,7 +242,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
 
           <button
             onClick={() => onNavigate('system_admin')}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-teal-50 hover:bg-teal-100 text-[#006672] text-xs font-semibold border border-teal-200 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#dee2e8] hover:bg-[#dee2e8] text-[#0B96C7] text-xs font-semibold border border-[#c0cad8] transition-all cursor-pointer"
             title="Course Studio & Videos"
           >
             <Settings className="w-4 h-4" />
@@ -299,11 +299,11 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">{t.kpiInProgress}</span>
-            <div className="w-7 h-7 rounded-lg bg-teal-50 text-[#006672] flex items-center justify-center">
+            <div className="w-7 h-7 rounded-lg bg-[#dee2e8] text-[#0B96C7] flex items-center justify-center">
               <Clock className="w-4 h-4" />
             </div>
           </div>
-          <p className="text-2xl font-bold text-[#006672] font-mono tabular-nums">
+          <p className="text-2xl font-bold text-[#0B96C7] font-mono tabular-nums">
             {inProgressCount}
           </p>
           <p className="text-[11px] text-slate-500">
@@ -368,7 +368,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.searchTrainee}
-                className={`w-full bg-slate-50 border border-slate-200 rounded-lg py-1.5 text-xs text-slate-900 focus:outline-none focus:border-[#006672] transition-colors ${isRTL ? 'pr-8 pl-3' : 'pl-8 pr-3'}`}
+                className={`w-full bg-slate-50 border border-slate-200 rounded-lg py-1.5 text-xs text-slate-900 focus:outline-none focus:border-[#0B96C7] transition-colors ${isRTL ? 'pr-8 pl-3' : 'pl-8 pr-3'}`}
               />
             </div>
 
@@ -376,7 +376,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
             <select
               value={selectedBranch}
               onChange={(e) => setSelectedBranch(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#006672]"
+              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#0B96C7]"
             >
               <option value="All">{t.allBranches}</option>
               <option value="Cairo">Cairo Main Facility</option>
@@ -390,7 +390,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
             <select
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#006672]"
+              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#0B96C7]"
             >
               <option value="All">{t.allDepartments}</option>
               <option value="Clinical Chemistry">Clinical Chemistry</option>
@@ -404,7 +404,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#006672]"
+              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#0B96C7]"
             >
               <option value="All">{t.allStatuses}</option>
               <option value="In Progress">{t.statusInProgress}</option>
@@ -449,7 +449,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                           className="w-8 h-8 rounded-lg object-cover border border-slate-200 shrink-0"
                         />
                         <div>
-                          <p className="font-semibold text-slate-900 group-hover:text-[#006672] transition-colors">
+                          <p className="font-semibold text-slate-900 group-hover:text-[#0B96C7] transition-colors">
                             {isRTL && trainee.nameAr ? trainee.nameAr : trainee.name}
                           </p>
                           <p className="text-[11px] text-slate-500">
@@ -460,7 +460,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     </td>
 
                     {/* Employee ID */}
-                    <td className="py-3.5 px-4 font-mono font-bold text-[#006672] tabular-nums">
+                    <td className="py-3.5 px-4 font-mono font-bold text-[#0B96C7] tabular-nums">
                       {trainee.employeeId}
                     </td>
 
@@ -485,11 +485,11 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     <td className="py-3.5 px-4 min-w-[130px]">
                       <div className="flex items-center justify-between text-[11px] font-mono font-medium mb-1">
                         <span>{trainee.completedCoursesCount}/5 {t.completedCourses}</span>
-                        <span className="text-[#006672] font-bold tabular-nums">{trainee.overallProgress}%</span>
+                        <span className="text-[#0B96C7] font-bold tabular-nums">{trainee.overallProgress}%</span>
                       </div>
                       <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden border border-slate-200/60">
                         <div
-                          className="bg-[#006672] h-full rounded-full transition-all duration-500"
+                          className="bg-[#0B96C7] h-full rounded-full transition-all duration-500"
                           style={{ width: `${trainee.overallProgress}%` }}
                         />
                       </div>
@@ -503,11 +503,11 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                           : isOverdue
                             ? 'bg-rose-50 text-rose-800 border border-rose-200/80'
                             : trainee.status === 'In Progress'
-                              ? 'bg-teal-50 text-[#006672] border border-teal-200/80'
+                              ? 'bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8]/80'
                               : 'bg-amber-50 text-amber-800 border border-amber-200/80'
                       }`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${
-                          isCompleted ? 'bg-emerald-600' : isOverdue ? 'bg-rose-600' : 'bg-[#006672]'
+                          isCompleted ? 'bg-emerald-600' : isOverdue ? 'bg-rose-600' : 'bg-[#0B96C7]'
                         }`} />
                         {trainee.status === 'Completed' ? t.statusCompleted : trainee.status === 'Overdue' ? t.statusOverdue : trainee.status === 'In Progress' ? t.statusInProgress : t.statusNotStarted}
                       </span>
@@ -530,7 +530,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                           onClick={() => setSelectedDrilldownTrainee(trainee)}
                           className="flex items-center gap-1 px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-medium transition-all cursor-pointer"
                         >
-                          <Eye className="w-3.5 h-3.5 text-[#006672]" />
+                          <Eye className="w-3.5 h-3.5 text-[#0B96C7]" />
                           <span>{t.viewDetails}</span>
                         </button>
                       </div>
@@ -562,7 +562,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     <h3 className="text-lg font-bold text-slate-900">
                       {isRTL && selectedDrilldownTrainee.nameAr ? selectedDrilldownTrainee.nameAr : selectedDrilldownTrainee.name}
                     </h3>
-                    <span className="font-mono text-xs font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+                    <span className="font-mono text-xs font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
                       {selectedDrilldownTrainee.employeeId}
                     </span>
                   </div>
@@ -584,7 +584,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
               <div>
                 <span className="text-slate-500 block text-[11px]">{t.overallCompletion}</span>
-                <span className="text-base font-bold text-[#006672] font-mono tabular-nums">
+                <span className="text-base font-bold text-[#0B96C7] font-mono tabular-nums">
                   {selectedDrilldownTrainee.completedCoursesCount} / 5 ({selectedDrilldownTrainee.overallProgress}%)
                 </span>
               </div>
@@ -635,7 +635,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                         <tr key={course.id} className="hover:bg-slate-50/70">
                           <td className="py-2.5 px-3.5 font-medium text-slate-900">
                             <div className="flex items-center gap-2">
-                              <span className="font-mono text-[11px] font-bold text-[#006672]">
+                              <span className="font-mono text-[11px] font-bold text-[#0B96C7]">
                                 {course.code}
                               </span>
                               <span className="truncate max-w-[180px]" title={course.title}>
@@ -716,7 +716,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                   onClick={() => {
                     window.print();
                   }}
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#006672] hover:bg-[#00525c] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>{t.downloadFullReport}</span>
@@ -742,7 +742,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
             
             <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-teal-100 text-[#006672] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-lg bg-[#dee2e8] text-[#0B96C7] flex items-center justify-center font-bold">
                   <UserPlus className="w-4 h-4" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">
@@ -768,7 +768,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     placeholder="e.g. Mostafa Ali"
                     value={newTraineeForm.name}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, name: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#0B96C7]"
                   />
                 </div>
                 <div>
@@ -778,7 +778,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     placeholder="مثال: مصطفى علي"
                     value={newTraineeForm.nameAr}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, nameAr: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#0B96C7]"
                   />
                 </div>
               </div>
@@ -791,7 +791,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     required
                     value={newTraineeForm.employeeId}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, employeeId: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 font-mono focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 font-mono focus:outline-none focus:border-[#0B96C7]"
                   />
                 </div>
                 <div>
@@ -799,7 +799,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                   <select
                     value={newTraineeForm.jobTitle}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, jobTitle: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#0B96C7]"
                   >
                     <option value="Medical Laboratory Technologist">Medical Laboratory Technologist</option>
                     <option value="Clinical Pathologist">Clinical Pathologist</option>
@@ -816,7 +816,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                   <select
                     value={newTraineeForm.department}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, department: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#0B96C7]"
                   >
                     <option value="Clinical Chemistry">Clinical Chemistry</option>
                     <option value="Microbiology & Serology">Microbiology & Serology</option>
@@ -830,7 +830,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                   <select
                     value={newTraineeForm.branch}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, branch: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#0B96C7]"
                   >
                     <option value="Cairo Main Facility">Cairo Main Facility</option>
                     <option value="Alexandria Branch">Alexandria Branch</option>
@@ -848,7 +848,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     type="date"
                     value={newTraineeForm.hireDate}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, hireDate: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 font-mono focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 font-mono focus:outline-none focus:border-[#0B96C7]"
                   />
                 </div>
                 <div>
@@ -857,7 +857,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     type="text"
                     value={newTraineeForm.orientationStartDate}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, orientationStartDate: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 font-mono focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 font-mono focus:outline-none focus:border-[#0B96C7]"
                   />
                 </div>
                 <div>
@@ -866,13 +866,13 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                     type="text"
                     value={newTraineeForm.orientationEndDate}
                     onChange={(e) => setNewTraineeForm({...newTraineeForm, orientationEndDate: e.target.value})}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 font-mono focus:outline-none focus:border-[#006672]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 font-mono focus:outline-none focus:border-[#0B96C7]"
                   />
                 </div>
               </div>
 
-              <div className="p-3 bg-teal-50/50 rounded-xl border border-teal-200/60 text-xs">
-                <span className="font-semibold text-[#006672] block mb-1">
+              <div className="p-3 bg-[#dee2e8]/50 rounded-xl border border-[#c0cad8]/60 text-xs">
+                <span className="font-semibold text-[#0B96C7] block mb-1">
                   {isRTL ? 'المسار التدريبي المعين:' : 'Assigned Sequential Training Pathway:'}
                 </span>
                 <p className="text-slate-600 text-[11px]">
@@ -890,7 +890,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-lg bg-[#006672] hover:bg-[#00525c] text-white font-semibold shadow-xs cursor-pointer active:scale-95"
+                  className="px-5 py-2 rounded-lg bg-[#0B96C7] hover:bg-[#087fa8] text-white font-semibold shadow-xs cursor-pointer active:scale-95"
                 >
                   {t.saveTraineeAccount}
                 </button>

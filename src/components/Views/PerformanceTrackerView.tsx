@@ -29,17 +29,17 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
     <div className="space-y-8 animate-in fade-in duration-300 text-start">
       
       {/* Header Banner */}
-      <div className="bg-[#ffffff] rounded-3xl p-6 sm:p-8 border border-[#e0e3e5] shadow-xs">
+      <div className="bg-[#ffffff] rounded-3xl p-6 sm:p-8 border border-[#C0CAD8] shadow-xs">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#006672]/10 text-[#006672] rounded-full text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0B96C7]/10 text-[#0B96C7] rounded-full text-xs font-bold uppercase tracking-wider">
               <BarChart2 className="w-4 h-4" />
               <span>{isRTL ? "الكفاءة الإكلينيكية والتحليلات المخبرية" : "Clinical Competency & Analytics"}</span>
             </div>
-            <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-[#191c1e]">
+            <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-[#485261]">
               {t.performanceTitle}
             </h1>
-            <p className="text-sm text-[#6d797c] max-w-2xl leading-relaxed">
+            <p className="text-sm text-[#9995A6] max-w-2xl leading-relaxed">
               {t.performanceSubtext}
             </p>
           </div>
@@ -47,7 +47,7 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => onNavigate('certificate')}
-              className="px-5 py-2.5 bg-[#006672] hover:bg-[#00818f] text-white text-xs font-bold rounded-2xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-2xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
             >
               <Award className="w-4 h-4" />
               <span>{t.officialCert}</span>
@@ -60,7 +60,7 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Overall Score Dial */}
-        <div className="bg-gradient-to-br from-[#006672] to-[#00818f] rounded-3xl p-6 text-white shadow-md flex flex-col justify-between space-y-4">
+        <div className="bg-gradient-to-br from-[#0B96C7] to-[#0B96C7] rounded-3xl p-6 text-white shadow-md flex flex-col justify-between space-y-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider opacity-80">
               {isRTL ? "الكفاءة الإكلينيكية الإجمالية" : "Overall Clinical Proficiency"}
@@ -109,9 +109,9 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
         </div>
 
         {/* Core Competencies Checklist */}
-        <div className="lg:col-span-2 bg-white rounded-3xl p-6 border border-[#e0e3e5] shadow-xs space-y-4">
-          <h2 className="font-headline font-bold text-lg text-[#191c1e] flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#006672]" />
+        <div className="lg:col-span-2 bg-white rounded-3xl p-6 border border-[#C0CAD8] shadow-xs space-y-4">
+          <h2 className="font-headline font-bold text-lg text-[#485261] flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-[#0B96C7]" />
             <span>{t.coreCompetencies}</span>
           </h2>
 
@@ -122,20 +122,20 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
                 className={`p-3.5 rounded-2xl border flex items-center justify-between ${
                   comp.mastered 
                     ? 'bg-emerald-50/50 border-emerald-200' 
-                    : 'bg-[#f7f9fb] border-[#e0e3e5]'
+                    : 'bg-[#DEE2E8] border-[#C0CAD8]'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <div className={`p-1.5 rounded-xl ${
-                    comp.mastered ? 'bg-emerald-500 text-white' : 'bg-[#e0e3e5] text-[#6d797c]'
+                    comp.mastered ? 'bg-emerald-500 text-white' : 'bg-[#C0CAD8] text-[#9995A6]'
                   }`}>
                     <CheckCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-xs text-[#191c1e]">
+                    <h4 className="font-bold text-xs text-[#485261]">
                       {isRTL ? comp.nameAr || comp.name : comp.name}
                     </h4>
-                    <span className="text-[11px] text-[#6d797c]">{comp.level}</span>
+                    <span className="text-[11px] text-[#9995A6]">{comp.level}</span>
                   </div>
                 </div>
 
@@ -154,38 +154,38 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
       </div>
 
       {/* Module Assessment Scores History */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#e0e3e5] shadow-xs space-y-6">
-        <h2 className="font-headline font-bold text-xl text-[#191c1e]">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#C0CAD8] shadow-xs space-y-6">
+        <h2 className="font-headline font-bold text-xl text-[#485261]">
           {isRTL ? "سجل نتائج التقييمات والاختبارات الدورية" : "Assessment History & Score Log"}
         </h2>
 
         <div className="space-y-4">
           {mockPerformanceHistory.map((item) => (
-            <div key={item.id} className="p-5 rounded-2xl bg-[#f7f9fb] border border-[#e0e3e5] space-y-3">
+            <div key={item.id} className="p-5 rounded-2xl bg-[#DEE2E8] border border-[#C0CAD8] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <h3 className="font-headline font-bold text-base text-[#191c1e]">
+                  <h3 className="font-headline font-bold text-base text-[#485261]">
                     {isRTL ? item.titleAr || item.title : item.title}
                   </h3>
-                  <span className="text-xs text-[#6d797c] font-mono">
+                  <span className="text-xs text-[#9995A6] font-mono">
                     {isRTL ? `تاريخ الإتمام: ${item.completedDate}` : `Completed: ${item.completedDate}`}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-extrabold px-3 py-1 rounded-xl bg-[#006672]/10 text-[#006672]">
+                  <span className="text-sm font-extrabold px-3 py-1 rounded-xl bg-[#0B96C7]/10 text-[#0B96C7]">
                     {isRTL ? `الدرجة: ${item.score} من ${item.maxScore}` : `Score: ${item.score}/${item.maxScore}`}
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs text-[#3d494b] leading-relaxed">
+              <p className="text-xs text-[#485261] leading-relaxed">
                 {isRTL ? item.summaryAr || item.summary : item.summary}
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {item.tags.map((tag, idx) => (
-                  <span key={idx} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#e0e3e5] text-[#3d494b]">
+                  <span key={idx} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-[#C0CAD8] text-[#485261]">
                     #{tag}
                   </span>
                 ))}
@@ -196,10 +196,10 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
       </div>
 
       {/* Standard Operating Procedures & Documents Download Center */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#e0e3e5] shadow-xs space-y-6">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#C0CAD8] shadow-xs space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="font-headline font-bold text-xl text-[#191c1e] flex items-center gap-2">
-            <FileText className="w-5 h-5 text-[#006672]" />
+          <h2 className="font-headline font-bold text-xl text-[#485261] flex items-center gap-2">
+            <FileText className="w-5 h-5 text-[#0B96C7]" />
             <span>{t.sopLibrary}</span>
           </h2>
         </div>
@@ -208,17 +208,17 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
           {mockResources.map((res) => (
             <div 
               key={res.id} 
-              className="p-4 rounded-2xl border border-[#e0e3e5] bg-[#f7f9fb] hover:border-[#006672] transition-colors flex items-center justify-between gap-3"
+              className="p-4 rounded-2xl border border-[#C0CAD8] bg-[#DEE2E8] hover:border-[#0B96C7] transition-colors flex items-center justify-between gap-3"
             >
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-[#006672]/10 text-[#006672]">
+                <div className="p-2.5 rounded-xl bg-[#0B96C7]/10 text-[#0B96C7]">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-xs text-[#191c1e] line-clamp-1">
+                  <h4 className="font-bold text-xs text-[#485261] line-clamp-1">
                     {isRTL ? res.titleAr || res.title : res.title}
                   </h4>
-                  <span className="text-[10px] text-[#6d797c]">
+                  <span className="text-[10px] text-[#9995A6]">
                     {res.format} {res.size ? `• ${res.size}` : ''}
                   </span>
                 </div>
@@ -226,7 +226,7 @@ export const PerformanceTrackerView: React.FC<PerformanceTrackerViewProps> = ({ 
 
               <button
                 onClick={() => alert(isRTL ? `جاري تحميل ${res.titleAr || res.title}...` : `Downloading ${res.title}...`)}
-                className="p-2 text-[#006672] hover:bg-[#e0e3e5] rounded-xl transition-colors cursor-pointer"
+                className="p-2 text-[#0B96C7] hover:bg-[#C0CAD8] rounded-xl transition-colors cursor-pointer"
                 title="Download Resource"
               >
                 {res.format === 'External Link' ? <ExternalLink className="w-4 h-4" /> : <Download className="w-4 h-4" />}

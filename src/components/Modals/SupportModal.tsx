@@ -28,10 +28,10 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-[#e0e3e5] overflow-hidden text-start">
+      <div className="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-[#C0CAD8] overflow-hidden text-start">
         
         {/* Header */}
-        <div className="p-6 bg-gradient-to-r from-[#006672] to-[#00818f] text-white flex items-center justify-between">
+        <div className="p-6 bg-gradient-to-r from-[#0B96C7] to-[#0B96C7] text-white flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-white/10 rounded-2xl">
               <LifeBuoy className="w-6 h-6 text-white" />
@@ -60,10 +60,10 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
               <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h4 className="text-lg font-bold text-[#191c1e]">
+              <h4 className="text-lg font-bold text-[#485261]">
                 {isRTL ? "تم إرسال تذكرتك بنجاح!" : "Ticket Submitted Successfully!"}
               </h4>
-              <p className="text-sm text-[#6d797c] max-w-xs mx-auto">
+              <p className="text-sm text-[#9995A6] max-w-xs mx-auto">
                 {isRTL 
                   ? "سيقوم منسق التدريب الإكلينيكي بمراجعة استفسارك والرد خلال 15 دقيقة."
                   : "Our clinical onboarding coordinator will review your request within 15 minutes."}
@@ -73,20 +73,20 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
             <>
               {/* Quick Contact Badges */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 bg-[#f2f4f6] rounded-2xl border border-[#e0e3e5] flex items-center gap-3">
-                  <PhoneCall className="w-5 h-5 text-[#006672]" />
+                <div className="p-3 bg-[#DEE2E8] rounded-2xl border border-[#C0CAD8] flex items-center gap-3">
+                  <PhoneCall className="w-5 h-5 text-[#0B96C7]" />
                   <div>
-                    <span className="text-xs font-bold text-[#191c1e] block">
+                    <span className="text-xs font-bold text-[#485261] block">
                       {isRTL ? "الخط الساخن للمختبر" : "Lab Hotline"}
                     </span>
-                    <span className="text-[11px] text-[#6d797c]">{isRTL ? "تحويلة 4092" : "Ext. 4092"}</span>
+                    <span className="text-[11px] text-[#9995A6]">{isRTL ? "تحويلة 4092" : "Ext. 4092"}</span>
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#f2f4f6] rounded-2xl border border-[#e0e3e5] flex items-center gap-3">
-                  <MessageSquare className="w-5 h-5 text-[#006672]" />
+                <div className="p-3 bg-[#DEE2E8] rounded-2xl border border-[#C0CAD8] flex items-center gap-3">
+                  <MessageSquare className="w-5 h-5 text-[#0B96C7]" />
                   <div>
-                    <span className="text-xs font-bold text-[#191c1e] block">
+                    <span className="text-xs font-bold text-[#485261] block">
                       {isRTL ? "المحادثة الفورية" : "Live Chat"}
                     </span>
                     <span className="text-[11px] text-emerald-600 font-semibold">
@@ -99,7 +99,7 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#3d494b] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-[#485261] uppercase tracking-wider mb-1.5">
                     {isRTL ? "الموضوع / عنوان الاستفسار" : "Subject / Topic"}
                   </label>
                   <input
@@ -108,12 +108,12 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
                     placeholder={isRTL ? "مثال: استفسار بخصوص تسلسل نزع معدات الوقاية PPE..." : "e.g. Question regarding Module 2 PPE sequence..."}
                     value={ticketSubject}
                     onChange={(e) => setTicketSubject(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-[#f7f9fb] border border-[#bcc9cb] focus:border-[#006672] rounded-xl text-sm focus:outline-none transition-all"
+                    className="w-full px-4 py-2.5 bg-[#DEE2E8] border border-[#C0CAD8] focus:border-[#0B96C7] rounded-xl text-sm focus:outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#3d494b] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-[#485261] uppercase tracking-wider mb-1.5">
                     {isRTL ? "تفاصيل المشكلة أو السؤال" : "Details"}
                   </label>
                   <textarea
@@ -122,7 +122,7 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
                     placeholder={isRTL ? "صف استفسارك أو مشكلتك الفنية بالتفصيل..." : "Describe your question or technical issue in detail..."}
                     value={ticketMessage}
                     onChange={(e) => setTicketMessage(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-[#f7f9fb] border border-[#bcc9cb] focus:border-[#006672] rounded-xl text-sm focus:outline-none transition-all resize-none"
+                    className="w-full px-4 py-2.5 bg-[#DEE2E8] border border-[#C0CAD8] focus:border-[#0B96C7] rounded-xl text-sm focus:outline-none transition-all resize-none"
                   />
                 </div>
 
@@ -130,13 +130,13 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
                   <button
                     type="button"
                     onClick={onClose}
-                    className="px-5 py-2.5 text-sm font-semibold text-[#6d797c] hover:bg-[#f2f4f6] rounded-xl transition-colors cursor-pointer"
+                    className="px-5 py-2.5 text-sm font-semibold text-[#9995A6] hover:bg-[#DEE2E8] rounded-xl transition-colors cursor-pointer"
                   >
                     {isRTL ? "إلغاء" : "Cancel"}
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 bg-[#006672] hover:bg-[#00818f] text-white rounded-xl text-sm font-semibold shadow-md flex items-center gap-2 transition-all cursor-pointer"
+                    className="px-6 py-2.5 bg-[#0B96C7] hover:bg-[#0B96C7] text-white rounded-xl text-sm font-semibold shadow-md flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <Send className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
                     <span>{isRTL ? "إرسال التذكرة" : "Submit Ticket"}</span>

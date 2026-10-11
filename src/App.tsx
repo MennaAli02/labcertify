@@ -76,6 +76,7 @@ export default function App() {
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Save courses when updated
   const handleUpdateCourse = (updatedCourse: Course) => {
@@ -348,7 +349,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f9fb] text-[#191c1e] flex flex-col font-sans selection:bg-[#006672]/20 selection:text-[#006672]">
+    <div className="h-screen w-full max-w-full overflow-x-hidden overflow-y-hidden bg-[#dee2e8] text-[#485261] flex flex-col selection:bg-[#6bbada]/30 selection:text-[#0b96c7]">
       
       {/* Top Header Bar */}
       <TopNavBar
@@ -360,13 +361,15 @@ export default function App() {
         onOpenSupport={() => setIsSupportOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
         onToggleMobileMenu={() => setIsMobileNavOpen(!isMobileNavOpen)}
+        onToggleSidebar={() => setIsSidebarOpen(prev => !prev)}
+        isSidebarOpen={isSidebarOpen}
         unreadCount={2}
       />
 
-      {/* Main Container Layout */}
-      <div className="flex-1 flex max-w-[1600px] w-full mx-auto">
+      {/* Main Container Layout — spans full width without horizontal overflow */}
+      <div className="flex-1 flex w-full max-w-full overflow-hidden min-w-0">
         
-        {/* Navigation Sidebar */}
+        {/* Navigation Sidebar with Collapsed/Expanded Rail Mode */}
         <SideNavBar
           currentView={currentView}
           onNavigate={setCurrentView}
@@ -375,10 +378,12 @@ export default function App() {
           completedModulesCount={completedCoursesCount}
           totalModulesCount={courses.length}
           user={user}
+          isOpen={isSidebarOpen}
+          onToggleCollapse={() => setIsSidebarOpen(prev => !prev)}
         />
 
-        {/* Dynamic View Content Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full overflow-x-hidden">
+        {/* Dynamic View Content Area — expands to fit all screen when sidebar collapsed */}
+        <main className="flex-1 p-3 sm:p-5 lg:p-6 w-full max-w-full min-w-0 overflow-y-auto overflow-x-hidden">
           {renderView()}
         </main>
 

@@ -110,32 +110,32 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
     <div className="space-y-8 animate-in fade-in duration-300 text-start">
       
       {/* Header Banner */}
-      <div className="bg-[#ffffff] rounded-3xl p-6 sm:p-8 border border-[#e0e3e5] shadow-xs">
+      <div className="bg-[#ffffff] rounded-3xl p-6 sm:p-8 border border-[#C0CAD8] shadow-xs">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#006672]/10 text-[#006672] rounded-full text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0B96C7]/10 text-[#0B96C7] rounded-full text-xs font-bold uppercase tracking-wider">
               <GitMerge className="w-4 h-4" />
               <span>{isRTL ? "منهج إعداد القيادات الإكلينيكية" : "Manager Development Curriculum"}</span>
             </div>
-            <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-[#191c1e]">
+            <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-[#485261]">
               {isRTL ? "معمل شلبي: مسار القيادة المخبرية" : "Shalaby Labs: Leadership Path"}
             </h1>
-            <p className="text-sm text-[#6d797c] max-w-2xl leading-relaxed">
+            <p className="text-sm text-[#9995A6] max-w-2xl leading-relaxed">
               {isRTL 
                 ? "برنامج تدريبي تنفيذي من 7 مراحل متكاملة مصمم لتأهيل الأخصائيين ليصبحوا مدراء مختبرات إكلينيكيين معتمدين."
                 : "A 7-stage executive training program designed to transition clinical specialists into certified Senior Clinical Managers."}
             </p>
           </div>
 
-          <div className="bg-[#f2f4f6] p-4 rounded-2xl border border-[#e0e3e5] shrink-0 min-w-[220px]">
+          <div className="bg-[#DEE2E8] p-4 rounded-2xl border border-[#C0CAD8] shrink-0 min-w-[220px]">
             <div className="flex items-center justify-between text-xs font-bold mb-1">
-              <span className="text-[#191c1e]">{isRTL ? "إجمالي التقدم في البرنامج" : "Total Program Progress"}</span>
-              <span className="text-[#006672]">38%</span>
+              <span className="text-[#485261]">{isRTL ? "إجمالي التقدم في البرنامج" : "Total Program Progress"}</span>
+              <span className="text-[#0B96C7]">38%</span>
             </div>
-            <div className="w-full h-2.5 bg-[#e0e3e5] rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-[#006672] to-[#4c56af] w-[38%] rounded-full" />
+            <div className="w-full h-2.5 bg-[#C0CAD8] rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-[#0B96C7] to-[#0B96C7] w-[38%] rounded-full" />
             </div>
-            <p className="text-[11px] text-[#6d797c] mt-2">
+            <p className="text-[11px] text-[#9995A6] mt-2">
               {isRTL ? "المرحلة 3 من 7 قيد التقدم • تم الحصول على شهادتين" : "Stage 3 of 7 in progress • 2 Certificates Earned"}
             </p>
           </div>
@@ -146,7 +146,7 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* Active Stage Card */}
-        <div className="bg-gradient-to-br from-[#006672] to-[#00818f] rounded-3xl p-6 text-white shadow-lg space-y-4 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#0B96C7] to-[#0B96C7] rounded-3xl p-6 text-white shadow-lg space-y-4 relative overflow-hidden">
           <div className="flex items-center justify-between">
             <span className="px-3 py-1 bg-white/20 backdrop-blur-md text-xs font-bold rounded-full uppercase">
               {isRTL ? "المرحلة 03 • نشطة حالياً" : "Stage 03 • Currently Active"}
@@ -171,7 +171,7 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
             </div>
             <button
               onClick={() => onNavigate('video_lesson')}
-              className="px-5 py-2.5 bg-white text-[#006672] hover:bg-emerald-50 text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 bg-white text-[#0B96C7] hover:bg-emerald-50 text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
             >
               <Play className={`w-4 h-4 fill-current ${isRTL ? 'rotate-180' : ''}`} />
               <span>{isRTL ? "استئناف المرحلة الثالثة" : "Resume Stage 3"}</span>
@@ -180,32 +180,32 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
         </div>
 
         {/* Next Up Stage Card */}
-        <div className="bg-white rounded-3xl p-6 border border-[#e0e3e5] shadow-xs space-y-4 flex flex-col justify-between">
+        <div className="bg-white rounded-3xl p-6 border border-[#C0CAD8] shadow-xs space-y-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="px-3 py-1 bg-[#e0e3e5] text-[#3d494b] text-xs font-bold rounded-full uppercase">
+            <span className="px-3 py-1 bg-[#C0CAD8] text-[#485261] text-xs font-bold rounded-full uppercase">
               {isRTL ? "المرحلة 04 • التالية" : "Stage 04 • Next Up"}
             </span>
-            <Lock className="w-4 h-4 text-[#6d797c]" />
+            <Lock className="w-4 h-4 text-[#9995A6]" />
           </div>
 
           <div>
-            <h2 className="font-headline font-bold text-xl text-[#191c1e]">
+            <h2 className="font-headline font-bold text-xl text-[#485261]">
               {isRTL ? "إدارة النزاعات وحل الخلافات السريرية" : "Conflict Management & Resolution"}
             </h2>
-            <p className="text-xs text-[#6d797c] mt-1 leading-relaxed">
+            <p className="text-xs text-[#9995A6] mt-1 leading-relaxed">
               {isRTL 
                 ? "إتقان بروتوكولات احتواء التصعيد والإجراءات الموحدة لحل التباينات التقنية بين فنيي المختبر والمشرفين."
                 : "Master de-escalation protocols and standard procedures for resolving technical disagreements between clinical technicians."}
             </p>
           </div>
 
-          <div className="pt-2 flex items-center justify-between border-t border-[#f2f4f6]">
-            <span className="text-xs text-[#6d797c] font-medium">
+          <div className="pt-2 flex items-center justify-between border-t border-[#DEE2E8]">
+            <span className="text-xs text-[#9995A6] font-medium">
               {isRTL ? "يُتاح تلقائياً بعد إتمام المرحلة الثالثة" : "Unlocks upon Stage 3 completion"}
             </span>
             <button
               disabled
-              className="px-4 py-2 bg-[#f2f4f6] text-[#bcc9cb] text-xs font-semibold rounded-xl cursor-not-allowed flex items-center gap-1.5"
+              className="px-4 py-2 bg-[#DEE2E8] text-[#C0CAD8] text-xs font-semibold rounded-xl cursor-not-allowed flex items-center gap-1.5"
             >
               <Lock className="w-3.5 h-3.5" />
               <span>{isRTL ? "مغلق" : "Locked"}</span>
@@ -216,12 +216,12 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
       </div>
 
       {/* Curriculum Roadmap Timeline */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#e0e3e5] shadow-xs">
-        <h2 className="font-headline font-bold text-xl text-[#191c1e] mb-6">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#C0CAD8] shadow-xs">
+        <h2 className="font-headline font-bold text-xl text-[#485261] mb-6">
           {isRTL ? "خريطة المنهج التفاعلية" : "Your Curriculum Roadmap"}
         </h2>
 
-        <div className={`space-y-4 relative before:absolute before:inset-0 ${isRTL ? 'before:right-6 sm:before:right-8' : 'before:left-6 sm:before:left-8'} before:w-0.5 before:bg-[#e0e3e5] before:z-0`}>
+        <div className={`space-y-4 relative before:absolute before:inset-0 ${isRTL ? 'before:right-6 sm:before:right-8' : 'before:left-6 sm:before:left-8'} before:w-0.5 before:bg-[#C0CAD8] before:z-0`}>
           {stages.map((st, idx) => {
             const isDone = st.status === 'Completed';
             const isActive = st.status === 'In Progress';
@@ -231,18 +231,18 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
                 key={idx}
                 className={`relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl border transition-all ${
                   isActive
-                    ? 'bg-[#006672]/5 border-[#006672] shadow-sm'
+                    ? 'bg-[#0B96C7]/5 border-[#0B96C7] shadow-sm'
                     : isDone
-                    ? 'bg-[#f7f9fb] border-[#e0e3e5]'
-                    : 'bg-white border-[#f2f4f6] opacity-75'
+                    ? 'bg-[#DEE2E8] border-[#C0CAD8]'
+                    : 'bg-white border-[#DEE2E8] opacity-75'
                 }`}
               >
                 <div className="flex items-start gap-4">
                   {/* Status Indicator Icon */}
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 ${
                     isDone ? 'bg-emerald-500 text-white shadow-xs' :
-                    isActive ? 'bg-[#006672] text-white shadow-md animate-pulse' :
-                    'bg-[#e0e3e5] text-[#6d797c]'
+                    isActive ? 'bg-[#0B96C7] text-white shadow-md animate-pulse' :
+                    'bg-[#C0CAD8] text-[#9995A6]'
                   }`}>
                     {isDone ? (
                       <CheckCircle className="w-5 h-5" />
@@ -253,18 +253,18 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
 
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="font-headline font-bold text-base text-[#191c1e]">
+                      <h3 className="font-headline font-bold text-base text-[#485261]">
                         {isRTL ? `المرحلة ${st.stage}: ${st.titleAr}` : `Stage ${st.stage}: ${st.title}`}
                       </h3>
                       <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                         isDone ? 'bg-emerald-100 text-emerald-800' :
-                        isActive ? 'bg-[#006672] text-white' :
-                        'bg-[#e0e3e5] text-[#6d797c]'
+                        isActive ? 'bg-[#0B96C7] text-white' :
+                        'bg-[#C0CAD8] text-[#9995A6]'
                       }`}>
                         {isRTL ? st.badgeAr : st.badge}
                       </span>
                     </div>
-                    <p className="text-xs text-[#6d797c] mt-1 max-w-xl leading-relaxed">
+                    <p className="text-xs text-[#9995A6] mt-1 max-w-xl leading-relaxed">
                       {isRTL ? st.descAr : st.desc}
                     </p>
                   </div>
@@ -275,7 +275,7 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
                   {st.actionView ? (
                     <button
                       onClick={() => onNavigate(st.actionView!)}
-                      className="px-4 py-2 bg-[#006672] hover:bg-[#00818f] text-white text-xs font-bold rounded-xl shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                      className="px-4 py-2 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-xl shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
                     >
                       <span>{isRTL ? st.actionLabelAr : st.actionLabel}</span>
                       <ChevronRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
@@ -286,7 +286,7 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
                       {isRTL ? "مكتمل" : "Completed"}
                     </span>
                   ) : (
-                    <span className="text-xs font-medium text-[#bcc9cb] flex items-center gap-1">
+                    <span className="text-xs font-medium text-[#C0CAD8] flex items-center gap-1">
                       <Lock className="w-3.5 h-3.5" />
                       {isRTL ? "بانتظار إتمام المتطلبات" : "Prerequisites pending"}
                     </span>
@@ -297,7 +297,7 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
           })}
 
           {/* Final Certification Target Card */}
-          <div className="relative z-10 p-5 rounded-2xl bg-gradient-to-r from-[#27308a] to-[#4c56af] text-white shadow-md flex items-center justify-between">
+          <div className="relative z-10 p-5 rounded-2xl bg-gradient-to-r from-[#0B96C7] to-[#0B96C7] text-white shadow-md flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-white/10 rounded-2xl">
                 <Award className="w-7 h-7 text-amber-300" />
@@ -319,7 +319,7 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
 
             <button
               onClick={() => onNavigate('certificate')}
-              className="hidden sm:flex px-4 py-2 bg-white text-[#27308a] font-bold text-xs rounded-xl shadow-sm hover:bg-amber-50 transition-colors cursor-pointer"
+              className="hidden sm:flex px-4 py-2 bg-white text-[#0B96C7] font-bold text-xs rounded-xl shadow-sm hover:bg-amber-50 transition-colors cursor-pointer"
             >
               {isRTL ? "معاينة نموذج الشهادة" : "View Sample Certificate"}
             </button>
@@ -330,36 +330,36 @@ export const LeadershipPathView: React.FC<LeadershipPathViewProps> = ({ onNaviga
 
       {/* Program Benefits Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-3xl border border-[#e0e3e5] space-y-2">
-          <BrainCircuit className="w-6 h-6 text-[#006672]" />
-          <h4 className="font-headline font-bold text-sm text-[#191c1e]">
+        <div className="bg-white p-6 rounded-3xl border border-[#C0CAD8] space-y-2">
+          <BrainCircuit className="w-6 h-6 text-[#0B96C7]" />
+          <h4 className="font-headline font-bold text-sm text-[#485261]">
             {isRTL ? "الأطر الإدراكية والقيادية" : "Cognitive Frameworks"}
           </h4>
-          <p className="text-xs text-[#6d797c] leading-relaxed">
+          <p className="text-xs text-[#9995A6] leading-relaxed">
             {isRTL 
               ? "تطبيق نماذج GROW، وتوجيهات القيادة الموقفية، ومصفوفات الأمان النفسي الطبي."
               : "Apply GROW coaching models, Situational Leadership vectors, and psychological safety matrices."}
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl border border-[#e0e3e5] space-y-2">
-          <Users className="w-6 h-6 text-[#006672]" />
-          <h4 className="font-headline font-bold text-sm text-[#191c1e]">
+        <div className="bg-white p-6 rounded-3xl border border-[#C0CAD8] space-y-2">
+          <Users className="w-6 h-6 text-[#0B96C7]" />
+          <h4 className="font-headline font-bold text-sm text-[#485261]">
             {isRTL ? "الإرشاد المهني بين الأقران" : "Peer Mentorship"}
           </h4>
-          <p className="text-xs text-[#6d797c] leading-relaxed">
+          <p className="text-xs text-[#9995A6] leading-relaxed">
             {isRTL 
               ? "جلسات نقاش وحل دراسات حالة واقعية بالتعاون مع كبار استشاريي المعامل السريرية."
               : "Engage with senior clinical leads in the Manager's Forum for real-world case study resolution."}
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-3xl border border-[#e0e3e5] space-y-2">
-          <Award className="w-6 h-6 text-[#006672]" />
-          <h4 className="font-headline font-bold text-sm text-[#191c1e]">
+        <div className="bg-white p-6 rounded-3xl border border-[#C0CAD8] space-y-2">
+          <Award className="w-6 h-6 text-[#0B96C7]" />
+          <h4 className="font-headline font-bold text-sm text-[#485261]">
             {isRTL ? "التقييم العملي الصارم" : "Practical Assessment"}
           </h4>
-          <p className="text-xs text-[#6d797c] leading-relaxed">
+          <p className="text-xs text-[#9995A6] leading-relaxed">
             {isRTL 
               ? "إثبات الكفاءة عبر سيناريوهات تفاعلية، ومحاكاة عمليات تدقيق الجودة والاعتماد الدولي CAP/ISO."
               : "Verify mastery with interactive scenarios, PPE removal sequences, and simulated lab audits."}

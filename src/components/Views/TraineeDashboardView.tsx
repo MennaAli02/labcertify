@@ -76,8 +76,8 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
       case 'In Progress':
         return {
           label: t.statusInProgress,
-          color: 'text-[#006672] bg-teal-50 border-teal-200/80',
-          dot: 'bg-[#006672]'
+          color: 'text-[#0B96C7] bg-[#dee2e8] border-[#c0cad8]/80',
+          dot: 'bg-[#0B96C7]'
         };
       default:
         return {
@@ -128,7 +128,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
         {/* Accreditation & Compliance Stripe */}
         <div className="bg-slate-50 border-b border-slate-200/80 px-6 py-2 flex flex-wrap items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-2 text-slate-600">
-            <ShieldCheck className="w-4 h-4 text-[#006672]" />
+            <ShieldCheck className="w-4 h-4 text-[#0B96C7]" />
             <span className="font-semibold text-slate-800">{isRTL ? 'برنامج التأهيل المخبري الإلزامي' : 'Mandatory Clinical Laboratory Qualification Program'}</span>
             <span className="text-slate-300">|</span>
             <span className="text-[11px] text-slate-500 font-mono">ISO 15189:2022 · CAP #8472910</span>
@@ -153,7 +153,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                   alt={user.name}
                   className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover border border-slate-200 shadow-xs"
                 />
-                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#006672] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#0B96C7] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
                   ✓
                 </span>
               </div>
@@ -165,7 +165,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                   </h1>
                 </div>
 
-                <p className="text-xs sm:text-sm font-semibold text-[#006672]">
+                <p className="text-xs sm:text-sm font-semibold text-[#0B96C7]">
                   {isRTL && user.titleAr ? user.titleAr : user.title}
                 </p>
 
@@ -190,7 +190,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 min-w-[280px] w-full lg:w-auto space-y-2">
               <div className="flex items-center justify-between text-xs text-slate-500">
                 <span className="font-semibold text-slate-700 flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-[#006672]" />
+                  <Calendar className="w-3.5 h-3.5 text-[#0B96C7]" />
                   {t.orientationPeriod}
                 </span>
                 <span className="text-[11px] font-mono font-semibold text-slate-700">
@@ -202,7 +202,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
               </p>
               <div className="pt-2 border-t border-slate-200/70 flex items-center justify-between text-xs">
                 <span className="text-slate-500">{t.assignedPath}:</span>
-                <span className="font-bold text-[#006672] truncate max-w-[180px]" title={user.assignedPathTitle}>
+                <span className="font-bold text-[#0B96C7] truncate max-w-[180px]" title={user.assignedPathTitle}>
                   {isRTL && user.assignedPathTitleAr ? user.assignedPathTitleAr : (user.assignedPathTitle || "Clinical Lab Orientation")}
                 </span>
               </div>
@@ -219,14 +219,14 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                   ({completedCount} of {totalCount} {t.completedCourses})
                 </span>
               </div>
-              <span className="text-base font-bold text-[#006672] font-mono tabular-nums">
+              <span className="text-base font-bold text-[#0B96C7] font-mono tabular-nums">
                 {completionPercentage}%
               </span>
             </div>
 
             <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-200/80">
               <div 
-                className="bg-[#006672] h-full rounded-full transition-all duration-700 ease-out"
+                className="bg-[#0B96C7] h-full rounded-full transition-all duration-700 ease-out"
                 style={{ width: `${completionPercentage}%` }}
               />
             </div>
@@ -258,14 +258,14 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
         <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">{t.statusInProgress}</span>
-            <div className="w-7 h-7 rounded-lg bg-teal-50 text-[#006672] flex items-center justify-center">
+            <div className="w-7 h-7 rounded-lg bg-[#dee2e8] text-[#0B96C7] flex items-center justify-center">
               <Clock className="w-4 h-4" />
             </div>
           </div>
           <p className="text-2xl font-bold text-slate-900 font-mono tabular-nums">
             {inProgressCourses.length} <span className="text-xs font-medium text-slate-400">{t.activeModules}</span>
           </p>
-          <p className="text-[11px] text-[#006672] font-medium">
+          <p className="text-[11px] text-[#0B96C7] font-medium">
             {isRTL ? 'المقرر التالي قيد الدراسة' : 'Active in sequential path'}
           </p>
         </div>
@@ -311,7 +311,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-200/80">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+              <span className="text-xs font-mono font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
                 SEQUENTIAL PATHWAY
               </span>
               <h2 className="text-lg font-bold text-slate-900 tracking-tight">
@@ -350,7 +350,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                   isCompleted 
                     ? 'bg-white border-slate-200 hover:border-emerald-300 hover:shadow-xs' 
                     : isInProgress
-                      ? 'bg-white border-[#006672] shadow-xs ring-1 ring-[#006672]/20'
+                      ? 'bg-white border-[#0B96C7] shadow-xs ring-1 ring-[#0B96C7]/20'
                       : 'bg-slate-50/70 border-slate-200/70 opacity-80 hover:opacity-95'
                 }`}
               >
@@ -364,7 +364,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                       isCompleted 
                         ? 'bg-emerald-600 text-white' 
                         : isInProgress
-                          ? 'bg-[#006672] text-white shadow-xs'
+                          ? 'bg-[#0B96C7] text-white shadow-xs'
                           : 'bg-slate-200 text-slate-500'
                     }`}>
                       {isCompleted ? (
@@ -378,7 +378,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
 
                     <div className="space-y-1 flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-mono text-xs font-bold text-[#006672]">
+                        <span className="font-mono text-xs font-bold text-[#0B96C7]">
                           {course.code}
                         </span>
 
@@ -388,7 +388,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                           isCompleted
                             ? 'text-emerald-700'
                             : isInProgress
-                              ? 'text-[#006672] font-semibold'
+                              ? 'text-[#0B96C7] font-semibold'
                               : 'text-slate-500'
                         }`}>
                           {isCompleted ? t.courseCompletedBadge : isLocked ? t.lockedBadge : t.unlockedBadge}
@@ -404,7 +404,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                         )}
                       </div>
 
-                      <h3 className="text-base font-bold text-slate-900 hover:text-[#006672] transition-colors truncate">
+                      <h3 className="text-base font-bold text-slate-900 hover:text-[#0B96C7] transition-colors truncate">
                         {isRTL && course.titleAr ? course.titleAr : course.title}
                       </h3>
 
@@ -453,7 +453,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                           className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold border border-slate-200 transition-all cursor-pointer"
                           title="Review course video lectures & SOP handbooks"
                         >
-                          <BookOpen className="w-3.5 h-3.5 text-[#006672]" />
+                          <BookOpen className="w-3.5 h-3.5 text-[#0B96C7]" />
                           <span>{isRTL ? 'مراجعة المحتوى والفيديوهات' : 'Review Videos & SOPs'}</span>
                         </button>
                         <button
@@ -473,12 +473,12 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                           }}
                           className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200 transition-all cursor-pointer"
                         >
-                          <BookOpen className="w-3.5 h-3.5 text-[#006672]" />
+                          <BookOpen className="w-3.5 h-3.5 text-[#0B96C7]" />
                           <span>{t.resumeCourseContent}</span>
                         </button>
                         <button
                           onClick={(e) => handleStartQuiz(course, e)}
-                          className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[#006672] hover:bg-[#00525c] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer active:scale-95"
+                          className="flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer active:scale-95"
                         >
                           <span>{t.takeOnlineAssessment}</span>
                           <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
@@ -505,7 +505,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                 {isInProgress && (
                   <div className="w-full bg-slate-100 h-1 overflow-hidden">
                     <div 
-                      className="bg-[#006672] h-full transition-all duration-500"
+                      className="bg-[#0B96C7] h-full transition-all duration-500"
                       style={{ width: `${course.progress}%` }}
                     />
                   </div>
@@ -574,7 +574,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
             
             <div className="flex items-start justify-between gap-4 pb-4 border-b border-slate-200">
               <div>
-                <span className="font-mono text-xs font-bold text-[#006672]">
+                <span className="font-mono text-xs font-bold text-[#0B96C7]">
                   {previewCourse.code} · Module 0{previewCourse.moduleNumber}
                 </span>
                 <h3 className="text-lg font-bold text-slate-900 mt-0.5">
@@ -616,7 +616,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                 <div className="p-3 bg-slate-50 rounded-lg border border-slate-200/80 flex items-center gap-2.5">
-                  <PlayCircle className="w-4 h-4 text-[#006672]" />
+                  <PlayCircle className="w-4 h-4 text-[#0B96C7]" />
                   <div>
                     <p className="font-semibold text-slate-800">{isRTL ? 'فيديو تدريبي تطبيقي' : 'Clinical Procedure Video'}</p>
                     <p className="text-[11px] text-slate-500 font-mono">1080p Full HD · SOP Guided</p>
@@ -650,7 +650,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
                   handleStartQuiz(previewCourse);
                   setPreviewCourse(null);
                 }}
-                className="px-5 py-2 bg-[#006672] hover:bg-[#00525c] text-white text-xs font-semibold rounded-lg shadow-xs cursor-pointer active:scale-95"
+                className="px-5 py-2 bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-semibold rounded-lg shadow-xs cursor-pointer active:scale-95"
               >
                 {t.takeOnlineAssessment}
               </button>
@@ -684,7 +684,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
             </div>
 
             <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-700 space-y-1">
-              <p className="font-bold text-[#006672]">
+              <p className="font-bold text-[#0B96C7]">
                 {isRTL ? 'قاعدة التسلسل الإلزامي للمختبر:' : 'Mandatory Clinical Sequencing Rule:'}
               </p>
               <p className="text-[11px] text-slate-500 font-mono">
@@ -695,7 +695,7 @@ export const TraineeDashboardView: React.FC<TraineeDashboardViewProps> = ({
             <div className="flex justify-end pt-2">
               <button
                 onClick={() => setLockedModalCourse(null)}
-                className="px-4 py-2 rounded-lg bg-[#006672] text-white font-semibold text-xs hover:bg-[#00525c] transition-all cursor-pointer"
+                className="px-4 py-2 rounded-lg bg-[#0B96C7] text-white font-semibold text-xs hover:bg-[#087fa8] transition-all cursor-pointer"
               >
                 {isRTL ? 'فهمت ذلك' : 'Understood'}
               </button>

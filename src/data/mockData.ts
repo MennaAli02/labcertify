@@ -12,7 +12,7 @@ import {
   CertificateRecord
 } from '../types';
 
-export const LOGO_URL = "https://lh3.googleusercontent.com/aida-public/AB6AXuAPsc6frwqkN6TJw0lVlejnvGCgSjKeeegGNmCq52itX3bHXKSrzOGysASznD9kMc9Fg0s0Zvkz-UpoC-k1oSHfV-4Kyj__iGQXxKUKVwxy427Q5-riO40xOpKp_-9Fudjwlr9U2PNFByeRlcXdQ0b3j5O_PzjIynDtrZMQpfWZDB0M9Q5YZT3hOtHo9UxnfMvkil-1DD7dq5J1PXAzvhcYdqO7ncpi8Qaf9yY5lO7JSZI9C9ypvO4tvg";
+export const LOGO_URL = "/logo.png";
 
 export const SIGNATURE_URL = "https://lh3.googleusercontent.com/aida-public/AB6AXuCWRU4uSQgRsTvacL4bkXtND90TsQihlyT8RNk-iyR2BBHwlxSJ_0ziLnf6ufJSumauLXbZsn55wHs0XiwnjKyTRhYlkUz9sbiVHt-MNwvtK-JhXhhMl5wk2h87FpexVJUHwPBVGtO9BpR_9iVI0wkJwVXh-ufRcY90vYLs12rhTNZ3Tuj747npkTDoD2F7kxqHCl2cUGRSnSmLW3zIT2EenFvkjdm7omdRAkfAf05dGFxjjBg6FDCOcw";
 

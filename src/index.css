@@ -1,129 +1,579 @@
 @import "tailwindcss";
 
 /* ============================================================
-   LabCertify Clinical — Premium Medical Design System v2.0
-   Color Palette: Deep Navy + Medical Teal + Warm Accents
+   LabCertify Clinical — Exact Medical Color Palette
+   Palette Hex Codes:
+   1. #DEE2E8 — Bleached White (Clean page canvas, card tints)
+   2. #C0CAD8 — Icy Brook (Borders, dividers, card outlines)
+   3. #6BBADA — Bluebrite (Vibrant sky accent, secondary buttons)
+   4. #9995A6 — Lavender Ash (Muted text, metadata, subtle tags)
+   5. #0B96C7 — Sea Wonder (Primary CTA, active states, brand)
+   6. #485261 — Senate (Deep typography, dark headings, contrast)
    ============================================================ */
 
-@layer base {
-  :root {
-    /* Primary - Deep Navy */
-    --color-primary: #0F1B4C;
-    --color-primary-light: #1A2766;
-    --color-primary-lighter: #2A3A80;
-    
-    /* Accent - Medical Teal */
-    --color-accent: #0EA5A0;
-    --color-accent-light: #14C4BD;
-    --color-accent-dark: #0B8A86;
-    --color-accent-glow: rgba(14, 165, 160, 0.15);
-    
-    /* Surfaces */
-    --color-surface: #F8FAFC;
-    --color-surface-elevated: #FFFFFF;
-    --color-surface-sunken: #F1F5F9;
-    --color-surface-hover: #EEF2F7;
-    
-    /* Text */
-    --color-text-primary: #0F172A;
-    --color-text-secondary: #475569;
-    --color-text-muted: #94A3B8;
-    
-    /* Borders */
-    --color-border: #E2E8F0;
-    --color-border-light: #F1F5F9;
-    --color-border-accent: rgba(14, 165, 160, 0.25);
-    
-    /* Status Colors */
-    --color-success: #10B981;
-    --color-success-bg: #ECFDF5;
-    --color-warning: #F59E0B;
-    --color-warning-bg: #FFFBEB;
-    --color-danger: #EF4444;
-    --color-danger-bg: #FEF2F2;
-    --color-info: #3B82F6;
-    --color-info-bg: #EFF6FF;
-    
-    /* Sidebar */
-    --sidebar-width: 272px;
-    --sidebar-collapsed-width: 0px;
-    --topbar-height: 64px;
-    
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(15, 27, 76, 0.04);
-    --shadow-md: 0 4px 12px -1px rgba(15, 27, 76, 0.06), 0 2px 4px -2px rgba(15, 27, 76, 0.04);
-    --shadow-lg: 0 10px 30px -5px rgba(15, 27, 76, 0.08), 0 4px 6px -4px rgba(15, 27, 76, 0.04);
-    --shadow-xl: 0 20px 50px -12px rgba(15, 27, 76, 0.12);
-    --shadow-glow: 0 0 20px rgba(14, 165, 160, 0.15);
-  }
+@theme {
+  --color-bleached-white: #DEE2E8;
+  --color-icy-brook: #C0CAD8;
+  --color-bluebrite: #6BBADA;
+  --color-lavender-ash: #9995A6;
+  --color-sea-wonder: #0B96C7;
+  --color-senate: #485261;
 
-  body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: var(--color-surface);
-    color: var(--color-text-primary);
-    letter-spacing: -0.01em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  h1, h2, h3, h4, h5, h6, .font-headline {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    letter-spacing: -0.025em;
-  }
+  --color-brand: #0B96C7;
+  --color-brand-dark: #485261;
+  --color-brand-light: #6BBADA;
+  --color-brand-muted: #9995A6;
+  --color-brand-border: #C0CAD8;
+  --color-brand-bg: #DEE2E8;
 
-  code, kbd, samp, pre, .font-mono {
-    font-family: 'JetBrains Mono', monospace;
-    font-variant-numeric: tabular-nums;
-  }
+  --font-heading: "Source Serif 4", "Amiri", Georgia, "Times New Roman", serif;
+  --font-body: "Nunito Sans", "IBM Plex Sans Arabic", -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-serif: var(--font-heading);
+  --font-sans: var(--font-body);
+}
 
-  /* Focus ring styles */
-  *:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
+:root {
+  /* ============================================================
+     Typography Tokens
+     Headings: "Source Serif 4", serif (weights 400, 600)
+     Body:     "Nunito Sans", sans-serif (weights 400, 600, 700)
+     ============================================================ */
+  --font-heading: "Source Serif 4", "Amiri", Georgia, "Times New Roman", serif;
+  --font-body: "Nunito Sans", "IBM Plex Sans Arabic", -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* Medical Site Color Palette */
+  --color-bleached-white: #DEE2E8;
+  --color-icy-brook: #C0CAD8;
+  --color-bluebrite: #6BBADA;
+  --color-lavender-ash: #9995A6;
+  --color-sea-wonder: #0B96C7;
+  --color-senate: #485261;
+
+  /* Theme semantic mapping */
+  --bg-page: #DEE2E8;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F4F6F9;
+  --color-brand: #0B96C7;
+  --color-brand-light: #6BBADA;
+  --color-brand-dark: #485261;
+  --color-primary: #0B96C7;
+  --color-primary-hover: #087fa8;
+  --color-accent: #6BBADA;
+  --color-accent-hover: #52a8c9;
+  --color-text-main: #485261;
+  --color-text-heading: #485261;
+  --color-text-muted: #9995A6;
+  --color-border: #C0CAD8;
+  --color-border-subtle: #DEE2E8;
+  --radius-card: 14px;
+  --radius-btn: 8px;
+
+  /* Legacy variable aliases mapped strictly to new palette */
+  --color-gold: #6BBADA;
+  --color-gold-hover: #0B96C7;
+  --color-gold-soft: #DEE2E8;
+  --color-accent-teal: #0B96C7;
+  --color-accent-cyan: #6BBADA;
+  --color-primary-light: #6BBADA;
+  --color-primary-lighter: #DEE2E8;
+  --color-accent-light: #6BBADA;
+  --color-accent-dark: #485261;
+  --color-accent-glow: rgba(107, 186, 218, 0.28);
+  --color-surface: #DEE2E8;
+  --color-surface-elevated: #FFFFFF;
+  --color-surface-sunken: #DEE2E8;
+  --color-surface-hover: #C0CAD8;
+  --color-text-primary: #485261;
+  --color-text-secondary: #485261;
+  --color-border-accent: rgba(11, 150, 199, 0.4);
+}
+
+.dark {
+  --bg-page: #1e242c;
+  --bg-card: #28303b;
+  --color-brand: #6BBADA;
+  --color-brand-light: #0B96C7;
+  --color-brand-dark: #DEE2E8;
+  --color-text-main: #DEE2E8;
+  --color-text-heading: #FFFFFF;
+  --color-text-muted: #9995A6;
+  --color-border: #485261;
+  --color-surface: #1e242c;
+  --color-surface-elevated: #28303b;
+  --color-surface-sunken: #181c22;
+  --color-surface-hover: #333d4b;
 }
 
 /* ============================================================
-   Premium Card Styles
+   Global Overflow & Responsiveness Control
    ============================================================ */
-.clinical-card {
-  background: var(--color-surface-elevated);
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-page);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure images and media never overflow container */
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+}
+
+/* Responsive table wrappers prevent horizontal page blowout */
+.overflow-x-auto, .table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Form controls & interactive elements inherit font */
+input,
+button,
+select,
+textarea,
+optgroup {
+  font-family: inherit;
+}
+
+::placeholder {
+  font-family: inherit;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Typography System Rules
+   ============================================================ */
+
+/* Headings (h1, h2, h3, hero text): "Source Serif 4" */
+h1, .h1, .hero-text {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 4.5vw, 4rem); /* 36-40px mobile, 56-64px desktop */
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: var(--color-text-heading);
+}
+
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem); /* 28px mobile, 40px desktop */
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  color: var(--color-text-heading);
+}
+
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(1.375rem, 1.5vw, 1.75rem); /* 22px mobile, 28px desktop */
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: var(--color-text-heading);
+}
+
+h4, h5, h6, .font-headline {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  letter-spacing: -0.015em;
+}
+
+/* Body paragraphs: "Nunito Sans", 18px, weight 400, line-height 1.6, max line width about 65ch */
+p, .body-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.6;
+  color: var(--color-text-main);
+  max-width: 65ch;
+}
+
+/* Dense clinical tables & compact dashboard cards can use standard text sizing */
+.card p, .clinical-card p, .compact-text p, table p, nav p, header p, aside p {
+  max-width: none;
+}
+
+/* Navigation links: "Nunito Sans", 15-16px, weight 600 */
+nav a, nav button, .nav-link {
+  font-family: var(--font-body);
+  font-size: clamp(0.9375rem, 0.95vw, 1rem); /* 15-16px */
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Buttons: "Nunito Sans", 16px, weight 700, no uppercase, slightly rounded corners */
+button, .btn {
+  font-family: var(--font-body);
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  text-transform: none;
+  border-radius: var(--radius-btn);
+}
+
+/* Small text & captions: "Nunito Sans", 14px */
+small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
+  font-family: var(--font-body);
+  font-size: 0.875rem; /* 14px */
+  color: var(--color-text-muted);
+}
+
+.num {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ============================================================
+   Component Classes Built with New Palette
+   ============================================================ */
+.card, .clinical-card {
+  background: var(--bg-card);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  border-radius: 20px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-card);
+  box-shadow: 0 1px 3px rgba(72, 82, 97, 0.06);
+  padding: 18px 20px;
+  color: var(--color-text-main);
+  transition: all 0.15s ease;
 }
 
-.clinical-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-border-accent);
+.card:hover, .clinical-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(11, 150, 199, 0.08);
 }
 
-/* Glass morphism effect */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+.dark .card, .dark .clinical-card {
+  background: var(--bg-card);
+  border-color: var(--color-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  color: #DEE2E8;
 }
 
-.glass-dark {
-  background: rgba(15, 27, 76, 0.85);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+/* Buttons System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #0B96C7;
+  color: #ffffff;
+  border: 1px solid #0B96C7;
+  border-radius: var(--radius-btn);
+  padding: 9px 18px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: none;
 }
 
-/* ============================================================
-   Sidebar Transition System
-   ============================================================ */
-.sidebar-transition {
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.25s ease;
+.btn:hover {
+  background: #087fa8;
+  border-color: #087fa8;
+  box-shadow: 0 4px 14px rgba(11, 150, 199, 0.3);
 }
 
-.main-content-transition {
-  transition: margin 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.btn-primary {
+  background: #0B96C7 !important;
+  color: #ffffff !important;
+  border: 1px solid #0B96C7 !important;
+}
+
+.btn-primary:hover {
+  background: #087fa8 !important;
+  border-color: #087fa8 !important;
+  box-shadow: 0 4px 14px rgba(11, 150, 199, 0.35) !important;
+}
+
+.btn-secondary {
+  background: #DEE2E8 !important;
+  color: #485261 !important;
+  border: 1px solid #C0CAD8 !important;
+}
+
+.btn-secondary:hover {
+  background: #C0CAD8 !important;
+  color: #485261 !important;
+}
+
+.btn-accent {
+  background: #6BBADA !important;
+  color: #ffffff !important;
+  border: 1px solid #6BBADA !important;
+}
+
+.btn-accent:hover {
+  background: #0B96C7 !important;
+  border-color: #0B96C7 !important;
+}
+
+.btn-outline, .btn.btn-outline {
+  background: transparent !important;
+  color: #0B96C7 !important;
+  border: 1px solid #0B96C7 !important;
+  box-shadow: none !important;
+}
+
+.btn-outline:hover, .btn.btn-outline:hover {
+  background: #DEE2E8 !important;
+  border-color: #0B96C7 !important;
+  color: #485261 !important;
+}
+
+.btn-danger, .btn.btn-danger {
+  background: transparent !important;
+  border: 1px solid #ef4444 !important;
+  color: #dc2626 !important;
+  box-shadow: none !important;
+}
+
+.btn-danger:hover, .btn.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border-color: #dc2626 !important;
+  color: #b91c1c !important;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13.5px;
+}
+
+.icon-btn {
+  border: 1px solid #C0CAD8;
+  background: #ffffff;
+  color: #0B96C7;
+  border-radius: var(--radius-btn);
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.icon-btn:hover {
+  background: #DEE2E8;
+  border-color: #6BBADA;
+  color: #485261;
+}
+
+/* Stat Card Icon */
+.stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #DEE2E8;
+  color: #0B96C7;
+  border: 1px solid #C0CAD8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dark .stat-icon {
+  background: #333d4b;
+  color: #6BBADA;
+  border-color: #485261;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border: 1px solid #C0CAD8;
+  background: #DEE2E8;
+  color: #485261;
+  border-radius: 999px;
+  font-size: 11.5px;
+  padding: 2.5px 10.5px;
+  font-weight: 600;
+}
+
+.badge-primary {
+  background: #DEE2E8;
+  border-color: #6BBADA;
+  color: #0B96C7;
+  font-weight: 700;
+}
+
+.badge-success {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+  font-weight: 600;
+}
+
+.badge-warning {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+  font-weight: 600;
+}
+
+.badge-danger, .badge-bad {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  font-size: 12.5px;
+  color: #485261;
+  text-align: start;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-bottom: 2px solid #C0CAD8;
+  background: #DEE2E8;
+}
+
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #C0CAD8;
+  font-size: 14px;
+  vertical-align: middle;
+  color: #485261;
+}
+
+.data-table tbody tr {
+  transition: background-color 0.15s;
+}
+
+.data-table tbody tr:hover {
+  background: #DEE2E8;
+}
+
+/* Form Fields */
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #485261;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.field-input {
+  background: #ffffff;
+  border: 1px solid #C0CAD8;
+  border-radius: var(--radius-btn);
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #485261;
+  font-family: inherit;
+  width: 100%;
+  transition: border-color 0.15s, outline 0.15s;
+}
+
+.field-input::placeholder {
+  color: #9995A6;
+}
+
+.field-input:focus {
+  outline: 2px solid #6BBADA;
+  outline-offset: 0;
+  border-color: #0B96C7;
+}
+
+/* Score Tracks & Progress Bars */
+.score-track {
+  height: 6px;
+  background: #C0CAD8;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0B96C7, #6BBADA);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.score-fill-gold {
+  height: 100%;
+  background: #6BBADA;
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+/* Pipeline Step Indicator */
+.pipe-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #485261;
+  color: #DEE2E8;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Sidebar nav link matching Sijil & Miqyas with palette */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-btn);
+  color: #485261;
+  font-size: 14px;
+  margin-bottom: 3px;
+  text-decoration: none;
+  transition: all 0.15s;
+  width: 100%;
+  cursor: pointer;
+  text-align: start;
+}
+
+.nav-link svg {
+  color: #9995A6;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.nav-link:hover {
+  background: #DEE2E8;
+  color: #0B96C7;
+}
+
+.nav-link:hover svg {
+  color: #0B96C7;
+}
+
+.nav-link-active {
+  background: #DEE2E8 !important;
+  color: #0B96C7 !important;
+  font-weight: 700 !important;
+  border-inline-start: 3px solid #0B96C7 !important;
+}
+
+.nav-link-active svg {
+  color: #0B96C7 !important;
 }
 
 /* ============================================================
@@ -167,101 +617,12 @@
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(14, 165, 160, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(14, 165, 160, 0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
 .animate-fade-in-up {
-  animation: fadeInUp 0.4s ease-out both;
+  animation: fadeInUp 0.3s ease-out both;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out both;
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.35s ease-out both;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.35s ease-out both;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.2s ease-out both;
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-/* Staggered child animations */
-.stagger-children > * {
-  animation: fadeInUp 0.4s ease-out both;
-}
-.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
-.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
-.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
-.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
-.stagger-children > *:nth-child(6) { animation-delay: 300ms; }
-
-/* ============================================================
-   Gradient & Decorative Backgrounds
-   ============================================================ */
-.gradient-primary {
-  background: linear-gradient(135deg, #0F1B4C 0%, #1A2766 50%, #0EA5A0 100%);
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, #0EA5A0 0%, #14C4BD 100%);
-}
-
-.gradient-surface {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-}
-
-.gradient-hero {
-  background: linear-gradient(135deg, #0F1B4C 0%, #1A2766 40%, #0B3D5C 70%, #0EA5A0 100%);
-}
-
-/* Medical dot pattern overlay */
-.pattern-dots {
-  background-image: radial-gradient(rgba(14, 165, 160, 0.08) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Certificate Pattern */
-.cert-pattern {
-  background-color: #ffffff;
-  background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px), radial-gradient(#cbd5e1 0.75px, #ffffff 0.75px);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
+  animation: fadeIn 0.25s ease-out both;
 }
 
 /* ============================================================
@@ -275,19 +636,18 @@
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #C0CAD8;
   border-radius: 9999px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #9995A6;
 }
 
 /* ============================================================
-   Arabic RTL Font Overrides
+   Arabic RTL Font Support
    ============================================================ */
-[dir="rtl"],
-.font-arabic {
-  font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+[dir="rtl"] {
+  font-family: "Nunito Sans", "IBM Plex Sans Arabic", "Cairo", system-ui, sans-serif;
 }
 
 [dir="rtl"] h1,
@@ -295,101 +655,16 @@
 [dir="rtl"] h3,
 [dir="rtl"] h4,
 [dir="rtl"] h5,
-[dir="rtl"] h6,
-[dir="rtl"] .font-headline {
-  font-family: 'Cairo', 'Tajawal', sans-serif;
+[dir="rtl"] h6 {
+  font-family: "Source Serif 4", "Amiri", "Cairo", serif;
   letter-spacing: normal;
-}
-
-/* ============================================================
-   Interactive & Hover Effects
-   ============================================================ */
-.hover-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: #ffffff;
-  font-weight: 700;
-  border-radius: 14px;
-  padding: 10px 20px;
-  font-size: 13px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(14, 165, 160, 0.25);
-}
-.btn-primary:hover {
-  background: var(--color-accent-dark);
-  box-shadow: 0 4px 16px rgba(14, 165, 160, 0.35);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: var(--color-surface-sunken);
-  color: var(--color-text-primary);
-  font-weight: 600;
-  border-radius: 14px;
-  padding: 10px 20px;
-  font-size: 13px;
-  border: 1px solid var(--color-border);
-  transition: all 0.2s ease;
-}
-.btn-secondary:hover {
-  background: var(--color-surface-hover);
-  border-color: var(--color-border-accent);
-}
-
-/* ============================================================
-   Nav Item Styles
-   ============================================================ */
-.nav-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all 0.15s ease;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  position: relative;
-}
-
-.nav-item:hover {
-  background: rgba(14, 165, 160, 0.06);
-  color: var(--color-text-primary);
-}
-
-.nav-item.active {
-  background: linear-gradient(135deg, #0EA5A0, #0B8A86);
-  color: #ffffff;
-  font-weight: 700;
-  box-shadow: 0 2px 10px rgba(14, 165, 160, 0.3);
-}
-
-.nav-item.active .nav-icon {
-  color: #ffffff;
-}
-
-.nav-item .nav-icon {
-  color: var(--color-text-muted);
-  transition: color 0.15s ease;
-}
-
-.nav-item:hover .nav-icon {
-  color: var(--color-accent);
 }
 
 /* ============================================================
    Print Optimization for Certificates
    ============================================================ */
 @media print {
-  header, nav, aside, button, .no-print, .print\\:hidden {
+  header, nav, aside, button, .no-print {
     display: none !important;
   }
   body, main {

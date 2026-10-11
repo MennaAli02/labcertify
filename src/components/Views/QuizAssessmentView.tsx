@@ -259,7 +259,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
 
                 <button
                   onClick={() => onNavigate('trainee_dashboard')}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#006672] hover:bg-[#00525c] text-white font-bold text-xs shadow-xs transition-all cursor-pointer active:scale-95"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#0B96C7] hover:bg-[#087fa8] text-white font-bold text-xs shadow-xs transition-all cursor-pointer active:scale-95"
                 >
                   <span>{isRTL ? 'متابعة مسار التوجيه التالي' : 'Continue Next Module'}</span>
                   <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
@@ -270,7 +270,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
                 {attemptsRemaining > 0 ? (
                   <button
                     onClick={handleRestartQuiz}
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#006672] hover:bg-[#00525c] text-white font-bold text-xs shadow-xs transition-all cursor-pointer active:scale-95"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#0B96C7] hover:bg-[#087fa8] text-white font-bold text-xs shadow-xs transition-all cursor-pointer active:scale-95"
                   >
                     <RotateCcw className="w-4 h-4" />
                     <span>{t.retakeQuiz} ({attemptsRemaining} {t.attemptsLeft})</span>
@@ -287,7 +287,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
                       onClick={handleAdminResetAttempts}
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-300 transition-all cursor-pointer"
                     >
-                      <Unlock className="w-3.5 h-3.5 text-[#006672]" />
+                      <Unlock className="w-3.5 h-3.5 text-[#0B96C7]" />
                       <span>{t.resetAttempts}</span>
                     </button>
                   </div>
@@ -297,7 +297,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
                   onClick={() => onNavigate('video_lesson')}
                   className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200 transition-all cursor-pointer"
                 >
-                  <BookOpen className="w-4 h-4 text-[#006672]" />
+                  <BookOpen className="w-4 h-4 text-[#0B96C7]" />
                   <span>{isRTL ? 'مراجعة فيديوهات وكتيبات الـ SOP' : 'Review Videos & SOP Manual'}</span>
                 </button>
               </>
@@ -325,7 +325,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
           
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-mono font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+              <span className="font-mono font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
                 {activeCourse.code}
               </span>
               <span className="text-slate-300">·</span>
@@ -344,7 +344,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
           </div>
 
           {/* Exam timer badge */}
-          <div className="flex items-center gap-1.5 font-mono text-[#006672] bg-teal-50 px-3 py-1 rounded-lg border border-teal-200/60 font-bold">
+          <div className="flex items-center gap-1.5 font-mono text-[#0B96C7] bg-[#dee2e8] px-3 py-1 rounded-lg border border-[#c0cad8]/60 font-bold">
             <Clock className="w-3.5 h-3.5" />
             <span>{formatTimer(secondsRemaining)}</span>
           </div>
@@ -359,7 +359,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
         </div>
         <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-[#006672] rounded-full transition-all duration-300"
+            className="h-full bg-[#0B96C7] rounded-full transition-all duration-300"
             style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
           />
         </div>
@@ -371,7 +371,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
         {/* Question Header & Prompt */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-xs font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+            <span className="font-mono text-xs font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
               QUESTION 0{currentQuestionIndex + 1} · {currentQ.difficulty || 'Intermediate'}
             </span>
             <span className="text-xs text-slate-400 font-mono">
@@ -402,7 +402,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
                 cardStyle = "bg-slate-50/50 border-slate-200 opacity-60 text-slate-500";
               }
             } else if (isSelected) {
-              cardStyle = "bg-teal-50/60 border-[#006672] text-[#006672] font-semibold ring-1 ring-[#006672]/30 shadow-xs";
+              cardStyle = "bg-[#dee2e8]/60 border-[#0B96C7] text-[#0B96C7] font-semibold ring-1 ring-[#0B96C7]/30 shadow-xs";
             }
 
             return (
@@ -417,7 +417,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
                     : showValidation && isSelected && !isCorrect
                       ? 'bg-rose-600 text-white'
                       : isSelected
-                        ? 'bg-[#006672] text-white'
+                        ? 'bg-[#0B96C7] text-white'
                         : 'bg-slate-100 text-slate-600'
                 }`}>
                   {String.fromCharCode(65 + idx)}
@@ -444,7 +444,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
         {/* Study Hint / Explanation Box */}
         {isCurrentSubmitted && (
           <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5 text-xs text-slate-700 animate-in fade-in duration-150">
-            <div className="flex items-center gap-1.5 font-bold text-[#006672]">
+            <div className="flex items-center gap-1.5 font-bold text-[#0B96C7]">
               <Lightbulb className="w-4 h-4 text-amber-500" />
               <span>{isRTL ? 'الشرح والتوثيق المعتمد:' : 'Clinical Explanation & Rationale:'}</span>
             </div>
@@ -490,7 +490,7 @@ export const QuizAssessmentView: React.FC<QuizAssessmentViewProps> = ({
               className={`flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold shadow-xs transition-all ${
                 selectedOption === null
                   ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                  : 'bg-[#006672] hover:bg-[#00525c] text-white cursor-pointer active:scale-95'
+                  : 'bg-[#0B96C7] hover:bg-[#087fa8] text-white cursor-pointer active:scale-95'
               }`}
             >
               <span>{currentQuestionIndex === questions.length - 1 ? (isRTL ? 'إنهاء وتصحيح الاختبار' : 'Finish & Grade Exam') : t.nextQuestion}</span>

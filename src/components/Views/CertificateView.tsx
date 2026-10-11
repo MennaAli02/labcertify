@@ -66,7 +66,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
             <ChevronLeft className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
           </button>
           <div>
-            <span className="text-[11px] font-bold text-[#006672] uppercase tracking-wider block font-mono">
+            <span className="text-[11px] font-bold text-[#0B96C7] uppercase tracking-wider block font-mono">
               {t.officialCert} · ISO 15189:2022
             </span>
             <h1 className="font-bold text-xl sm:text-2xl text-slate-900 tracking-tight">
@@ -78,7 +78,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
         <div className="flex items-center gap-2.5 w-full sm:w-auto">
           <button
             onClick={handlePrintCertificate}
-            className="flex-1 sm:flex-none px-4 py-2 bg-[#006672] hover:bg-[#00525c] text-white text-xs font-semibold rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+            className="flex-1 sm:flex-none px-4 py-2 bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-semibold rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
           >
             <Printer className="w-4 h-4" />
             <span>{t.downloadPrintPdf}</span>
@@ -94,7 +94,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
 
           <button
             onClick={handleShareLinkedIn}
-            className="px-3.5 py-2 bg-teal-50 hover:bg-teal-100 text-[#006672] text-xs font-semibold rounded-lg border border-teal-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+            className="px-3.5 py-2 bg-[#dee2e8] hover:bg-[#dee2e8] text-[#0B96C7] text-xs font-semibold rounded-lg border border-[#c0cad8] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <Share2 className="w-4 h-4" />
             <span className="hidden md:inline">{t.share}</span>
@@ -116,7 +116,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
       )}
 
       {/* Official Certificate Visual Canvas Frame */}
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl p-6 sm:p-10 border-2 border-[#006672] shadow-xl relative overflow-hidden print:border-none print:shadow-none print:p-0">
+      <div className="max-w-4xl mx-auto bg-white rounded-2xl p-6 sm:p-10 border-2 border-[#0B96C7] shadow-xl relative overflow-hidden print:border-none print:shadow-none print:p-0">
         
         {/* Decorative Inner Border Line */}
         <div className="border border-slate-300 p-6 sm:p-10 rounded-xl relative bg-radial from-white via-white to-slate-50">
@@ -130,7 +130,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
                 className="h-10 w-auto object-contain"
               />
               <div className={`${isRTL ? 'border-r pr-3' : 'border-l pl-3'} border-slate-300`}>
-                <span className="font-bold text-sm text-[#006672] tracking-wider block">
+                <span className="font-bold text-sm text-[#0B96C7] tracking-wider block">
                   SHALABY CLINICAL LABORATORIES
                 </span>
                 <span className="text-[11px] text-slate-500 font-medium block">
@@ -148,48 +148,48 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
           {/* Certificate Body Text */}
           <div className="py-10 text-center space-y-6">
             
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#6d797c] block">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#9995A6] block">
               {t.certTitle}
             </span>
 
-            <p className="text-xs text-[#6d797c]">
+            <p className="text-xs text-[#9995A6]">
               {t.certCertifiesThat}
             </p>
 
             {/* Recipient Full Name */}
             <div className="py-2">
-              <h2 className="text-2xl sm:text-4xl font-black text-[#006672] tracking-tight">
+              <h2 className="text-2xl sm:text-4xl font-black text-[#0B96C7] tracking-tight">
                 {isRTL && user.nameAr ? user.nameAr : user.name}
               </h2>
-              <p className="text-xs font-mono font-bold text-[#6d797c] mt-1">
+              <p className="text-xs font-mono font-bold text-[#9995A6] mt-1">
                 {t.employeeId}: {user.employeeId} • {isRTL && user.departmentAr ? user.departmentAr : user.department}
               </p>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#3d494b] max-w-xl mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#485261] max-w-xl mx-auto leading-relaxed">
               {t.certHasFulfilled}
             </p>
 
             {/* Course Title Badge */}
-            <div className="py-3 px-6 bg-gradient-to-r from-teal-50 via-teal-100/50 to-teal-50 border border-teal-200 rounded-2xl max-w-2xl mx-auto shadow-2xs">
-              <h3 className="text-base sm:text-lg font-black text-[#191c1e]">
+            <div className="py-3 px-6 bg-gradient-to-r from-teal-50 via-teal-100/50 to-teal-50 border border-[#c0cad8] rounded-2xl max-w-2xl mx-auto shadow-2xs">
+              <h3 className="text-base sm:text-lg font-black text-[#485261]">
                 {isRTL && certRecord.courseTitleAr ? certRecord.courseTitleAr : certRecord.courseTitle}
               </h3>
-              <div className="flex flex-wrap items-center justify-center gap-3 mt-1.5 text-xs text-[#006672] font-semibold">
+              <div className="flex flex-wrap items-center justify-center gap-3 mt-1.5 text-xs text-[#0B96C7] font-semibold">
                 <span>{isRTL ? `الدرجة المحققة: ${certRecord.score}%` : `Demonstrated Score: ${certRecord.score}%`}</span>
                 <span>•</span>
                 <span>{isRTL ? `حد النجاح المطلوب: ${certRecord.passingScore}%` : `Passing Standard: ${certRecord.passingScore}%`}</span>
               </div>
             </div>
 
-            <p className="text-xs text-[#6d797c] max-w-lg mx-auto italic">
+            <p className="text-xs text-[#9995A6] max-w-lg mx-auto italic">
               {t.certAccreditation}
             </p>
 
           </div>
 
           {/* Signatures & QR Code Section */}
-          <div className="pt-8 border-t border-[#e0e3e5] grid grid-cols-1 sm:grid-cols-3 gap-6 items-center text-center sm:text-start">
+          <div className="pt-8 border-t border-[#C0CAD8] grid grid-cols-1 sm:grid-cols-3 gap-6 items-center text-center sm:text-start">
             
             {/* Signature 1 */}
             <div className="space-y-1 flex flex-col items-center sm:items-start">
@@ -198,11 +198,11 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
                 alt="Authorized Signature"
                 className="h-10 w-auto object-contain opacity-90"
               />
-              <div className="w-40 border-b border-[#3d494b]/40 pt-1" />
-              <p className="text-xs font-bold text-[#191c1e]">
+              <div className="w-40 border-b border-[#485261]/40 pt-1" />
+              <p className="text-xs font-bold text-[#485261]">
                 {isRTL && certRecord.authorizedSignerAr ? certRecord.authorizedSignerAr : certRecord.authorizedSigner}
               </p>
-              <p className="text-[10px] text-[#6d797c]">
+              <p className="text-[10px] text-[#9995A6]">
                 {t.certChiefMedicalOfficer}
               </p>
             </div>
@@ -214,50 +214,50 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
               title="Click to verify QR"
             >
               {/* Geometric QR Matrix Pattern */}
-              <div className="p-2.5 bg-white border-2 border-[#006672] rounded-xl shadow-xs group-hover:scale-105 transition-transform">
+              <div className="p-2.5 bg-white border-2 border-[#0B96C7] rounded-xl shadow-xs group-hover:scale-105 transition-transform">
                 <svg className="w-14 h-14" viewBox="0 0 100 100" fill="currentColor">
                   {/* Outer corner anchors */}
-                  <rect x="5" y="5" width="26" height="26" rx="4" fill="#006672" />
+                  <rect x="5" y="5" width="26" height="26" rx="4" fill="#0B96C7" />
                   <rect x="9" y="9" width="18" height="18" fill="white" />
-                  <rect x="13" y="13" width="10" height="10" fill="#006672" />
+                  <rect x="13" y="13" width="10" height="10" fill="#0B96C7" />
 
-                  <rect x="69" y="5" width="26" height="26" rx="4" fill="#006672" />
+                  <rect x="69" y="5" width="26" height="26" rx="4" fill="#0B96C7" />
                   <rect x="73" y="9" width="18" height="18" fill="white" />
-                  <rect x="77" y="13" width="10" height="10" fill="#006672" />
+                  <rect x="77" y="13" width="10" height="10" fill="#0B96C7" />
 
-                  <rect x="5" y="69" width="26" height="26" rx="4" fill="#006672" />
+                  <rect x="5" y="69" width="26" height="26" rx="4" fill="#0B96C7" />
                   <rect x="9" y="73" width="18" height="18" fill="white" />
-                  <rect x="13" y="77" width="10" height="10" fill="#006672" />
+                  <rect x="13" y="77" width="10" height="10" fill="#0B96C7" />
 
                   {/* Random QR data points */}
-                  <rect x="36" y="8" width="6" height="6" fill="#006672" />
-                  <rect x="46" y="8" width="6" height="6" fill="#006672" />
-                  <rect x="56" y="8" width="6" height="6" fill="#006672" />
-                  <rect x="36" y="20" width="6" height="6" fill="#006672" />
-                  <rect x="50" y="22" width="6" height="6" fill="#006672" />
+                  <rect x="36" y="8" width="6" height="6" fill="#0B96C7" />
+                  <rect x="46" y="8" width="6" height="6" fill="#0B96C7" />
+                  <rect x="56" y="8" width="6" height="6" fill="#0B96C7" />
+                  <rect x="36" y="20" width="6" height="6" fill="#0B96C7" />
+                  <rect x="50" y="22" width="6" height="6" fill="#0B96C7" />
                   
-                  <rect x="10" y="38" width="6" height="6" fill="#006672" />
-                  <rect x="22" y="38" width="6" height="6" fill="#006672" />
-                  <rect x="36" y="38" width="6" height="6" fill="#006672" />
-                  <rect x="46" y="38" width="6" height="6" fill="#006672" />
-                  <rect x="60" y="38" width="6" height="6" fill="#006672" />
-                  <rect x="74" y="38" width="6" height="6" fill="#006672" />
-                  <rect x="84" y="38" width="6" height="6" fill="#006672" />
+                  <rect x="10" y="38" width="6" height="6" fill="#0B96C7" />
+                  <rect x="22" y="38" width="6" height="6" fill="#0B96C7" />
+                  <rect x="36" y="38" width="6" height="6" fill="#0B96C7" />
+                  <rect x="46" y="38" width="6" height="6" fill="#0B96C7" />
+                  <rect x="60" y="38" width="6" height="6" fill="#0B96C7" />
+                  <rect x="74" y="38" width="6" height="6" fill="#0B96C7" />
+                  <rect x="84" y="38" width="6" height="6" fill="#0B96C7" />
 
-                  <rect x="36" y="52" width="6" height="6" fill="#006672" />
-                  <rect x="48" y="52" width="6" height="6" fill="#006672" />
-                  <rect x="62" y="52" width="6" height="6" fill="#006672" />
-                  <rect x="76" y="52" width="6" height="6" fill="#006672" />
+                  <rect x="36" y="52" width="6" height="6" fill="#0B96C7" />
+                  <rect x="48" y="52" width="6" height="6" fill="#0B96C7" />
+                  <rect x="62" y="52" width="6" height="6" fill="#0B96C7" />
+                  <rect x="76" y="52" width="6" height="6" fill="#0B96C7" />
 
-                  <rect x="36" y="68" width="6" height="6" fill="#006672" />
-                  <rect x="48" y="76" width="6" height="6" fill="#006672" />
-                  <rect x="64" y="68" width="6" height="6" fill="#006672" />
-                  <rect x="76" y="78" width="6" height="6" fill="#006672" />
-                  <rect x="86" y="68" width="6" height="6" fill="#006672" />
+                  <rect x="36" y="68" width="6" height="6" fill="#0B96C7" />
+                  <rect x="48" y="76" width="6" height="6" fill="#0B96C7" />
+                  <rect x="64" y="68" width="6" height="6" fill="#0B96C7" />
+                  <rect x="76" y="78" width="6" height="6" fill="#0B96C7" />
+                  <rect x="86" y="68" width="6" height="6" fill="#0B96C7" />
                 </svg>
               </div>
 
-              <span className="text-[10px] font-bold text-[#006672] flex items-center gap-1 group-hover:underline">
+              <span className="text-[10px] font-bold text-[#0B96C7] flex items-center gap-1 group-hover:underline">
                 <QrCode className="w-3 h-3" />
                 <span>{t.qrScanToVerify}</span>
               </span>
@@ -265,17 +265,17 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
 
             {/* Credential ID & Issue Date */}
             <div className="space-y-1 text-center sm:text-end">
-              <span className="text-[10px] text-[#6d797c] uppercase tracking-wider block font-bold">
+              <span className="text-[10px] text-[#9995A6] uppercase tracking-wider block font-bold">
                 {t.credentialIdLabel}
               </span>
-              <p className="font-mono text-xs font-black text-[#006672] tracking-wider">
+              <p className="font-mono text-xs font-black text-[#0B96C7] tracking-wider">
                 {certId}
               </p>
-              <p className="text-[11px] text-[#3d494b] font-medium pt-1">
+              <p className="text-[11px] text-[#485261] font-medium pt-1">
                 {t.certIssuedOn}: {certRecord.issueDate}
               </p>
               {certRecord.expiryDate && (
-                <p className="text-[10px] text-[#6d797c]">
+                <p className="text-[10px] text-[#9995A6]">
                   Valid Until: {certRecord.expiryDate}
                 </p>
               )}
@@ -290,23 +290,23 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
       {/* QR Code Verification Modal */}
       {showQrModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-[#e0e3e5] space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-teal-50 text-[#006672] flex items-center justify-center mx-auto">
+          <div className="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-[#C0CAD8] space-y-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#dee2e8] text-[#0B96C7] flex items-center justify-center mx-auto">
               <QrCode className="w-6 h-6" />
             </div>
 
             <div>
-              <h3 className="text-base font-black text-[#191c1e]">
+              <h3 className="text-base font-black text-[#485261]">
                 {t.certDigitalVerification}
               </h3>
-              <p className="text-xs text-[#6d797c] mt-1">
+              <p className="text-xs text-[#9995A6] mt-1">
                 {isRTL ? 'امسح الرمز للتحقق الفوري من صحة ومطابقة الشهادة بسجلات معامل شلبي المركزية' : 'Scan this code to verify authenticity in the central Shalaby Labs credentials database.'}
               </p>
             </div>
 
-            <div className="p-4 bg-[#f7f9fb] rounded-2xl border border-[#e0e3e5] space-y-2">
-              <p className="font-mono text-xs font-bold text-[#006672]">{certId}</p>
-              <p className="text-[11px] text-[#6d797c]">{user.name} • {certRecord.courseCode}</p>
+            <div className="p-4 bg-[#DEE2E8] rounded-2xl border border-[#C0CAD8] space-y-2">
+              <p className="font-mono text-xs font-bold text-[#0B96C7]">{certId}</p>
+              <p className="text-[11px] text-[#9995A6]">{user.name} • {certRecord.courseCode}</p>
               <div className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-emerald-700 bg-emerald-50 py-1 rounded-lg">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>{t.verificationBadge}</span>
@@ -315,7 +315,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
 
             <button
               onClick={() => setShowQrModal(false)}
-              className="w-full py-2.5 rounded-xl bg-[#006672] text-white text-xs font-bold hover:bg-[#00525c] transition-all"
+              className="w-full py-2.5 rounded-xl bg-[#0B96C7] text-white text-xs font-bold hover:bg-[#087fa8] transition-all"
             >
               {isRTL ? 'إغلاق' : 'Close'}
             </button>

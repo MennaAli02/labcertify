@@ -351,7 +351,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#006672] text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs font-bold animate-in slide-in-from-bottom duration-200">
+        <div className="fixed bottom-6 right-6 z-50 bg-[#0B96C7] text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs font-bold animate-in slide-in-from-bottom duration-200">
           <CheckCircle2 className="w-5 h-5 text-emerald-300 shrink-0" />
           <span>{toastMessage}</span>
         </div>
@@ -364,11 +364,11 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
             <div className="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
               <Settings className="w-4 h-4" />
             </div>
-            <h1 className="text-xl sm:text-2xl font-black text-[#191c1e]">
+            <h1 className="text-xl sm:text-2xl font-black text-[#485261]">
               {t.sysAdminTitle}
             </h1>
           </div>
-          <p className="text-xs sm:text-sm text-[#6d797c] mt-1">
+          <p className="text-xs sm:text-sm text-[#9995A6] mt-1">
             {t.sysAdminSubtitle}
           </p>
         </div>
@@ -376,14 +376,14 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
         <div className="flex items-center gap-2">
           <button
             onClick={() => onNavigate('video_lesson')}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-[#e0e3e5] text-slate-700 text-xs font-bold shadow-2xs hover:bg-slate-50 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-[#C0CAD8] text-slate-700 text-xs font-bold shadow-2xs hover:bg-slate-50 transition-all cursor-pointer"
           >
-            <Play className="w-3.5 h-3.5 text-[#006672]" />
+            <Play className="w-3.5 h-3.5 text-[#0B96C7]" />
             <span>{isRTL ? 'معاينة مشغل المقرر' : 'Preview Course Player'}</span>
           </button>
           <button
             onClick={() => onNavigate('trainee_dashboard')}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#006672] text-white text-xs font-bold shadow-xs hover:bg-[#00525c] transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#0B96C7] text-white text-xs font-bold shadow-xs hover:bg-[#087fa8] transition-all cursor-pointer"
           >
             <CheckSquare className="w-3.5 h-3.5" />
             <span>{isRTL ? 'معاينة مسار المتدرب' : 'Trainee Dashboard'}</span>
@@ -401,9 +401,9 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
-          <Video className="w-3.5 h-3.5 text-[#006672]" />
+          <Video className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabCourseStudio}</span>
-          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-teal-100 text-[#006672] font-bold">
+          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#dee2e8] text-[#0B96C7] font-bold">
             {isRTL ? 'محرر المحتوى' : 'Content Hub'}
           </span>
         </button>
@@ -416,7 +416,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
-          <Sliders className="w-3.5 h-3.5 text-[#006672]" />
+          <Sliders className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabSettingsPrograms}</span>
           <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-bold">
             {isRTL ? 'محرك القواعد' : 'Rules Engine'}
@@ -431,7 +431,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
-          <HelpCircle className="w-3.5 h-3.5 text-[#006672]" />
+          <HelpCircle className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabQuestionBank}</span>
           <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-bold tabular-nums">
             {questions.length}
@@ -446,7 +446,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
-          <Activity className="w-3.5 h-3.5 text-[#006672]" />
+          <Activity className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabAuditTrail}</span>
           <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-bold tabular-nums">
             {auditLogs.length}
@@ -461,7 +461,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
               : 'text-slate-600 hover:text-slate-900'
           }`}
         >
-          <Layers className="w-3.5 h-3.5 text-[#006672]" />
+          <Layers className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{isRTL ? 'مسارات المؤسسة' : 'Hospital Tracks'}</span>
         </button>
       </div>
@@ -473,9 +473,9 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
         <div className="space-y-6">
           
           {/* User Guidance Banner */}
-          <div className="p-4 sm:p-5 bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl border border-teal-200/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="p-4 sm:p-5 bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl border border-[#c0cad8]/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-9 h-9 rounded-xl bg-[#006672] text-white flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-[#0B96C7] text-white flex items-center justify-center shrink-0">
                 <Video className="w-5 h-5" />
               </div>
               <div>
@@ -493,7 +493,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={handleOpenAddVideo}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#006672] hover:bg-[#00525c] text-white text-xs font-bold shadow-xs cursor-pointer"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-bold shadow-xs cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>{t.addVideoLesson}</span>
@@ -521,7 +521,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   onClick={() => setSelectedStudioCourseId(c.id)}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-[#006672] text-white shadow-xs'
+                      ? 'bg-[#0B96C7] text-white shadow-xs'
                       : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                   }`}
                 >
@@ -538,12 +538,12 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
           {/* Current Course Overview Card */}
           <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200/80 text-[#006672] flex items-center justify-center font-bold text-sm font-mono shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[#dee2e8] border border-[#c0cad8]/80 text-[#0B96C7] flex items-center justify-center font-bold text-sm font-mono shrink-0">
                 0{selectedCourse.moduleNumber}
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+                  <span className="font-mono text-xs font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
                     {selectedCourse.code}
                   </span>
                   <span className="text-xs text-slate-400">·</span>
@@ -565,7 +565,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                 onClick={() => setEditingCourse(selectedCourse)}
                 className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer"
               >
-                <Sliders className="w-3.5 h-3.5 text-[#006672]" />
+                <Sliders className="w-3.5 h-3.5 text-[#0B96C7]" />
                 <span>{isRTL ? 'تعديل قواعد المقرر' : 'Configure Rules'}</span>
               </button>
               <button
@@ -585,14 +585,14 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
             <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                 <div className="flex items-center gap-2">
-                  <Video className="w-4 h-4 text-[#006672]" />
+                  <Video className="w-4 h-4 text-[#0B96C7]" />
                   <h4 className="text-sm font-bold text-slate-900">
                     {t.videoLessonsManager} ({currentCourseLessons.length})
                   </h4>
                 </div>
                 <button
                   onClick={handleOpenAddVideo}
-                  className="text-xs font-bold text-[#006672] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-bold text-[#0B96C7] hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>{t.addVideoLesson}</span>
@@ -607,7 +607,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   </p>
                   <button
                     onClick={handleOpenAddVideo}
-                    className="px-3.5 py-1.5 rounded-lg bg-[#006672] text-white text-xs font-bold"
+                    className="px-3.5 py-1.5 rounded-lg bg-[#0B96C7] text-white text-xs font-bold"
                   >
                     {t.addVideoLesson}
                   </button>
@@ -621,12 +621,12 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-teal-100 text-[#006672] flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                          <div className="w-8 h-8 rounded-lg bg-[#dee2e8] text-[#0B96C7] flex items-center justify-center text-xs font-mono font-bold shrink-0">
                             0{idx + 1}
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="text-[11px] font-mono text-[#006672] bg-teal-50 px-1.5 py-0.2 rounded border border-teal-200/50">
+                              <span className="text-[11px] font-mono text-[#0B96C7] bg-[#dee2e8] px-1.5 py-0.2 rounded border border-[#c0cad8]/50">
                                 {lesson.protocolId || selectedCourse.code}
                               </span>
                               <span className="text-slate-300">·</span>
@@ -643,7 +643,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                         <div className="flex items-center gap-1.5 shrink-0">
                           <button
                             onClick={() => handleOpenEditVideo(lesson)}
-                            className="p-1.5 text-slate-500 hover:text-[#006672] hover:bg-white rounded-lg border border-transparent hover:border-slate-200 cursor-pointer"
+                            className="p-1.5 text-slate-500 hover:text-[#0B96C7] hover:bg-white rounded-lg border border-transparent hover:border-slate-200 cursor-pointer"
                             title="Edit"
                           >
                             <Edit3 className="w-3.5 h-3.5" />
@@ -661,7 +661,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                       {/* Video Stream URL tag */}
                       {lesson.videoUrl && (
                         <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-mono bg-white px-2.5 py-1 rounded border border-slate-200 truncate">
-                          <Play className="w-3 h-3 text-[#006672] shrink-0" />
+                          <Play className="w-3 h-3 text-[#0B96C7] shrink-0" />
                           <span className="truncate">{lesson.videoUrl}</span>
                         </div>
                       )}
@@ -674,7 +674,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                           </span>
                           {lesson.learningObjectives.slice(0, 2).map((obj, i) => (
                             <p key={i} className="flex items-center gap-1 truncate text-slate-500">
-                              <span className="text-[#006672]">✓</span> {obj}
+                              <span className="text-[#0B96C7]">✓</span> {obj}
                             </p>
                           ))}
                         </div>
@@ -779,7 +779,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   });
                   setIsAddQuestionOpen(true);
                 }}
-                className="text-xs font-bold text-[#006672] hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#0B96C7] hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>{t.addQuestion}</span>
@@ -790,7 +790,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
               {questions.filter(q => q.courseId === selectedCourse.id).map((q, idx) => (
                 <div key={q.id} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono font-bold text-[#006672] text-[11px]">
+                    <span className="font-mono font-bold text-[#0B96C7] text-[11px]">
                       Question 0{idx + 1}
                     </span>
                     <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
@@ -850,7 +850,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                       );
                     }}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors cursor-pointer ${
-                      sequentialEnforced ? 'bg-[#006672]' : 'bg-slate-300'
+                      sequentialEnforced ? 'bg-[#0B96C7]' : 'bg-slate-300'
                     }`}
                   >
                     <span
@@ -888,7 +888,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                 <React.Fragment key={course.id}>
                   <div className="flex-1 min-w-[180px] p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs font-bold text-[#006672]">
+                      <span className="font-mono text-xs font-bold text-[#0B96C7]">
                         0{course.moduleNumber} · {course.code}
                       </span>
                       <span className="text-[10px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
@@ -902,7 +902,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                       <span>Max {course.allowedAttempts} attempts</span>
                       <button
                         onClick={() => setEditingCourse(course)}
-                        className="text-[#006672] font-bold hover:underline cursor-pointer"
+                        className="text-[#0B96C7] font-bold hover:underline cursor-pointer"
                       >
                         {isRTL ? 'تعديل' : 'Edit'}
                       </button>
@@ -924,16 +924,16 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
             {courses.map((course) => (
               <div 
                 key={course.id}
-                className="bg-white rounded-2xl p-5 border border-[#e0e3e5] shadow-2xs space-y-3"
+                className="bg-white rounded-2xl p-5 border border-[#C0CAD8] shadow-2xs space-y-3"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-teal-100 text-[#006672] flex items-center justify-center font-bold text-xs shrink-0 font-mono">
+                    <div className="w-9 h-9 rounded-xl bg-[#dee2e8] text-[#0B96C7] flex items-center justify-center font-bold text-xs shrink-0 font-mono">
                       0{course.moduleNumber}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold text-[#006672]">
+                        <span className="font-mono text-xs font-bold text-[#0B96C7]">
                           {course.code}
                         </span>
                         <span className="text-slate-300">·</span>
@@ -951,7 +951,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                     onClick={() => setEditingCourse(course)}
                     className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all shrink-0 cursor-pointer"
                   >
-                    <Edit3 className="w-3.5 h-3.5 text-[#006672]" />
+                    <Edit3 className="w-3.5 h-3.5 text-[#0B96C7]" />
                     <span>{t.editCourse}</span>
                   </button>
                 </div>
@@ -967,7 +967,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   </div>
                   <div className="p-2 bg-slate-50 rounded-lg border border-slate-200">
                     <span className="text-slate-500 block text-[11px]">{t.courseDuration}</span>
-                    <span className="font-bold text-[#006672] font-mono">{course.estMinutes} mins</span>
+                    <span className="font-bold text-[#0B96C7] font-mono">{course.estMinutes} mins</span>
                   </div>
                   <div className="p-2 bg-slate-50 rounded-lg border border-slate-200">
                     <span className="text-slate-500 block text-[11px]">{t.validityMonthsLabel}</span>
@@ -988,10 +988,10 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-base sm:text-lg font-black text-[#191c1e]">
+              <h2 className="text-base sm:text-lg font-black text-[#485261]">
                 {t.questionBankTitle}
               </h2>
-              <p className="text-xs text-[#6d797c] mt-0.5">
+              <p className="text-xs text-[#9995A6] mt-0.5">
                 {t.questionBankDesc}
               </p>
             </div>
@@ -1000,7 +1000,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
               <select
                 value={selectedCourseFilter}
                 onChange={(e) => setSelectedCourseFilter(e.target.value)}
-                className="bg-white border border-[#bcc9cb] rounded-xl px-3 py-2 text-xs font-semibold"
+                className="bg-white border border-[#C0CAD8] rounded-xl px-3 py-2 text-xs font-semibold"
               >
                 <option value="all">{isRTL ? 'جميع المقررات' : 'All Courses'}</option>
                 {courses.map(c => (
@@ -1010,7 +1010,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
 
               <button
                 onClick={() => setIsAddQuestionOpen(true)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#006672] text-white text-xs font-bold shadow-md shadow-[#006672]/20 cursor-pointer"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0B96C7] text-white text-xs font-bold shadow-md shadow-[#0B96C7]/20 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 <span>{t.addQuestion}</span>
@@ -1027,7 +1027,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+                      <span className="font-mono text-xs font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
                         {q.courseId} · #{q.id}
                       </span>
                       <span className="text-xs text-slate-500 font-mono">
@@ -1069,14 +1069,14 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
       {/* TAB 4: AUDIT TRAIL LOGS                                  */}
       {/* ======================================================== */}
       {activeTab === 'audit' && (
-        <div className="bg-white rounded-3xl border border-[#e0e3e5] shadow-xs overflow-hidden space-y-4">
-          <div className="p-6 border-b border-[#e0e3e5] space-y-4">
+        <div className="bg-white rounded-3xl border border-[#C0CAD8] shadow-xs overflow-hidden space-y-4">
+          <div className="p-6 border-b border-[#C0CAD8] space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-base sm:text-lg font-black text-[#191c1e]">
+                <h2 className="text-base sm:text-lg font-black text-[#485261]">
                   {t.auditTrailTitle}
                 </h2>
-                <p className="text-xs text-[#6d797c] mt-0.5">
+                <p className="text-xs text-[#9995A6] mt-0.5">
                   {t.auditTrailDesc}
                 </p>
               </div>
@@ -1092,20 +1092,20 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
             {/* Audit Search & Filters */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="relative">
-                <Search className={`w-4 h-4 text-[#6d797c] absolute top-3 ${isRTL ? 'right-3' : 'left-3'}`} />
+                <Search className={`w-4 h-4 text-[#9995A6] absolute top-3 ${isRTL ? 'right-3' : 'left-3'}`} />
                 <input
                   type="text"
                   value={auditSearch}
                   onChange={(e) => setAuditSearch(e.target.value)}
                   placeholder="Search actions, users, IPs, targets..."
-                  className={`w-full bg-[#f7f9fb] border border-[#bcc9cb]/60 rounded-xl py-2 text-xs focus:outline-none focus:border-[#006672] ${isRTL ? 'pr-9 pl-3' : 'pl-9 pr-3'}`}
+                  className={`w-full bg-[#DEE2E8] border border-[#C0CAD8]/60 rounded-xl py-2 text-xs focus:outline-none focus:border-[#0B96C7] ${isRTL ? 'pr-9 pl-3' : 'pl-9 pr-3'}`}
                 />
               </div>
 
               <select
                 value={auditSeverity}
                 onChange={(e) => setAuditSeverity(e.target.value)}
-                className="bg-[#f7f9fb] border border-[#bcc9cb]/60 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#006672]"
+                className="bg-[#DEE2E8] border border-[#C0CAD8]/60 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#0B96C7]"
               >
                 <option value="All">All Log Statuses</option>
                 <option value="Success">Success Only</option>
@@ -1118,7 +1118,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
           {/* Audit Trail Table */}
           <div className="overflow-x-auto">
             <table className="w-full text-start text-xs">
-              <thead className="bg-[#f7f9fb] text-[#6d797c] font-bold uppercase tracking-wider border-b border-[#e0e3e5]">
+              <thead className="bg-[#DEE2E8] text-[#9995A6] font-bold uppercase tracking-wider border-b border-[#C0CAD8]">
                 <tr>
                   <th className="py-3 px-6 text-start">{t.colTimestamp}</th>
                   <th className="py-3 px-4 text-start">{t.colUser}</th>
@@ -1129,32 +1129,32 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   <th className="py-3 px-6 text-end">{t.colSeverity}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#e0e3e5]">
+              <tbody className="divide-y divide-[#C0CAD8]">
                 {filteredAuditLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-[#f7f9fb]/60 transition-colors">
-                    <td className="py-3.5 px-6 font-mono text-[11px] text-[#3d494b]">
+                  <tr key={log.id} className="hover:bg-[#DEE2E8]/60 transition-colors">
+                    <td className="py-3.5 px-6 font-mono text-[11px] text-[#485261]">
                       {log.timestamp}
                     </td>
-                    <td className="py-3.5 px-4 font-bold text-[#191c1e]">
+                    <td className="py-3.5 px-4 font-bold text-[#485261]">
                       {log.userName}
                     </td>
                     <td className="py-3.5 px-4">
-                      <span className="text-[11px] font-semibold text-[#6d797c]">
+                      <span className="text-[11px] font-semibold text-[#9995A6]">
                         {log.userRole}
                       </span>
                     </td>
                     <td className="py-3.5 px-4">
-                      <p className="font-bold text-[#006672]">
+                      <p className="font-bold text-[#0B96C7]">
                         {isRTL ? log.actionAr : log.action}
                       </p>
-                      <p className="text-[11px] text-[#6d797c] truncate max-w-xs">
+                      <p className="text-[11px] text-[#9995A6] truncate max-w-xs">
                         {isRTL ? log.detailsAr : log.details}
                       </p>
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-[11px] text-[#3d494b]">
+                    <td className="py-3.5 px-4 font-mono text-[11px] text-[#485261]">
                       {log.target}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-[11px] text-[#6d797c]">
+                    <td className="py-3.5 px-4 font-mono text-[11px] text-[#9995A6]">
                       {log.ipAddress}
                     </td>
                     <td className="py-3.5 px-6 text-end">
@@ -1180,12 +1180,12 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
       {/* TAB 5: FUTURE HOSPITAL PROGRAMS & TRACKS                  */}
       {/* ======================================================== */}
       {activeTab === 'programs' && (
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#e0e3e5] shadow-xs space-y-6">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#C0CAD8] shadow-xs space-y-6">
           <div>
-            <h2 className="text-base sm:text-lg font-black text-[#191c1e]">
+            <h2 className="text-base sm:text-lg font-black text-[#485261]">
               {t.futureProgramsTitle}
             </h2>
-            <p className="text-xs sm:text-sm text-[#6d797c] mt-0.5 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#9995A6] mt-0.5 leading-relaxed">
               {t.futureProgramsDesc}
             </p>
           </div>
@@ -1198,43 +1198,43 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   {t.activeStatus}
                 </span>
               </div>
-              <p className="text-xs text-[#6d797c]">
+              <p className="text-xs text-[#9995A6]">
                 Mandatory sequential 5-module path for newly hired laboratory specialists.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl border border-[#bcc9cb]/60 bg-[#f7f9fb] space-y-2">
+            <div className="p-4 rounded-2xl border border-[#C0CAD8]/60 bg-[#DEE2E8] space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-xs text-[#191c1e]">{t.progAnnualMandatory}</span>
-                <span className="text-[10px] font-bold bg-[#e0e3e5] text-[#3d494b] px-2 py-0.5 rounded-full">
+                <span className="font-bold text-xs text-[#485261]">{t.progAnnualMandatory}</span>
+                <span className="text-[10px] font-bold bg-[#C0CAD8] text-[#485261] px-2 py-0.5 rounded-full">
                   {t.plannedStatus}
                 </span>
               </div>
-              <p className="text-xs text-[#6d797c]">
+              <p className="text-xs text-[#9995A6]">
                 Annual recurring certification for chemical hazard containment and fire safety.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl border border-[#bcc9cb]/60 bg-[#f7f9fb] space-y-2">
+            <div className="p-4 rounded-2xl border border-[#C0CAD8]/60 bg-[#DEE2E8] space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-xs text-[#191c1e]">{t.progRefresher}</span>
-                <span className="text-[10px] font-bold bg-[#e0e3e5] text-[#3d494b] px-2 py-0.5 rounded-full">
+                <span className="font-bold text-xs text-[#485261]">{t.progRefresher}</span>
+                <span className="text-[10px] font-bold bg-[#C0CAD8] text-[#485261] px-2 py-0.5 rounded-full">
                   {t.plannedStatus}
                 </span>
               </div>
-              <p className="text-xs text-[#6d797c]">
+              <p className="text-xs text-[#9995A6]">
                 Targeted refresher training triggered on SOP modifications or proficiency alerts.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl border border-[#bcc9cb]/60 bg-[#f7f9fb] space-y-2">
+            <div className="p-4 rounded-2xl border border-[#C0CAD8]/60 bg-[#DEE2E8] space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-xs text-[#191c1e]">{t.progCompetency}</span>
-                <span className="text-[10px] font-bold bg-[#e0e3e5] text-[#3d494b] px-2 py-0.5 rounded-full">
+                <span className="font-bold text-xs text-[#485261]">{t.progCompetency}</span>
+                <span className="text-[10px] font-bold bg-[#C0CAD8] text-[#485261] px-2 py-0.5 rounded-full">
                   {t.plannedStatus}
                 </span>
               </div>
-              <p className="text-xs text-[#6d797c]">
+              <p className="text-xs text-[#9995A6]">
                 Semiannual blind sample analysis and Westgard calibration verification.
               </p>
             </div>
@@ -1268,7 +1268,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   value={videoForm.title}
                   onChange={(e) => setVideoForm({...videoForm, title: e.target.value})}
                   placeholder="e.g. BSL-2 Biosafety Containment & Personal Protective Gear"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#006672]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#0B96C7]"
                 />
               </div>
 
@@ -1281,7 +1281,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   value={videoForm.titleAr}
                   onChange={(e) => setVideoForm({...videoForm, titleAr: e.target.value})}
                   placeholder="مثال: معدات الوقاية الشخصية وإرشادات الأمان الحيوي"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#006672]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#0B96C7]"
                 />
               </div>
 
@@ -1367,7 +1367,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                 </button>
                 <button
                   type="submit"
-                  className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[#006672] text-white font-bold"
+                  className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[#0B96C7] text-white font-bold"
                 >
                   <Save className="w-3.5 h-3.5" />
                   <span>{isRTL ? 'حفظ ونشر الفيديو' : 'Save Video'}</span>
@@ -1499,9 +1499,9 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                     step="5"
                     value={editingCourse.passScore}
                     onChange={(e) => setEditingCourse({...editingCourse, passScore: Number(e.target.value)})}
-                    className="flex-1 accent-[#006672]"
+                    className="flex-1 accent-[#0B96C7]"
                   />
-                  <span className="font-bold text-sm text-[#006672] w-12 text-end font-mono">
+                  <span className="font-bold text-sm text-[#0B96C7] w-12 text-end font-mono">
                     {editingCourse.passScore}%
                   </span>
                 </div>
@@ -1591,7 +1591,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                 </button>
                 <button
                   type="submit"
-                  className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[#006672] text-white font-bold"
+                  className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[#0B96C7] text-white font-bold"
                 >
                   <Save className="w-3.5 h-3.5" />
                   <span>{isRTL ? 'حفظ القواعد' : 'Save Rules'}</span>
@@ -1684,7 +1684,7 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                 <button type="button" onClick={() => setIsAddQuestionOpen(false)} className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold">
                   {t.cancel}
                 </button>
-                <button type="submit" className="px-5 py-2 rounded-xl bg-[#006672] text-white font-bold">
+                <button type="submit" className="px-5 py-2 rounded-xl bg-[#0B96C7] text-white font-bold">
                   {t.addQuestion}
                 </button>
               </div>

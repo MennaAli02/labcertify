@@ -182,7 +182,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
       <div className="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1.5">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-xs font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+            <span className="font-mono text-xs font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
               {currentCourse.code} · Module 0{currentCourse.moduleNumber}
             </span>
             <span className="text-slate-300">·</span>
@@ -237,14 +237,14 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
               onClick={() => onNavigate('system_admin')}
               className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer"
             >
-              <Edit3 className="w-3.5 h-3.5 text-[#006672]" />
+              <Edit3 className="w-3.5 h-3.5 text-[#0B96C7]" />
               <span>{isRTL ? 'تعديل المحتوى في الاستوديو' : 'Edit in Studio'}</span>
             </button>
           )}
 
           <button
             onClick={handleStartExam}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#006672] hover:bg-[#00525c] text-white text-xs font-bold shadow-xs transition-all cursor-pointer active:scale-95"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-bold shadow-xs transition-all cursor-pointer active:scale-95"
           >
             <span>{t.takeOnlineAssessment}</span>
             <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
@@ -266,7 +266,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
               onClick={() => setSelectedCourseId(c.id)}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 isSelected
-                  ? 'bg-[#006672] text-white shadow-xs'
+                  ? 'bg-[#0B96C7] text-white shadow-xs'
                   : isCompleted
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
@@ -292,7 +292,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                 onClick={() => setActiveTab('video')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'video'
-                    ? 'bg-[#006672] text-white shadow-xs'
+                    ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -304,7 +304,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                 onClick={() => setActiveTab('sop')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'sop'
-                    ? 'bg-[#006672] text-white shadow-xs'
+                    ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -316,7 +316,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                 onClick={() => setActiveTab('slides')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'slides'
-                    ? 'bg-[#006672] text-white shadow-xs'
+                    ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -328,7 +328,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                 onClick={() => setActiveTab('notes')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   activeTab === 'notes'
-                    ? 'bg-[#006672] text-white shadow-xs'
+                    ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -368,7 +368,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                 {/* Big Center Play / Pause Button */}
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="relative z-20 w-16 h-16 rounded-full bg-[#006672] hover:bg-[#00525c] text-white flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 active:scale-95 cursor-pointer"
+                  className="relative z-20 w-16 h-16 rounded-full bg-[#0B96C7] hover:bg-[#087fa8] text-white flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 active:scale-95 cursor-pointer"
                 >
                   {isPlaying ? (
                     <Pause className="w-7 h-7" />
@@ -400,7 +400,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                     className="h-1.5 bg-white/20 rounded-full cursor-pointer relative overflow-hidden group/bar"
                   >
                     <div 
-                      className="h-full bg-[#006672] rounded-full relative"
+                      className="h-full bg-[#0B96C7] rounded-full relative"
                       style={{ width: `${progress}%` }}
                     />
                   </div>
@@ -459,7 +459,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                   <h4 className="text-sm font-bold text-slate-900">
                     {t.learningObjectives}
                   </h4>
-                  <span className="text-[11px] font-mono text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60">
+                  <span className="text-[11px] font-mono text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60">
                     {currentLesson?.protocolId || currentCourse.code}
                   </span>
                 </div>
@@ -485,7 +485,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                     <div className="space-y-1.5 max-h-36 overflow-y-auto pr-1">
                       {currentLesson.transcript.map((item, idx) => (
                         <div key={idx} className="flex items-start gap-2 text-xs p-1.5 hover:bg-slate-50 rounded transition-colors">
-                          <span className="font-mono text-[11px] text-[#006672] font-bold shrink-0">
+                          <span className="font-mono text-[11px] text-[#0B96C7] font-bold shrink-0">
                             {item.time}
                           </span>
                           <span className="text-slate-600">
@@ -601,7 +601,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                     Accredited clinical summary slide deck
                   </p>
                 </div>
-                <span className="font-mono text-xs font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded">
+                <span className="font-mono text-xs font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded">
                   Slide 1 / 4
                 </span>
               </div>
@@ -651,11 +651,11 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                   value={newNoteText}
                   onChange={(e) => setNewNoteText(e.target.value)}
                   placeholder={isRTL ? 'اكتب ملاحظة مهنية حول هذا الدرس...' : 'Add a clinical note at current timestamp...'}
-                  className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-[#006672]"
+                  className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-[#0B96C7]"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-[#006672] text-white text-xs font-bold rounded-xl hover:bg-[#00525c] transition-all cursor-pointer"
+                  className="px-4 py-2 bg-[#0B96C7] text-white text-xs font-bold rounded-xl hover:bg-[#087fa8] transition-all cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -669,7 +669,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                     className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-start justify-between gap-3 text-xs"
                   >
                     <div className="flex items-start gap-2.5">
-                      <span className="font-mono text-[11px] font-bold text-[#006672] bg-teal-50 px-2 py-0.5 rounded border border-teal-200/60 shrink-0">
+                      <span className="font-mono text-[11px] font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded border border-[#c0cad8]/60 shrink-0">
                         {note.timestamp}
                       </span>
                       <p className="text-slate-700 leading-relaxed">
@@ -715,21 +715,21 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                     onClick={() => handleLessonSelect(les)}
                     className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
                       isCurrent
-                        ? 'bg-teal-50/70 border-[#006672] shadow-2xs'
+                        ? 'bg-[#dee2e8]/70 border-[#0B96C7] shadow-2xs'
                         : 'bg-slate-50/60 border-slate-200 hover:bg-slate-50 hover:border-slate-300'
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
                         isCurrent 
-                          ? 'bg-[#006672] text-white' 
+                          ? 'bg-[#0B96C7] text-white' 
                           : 'bg-slate-200 text-slate-600'
                       }`}>
                         0{index + 1}
                       </div>
 
                       <div className="min-w-0">
-                        <h4 className={`text-xs font-bold truncate ${isCurrent ? 'text-[#006672]' : 'text-slate-900'}`}>
+                        <h4 className={`text-xs font-bold truncate ${isCurrent ? 'text-[#0B96C7]' : 'text-slate-900'}`}>
                           {isRTL && les.titleAr ? les.titleAr : les.title}
                         </h4>
                         <span className="text-[10px] font-mono text-slate-500">
@@ -739,7 +739,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
                     </div>
 
                     {isCurrent ? (
-                      <span className="text-[10px] font-bold text-[#006672] bg-teal-100 px-2 py-0.5 rounded-full shrink-0">
+                      <span className="text-[10px] font-bold text-[#0B96C7] bg-[#dee2e8] px-2 py-0.5 rounded-full shrink-0">
                         {t.playing}
                       </span>
                     ) : (
@@ -780,8 +780,8 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
             {/* Ready for Assessment CTA */}
             <div className="pt-3 border-t border-slate-100 space-y-2">
-              <div className="p-3 bg-teal-50/70 border border-teal-200 rounded-xl text-xs space-y-1">
-                <p className="font-bold text-[#006672]">
+              <div className="p-3 bg-[#dee2e8]/70 border border-[#c0cad8] rounded-xl text-xs space-y-1">
+                <p className="font-bold text-[#0B96C7]">
                   {isRTL ? 'جاهز للاختبار التقييمي؟' : 'Ready for Knowledge Check?'}
                 </p>
                 <p className="text-[11px] text-slate-600">
@@ -793,7 +793,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
               <button
                 onClick={handleStartExam}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#006672] hover:bg-[#00525c] text-white text-xs font-bold shadow-xs transition-all cursor-pointer active:scale-95"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-bold shadow-xs transition-all cursor-pointer active:scale-95"
               >
                 <span>{t.takeOnlineAssessment}</span>
                 <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />

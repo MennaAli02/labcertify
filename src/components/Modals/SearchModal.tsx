@@ -110,30 +110,30 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 px-4 bg-black/40 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-[#e0e3e5] overflow-hidden flex flex-col max-h-[80vh] text-start">
+      <div className="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-[#C0CAD8] overflow-hidden flex flex-col max-h-[80vh] text-start">
         
         {/* Search Input Bar */}
-        <div className="p-4 border-b border-[#e0e3e5] flex items-center gap-3 bg-[#f7f9fb]">
-          <Search className="w-5 h-5 text-[#006672] shrink-0" />
+        <div className="p-4 border-b border-[#C0CAD8] flex items-center gap-3 bg-[#DEE2E8]">
+          <Search className="w-5 h-5 text-[#0B96C7] shrink-0" />
           <input
             type="text"
             autoFocus
             placeholder={isRTL ? "ابحث في الدروس، وثائق SOP، نماذج GROW، الاختبارات..." : "Search lessons, SOPs, GROW model templates, quizzes..."}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-transparent text-sm md:text-base text-[#191c1e] placeholder-[#6d797c] focus:outline-none"
+            className="w-full bg-transparent text-sm md:text-base text-[#485261] placeholder-[#9995A6] focus:outline-none"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="p-1 text-[#6d797c] hover:text-[#191c1e] cursor-pointer"
+              className="p-1 text-[#9995A6] hover:text-[#485261] cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
           )}
           <button
             onClick={onClose}
-            className="px-2.5 py-1 text-xs font-semibold bg-[#e0e3e5] hover:bg-[#bcc9cb] text-[#3d494b] rounded-lg transition-colors shrink-0 cursor-pointer"
+            className="px-2.5 py-1 text-xs font-semibold bg-[#C0CAD8] hover:bg-[#C0CAD8] text-[#485261] rounded-lg transition-colors shrink-0 cursor-pointer"
           >
             Esc
           </button>
@@ -142,7 +142,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
         {/* Results List */}
         <div className="p-3 overflow-y-auto space-y-1 custom-scrollbar flex-1">
           {filtered.length === 0 ? (
-            <div className="py-12 text-center text-[#6d797c] text-sm">
+            <div className="py-12 text-center text-[#9995A6] text-sm">
               {isRTL 
                 ? `لم يتم العثور على نتائج لـ "${query}". جرب البحث عن "سلامة"، "GROW"، أو "عينات".`
                 : `No results found for "${query}". Try searching for "PPE", "Coaching", or "Safety".`}
@@ -157,34 +157,34 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
                     onNavigate(item.view);
                     onClose();
                   }}
-                  className="w-full p-3 rounded-2xl text-start hover:bg-[#f2f4f6] transition-all border border-transparent hover:border-[#e0e3e5] flex items-center justify-between group cursor-pointer"
+                  className="w-full p-3 rounded-2xl text-start hover:bg-[#DEE2E8] transition-all border border-transparent hover:border-[#C0CAD8] flex items-center justify-between group cursor-pointer"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="p-2.5 rounded-xl bg-[#006672]/10 text-[#006672] group-hover:bg-[#006672] group-hover:text-white transition-colors">
+                    <div className="p-2.5 rounded-xl bg-[#0B96C7]/10 text-[#0B96C7] group-hover:bg-[#0B96C7] group-hover:text-white transition-colors">
                       <IconComponent className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-sm font-bold text-[#191c1e]">
+                        <span className="text-sm font-bold text-[#485261]">
                           {isRTL ? item.titleAr : item.title}
                         </span>
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#e0e3e5] text-[#3d494b]">
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#C0CAD8] text-[#485261]">
                           {isRTL ? item.categoryAr : item.category}
                         </span>
                       </div>
-                      <p className="text-xs text-[#6d797c] mt-0.5 line-clamp-1 leading-relaxed">
+                      <p className="text-xs text-[#9995A6] mt-0.5 line-clamp-1 leading-relaxed">
                         {isRTL ? item.descAr : item.desc}
                       </p>
                     </div>
                   </div>
-                  <ArrowRight className={`w-4 h-4 text-[#6d797c] group-hover:text-[#006672] transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180 mr-2' : 'group-hover:translate-x-1 ml-2'} shrink-0`} />
+                  <ArrowRight className={`w-4 h-4 text-[#9995A6] group-hover:text-[#0B96C7] transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180 mr-2' : 'group-hover:translate-x-1 ml-2'} shrink-0`} />
                 </button>
               );
             })
           )}
         </div>
 
-        <div className="p-3 bg-[#f2f4f6] border-t border-[#e0e3e5] flex items-center justify-between text-[11px] text-[#6d797c]">
+        <div className="p-3 bg-[#DEE2E8] border-t border-[#C0CAD8] flex items-center justify-between text-[11px] text-[#9995A6]">
           <span>{isRTL ? "ملاحظة: يمكنك الضغط على ⌘K أو Ctrl+K لفتح نافذة البحث فورياً" : "Tip: Press ⌘K anytime to open search"}</span>
           <span>{isRTL ? "قاعدة بيانات معمل شلبي" : "Shalaby Labs Database"}</span>
         </div>
