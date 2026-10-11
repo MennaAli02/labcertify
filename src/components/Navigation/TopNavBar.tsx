@@ -173,7 +173,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
           className={`hidden lg:flex items-center justify-between shrink-0 transition-all duration-300 ease-in-out ${
             isRTL ? 'border-l' : 'border-r'
           } border-[#c0cad8] ${
-            isSidebarOpen ? 'w-64 px-3.5' : 'w-[72px] px-2.5 justify-center'
+            isSidebarOpen ? 'w-[272px] px-3.5' : 'w-[72px] px-2.5 justify-center'
           } h-14`}
         >
           {isSidebarOpen ? (
@@ -181,19 +181,24 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
               {/* Brand Logo & Titles */}
               <div
                 onClick={() => onNavigate('dashboard')}
-                className="flex items-center gap-2.5 min-w-0 cursor-pointer group"
+                className="flex items-center gap-2.5 min-w-0 cursor-pointer group flex-1"
               >
                 <img
                   src={LOGO_URL}
                   alt="Shalaby Labs"
                   className="w-8 h-8 object-contain shrink-0 rounded-md transition-transform group-hover:scale-105"
                 />
-                <div className="min-w-0 pr-1">
-                  <h2 className="text-xs font-bold text-[#485261] tracking-tight truncate uppercase leading-tight font-heading">
-                    {t.brandTitle}
-                  </h2>
-                  <p className="text-[10px] text-[#9995a6] font-medium truncate leading-tight">
-                    {t.brandSubtitle}
+                <div className="min-w-0 flex-1 pr-1">
+                  <div className="flex items-center gap-1.5 leading-none">
+                    <span className="text-[13px] font-bold text-[#485261] tracking-tight font-heading whitespace-nowrap">
+                      LabCertify
+                    </span>
+                    <span className="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8] leading-none shrink-0">
+                      CLINICAL
+                    </span>
+                  </div>
+                  <p className="text-[10.5px] text-[#9995a6] font-medium truncate leading-tight mt-0.5">
+                    {isRTL ? 'معامل شلبي للتحاليل الطبية' : 'Shalaby Labs Training'}
                   </p>
                 </div>
               </div>
@@ -217,7 +222,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                 alt="Shalaby Labs"
                 onClick={() => onNavigate('dashboard')}
                 className="w-7 h-7 object-contain rounded-md cursor-pointer hover:scale-105 transition-transform"
-                title={t.brandTitle}
+                title="LabCertify Clinical"
               />
               <button
                 type="button"
@@ -250,36 +255,41 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
               alt="Shalaby Labs"
               className="w-7 h-7 object-contain rounded-md"
             />
-            <span className="text-xs font-bold text-[#485261] truncate uppercase font-heading">
-              {t.brandTitle}
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs font-bold text-[#485261] font-heading">
+                LabCertify
+              </span>
+              <span className="text-[9px] font-mono font-bold px-1 py-0.2 rounded bg-[#dee2e8] text-[#0B96C7] border border-[#c0cad8]">
+                CLINICAL
+              </span>
+            </div>
           </div>
         </div>
 
         {/* ========================================================
-            Main Top Bar Body: Centralized Search & Right Controls
+            Main Top Bar Body: Flexible Search & Right Controls
+            Organized into a rock-solid, non-overlapping flex layout
            ======================================================== */}
-        <div className="flex-1 flex items-center justify-between px-3 sm:px-6 relative h-14">
+        <div className="flex-1 flex items-center justify-between gap-3 px-3 sm:px-5 lg:px-6 h-14 min-w-0">
 
-          {/* Spacer on the left to balance the layout */}
-          <div className="hidden lg:block w-1" />
-
-          {/* Center Section: Perfectly Centralized Search Bar (desktop md+) */}
-          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-[46%] md:w-[420px] lg:w-[480px] max-w-[520px] pointer-events-none z-10">
+          {/* Flexible Search Container (in-flow flex item: NEVER overlaps with right controls) */}
+          <div className="hidden md:flex items-center flex-1 max-w-[380px] lg:max-w-[440px] min-w-[180px]">
             <button
               onClick={onOpenSearch}
-              className="w-full flex items-center gap-2.5 sm:gap-3 px-3.5 py-1.5 sm:py-2 bg-[#dee2e8]/50 hover:bg-[#dee2e8] text-[#485261] rounded-xl border border-[#c0cad8] hover:border-[#0b96c7] text-xs transition-all text-start shadow-2xs hover:shadow-xs pointer-events-auto cursor-pointer"
+              className="w-full flex items-center gap-2.5 px-3.5 py-1.5 sm:py-2 bg-[#dee2e8]/45 hover:bg-[#dee2e8] text-[#485261] rounded-xl border border-[#c0cad8] hover:border-[#0b96c7] text-xs transition-all shadow-2xs hover:shadow-xs cursor-pointer group"
             >
-              <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0b96c7] shrink-0" />
-              <span className="flex-1 truncate text-[#485261] font-medium">{t.searchPlaceholder}</span>
-              <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono text-[#485261] bg-white border border-[#c0cad8] rounded shadow-2xs">
+              <Search className="w-4 h-4 text-[#0b96c7] shrink-0 group-hover:scale-105 transition-transform" />
+              <span className="flex-1 text-start truncate text-[#485261] font-medium">
+                {t.searchPlaceholder}
+              </span>
+              <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono text-[#485261] bg-white border border-[#c0cad8] rounded shadow-2xs shrink-0">
                 ⌘K
               </kbd>
             </button>
           </div>
 
           {/* Right Section: Language, Cert, Notifications, Support & Profile Dropdown */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 ml-auto z-20">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 ml-auto">
 
             {/* Mobile Search Trigger Button (mobile only) */}
             <button
@@ -295,26 +305,30 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
             <button
               onClick={toggleLanguage}
               title={language === 'en' ? "التحويل للغة العربية" : "Switch to English"}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border border-[#c0cad8] bg-white hover:bg-[#dee2e8] text-[#485261] active:scale-95 cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all border border-[#c0cad8] bg-white hover:bg-[#dee2e8] text-[#485261] active:scale-95 cursor-pointer shrink-0"
             >
               <Globe className="w-3.5 h-3.5 text-[#0b96c7]" />
               <span className="font-bold">{t.switchLanguage}</span>
             </button>
 
-            {/* Quick Certificate View Link */}
+            {/* Quick Certificate View Link (compact on 1024-1280px, full label on 1280px+) */}
             <button
               onClick={() => onNavigate('certificate')}
-              className={`hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border cursor-pointer ${currentView === 'certificate' ? 'bg-[#0b96c7] text-white border-[#0b96c7]' : 'bg-white text-[#485261] border-[#c0cad8] hover:border-[#0b96c7] hover:bg-[#dee2e8]'}`}
+              className={`hidden lg:flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border cursor-pointer shrink-0 ${
+                currentView === 'certificate'
+                  ? 'bg-[#0b96c7] text-white border-[#0b96c7]'
+                  : 'bg-white text-[#485261] border-[#c0cad8] hover:border-[#0b96c7] hover:bg-[#dee2e8]'
+              }`}
               title={t.officialCert}
             >
-              <Award className={`w-3.5 h-3.5 ${currentView === 'certificate' ? 'text-[#dee2e8]' : 'text-[#0b96c7]'}`} />
-              <span>{t.officialCert}</span>
+              <Award className={`w-3.5 h-3.5 ${currentView === 'certificate' ? 'text-white' : 'text-[#0b96c7]'}`} />
+              <span className="hidden xl:inline">{t.officialCert}</span>
             </button>
 
             {/* Notifications Trigger */}
             <button
               onClick={onOpenNotifications}
-              className="relative p-2 text-[#485261] hover:text-[#0b96c7] hover:bg-[#dee2e8] rounded-lg transition-colors cursor-pointer"
+              className="relative p-2 text-[#485261] hover:text-[#0b96c7] hover:bg-[#dee2e8] rounded-lg transition-colors cursor-pointer shrink-0"
               title="Notifications"
             >
               <Bell className="w-4 h-4" />
@@ -323,20 +337,20 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
               )}
             </button>
 
-            {/* Support / Help Icon beside Notification */}
+            {/* Support / Help Icon */}
             <button
               onClick={onOpenSupport}
-              className="p-2 text-[#485261] hover:text-[#0b96c7] hover:bg-[#dee2e8] rounded-lg transition-colors cursor-pointer"
+              className="p-2 text-[#485261] hover:text-[#0b96c7] hover:bg-[#dee2e8] rounded-lg transition-colors cursor-pointer shrink-0"
               title={isRTL ? "الدعم الفني والتوجيه" : "Support & Guidance"}
             >
               <HelpCircle className="w-4 h-4" />
             </button>
 
-            {/* Profile Avatar & Info — unified dropdown trigger with click-outside ref */}
+            {/* Profile Avatar & Info — dropdown trigger with click-outside ref */}
             <div className="relative" ref={roleMenuRef}>
               <button
                 onClick={() => setShowRoleMenu(!showRoleMenu)}
-                className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-xl border border-[#c0cad8] bg-white hover:bg-[#dee2e8]/60 transition-all cursor-pointer group text-start shadow-2xs hover:border-[#0b96c7]"
+                className="flex items-center gap-2 sm:gap-2.5 px-2 sm:px-2.5 py-1.5 rounded-xl border border-[#c0cad8] bg-white hover:bg-[#dee2e8]/60 transition-all cursor-pointer group text-start shadow-2xs hover:border-[#0b96c7] shrink-0"
                 title={t.switchRole}
               >
                 {/* Avatar with Status Dot */}
@@ -346,15 +360,21 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                     alt={user.name}
                     className="w-8 h-8 rounded-full object-cover border border-[#c0cad8] group-hover:border-[#0b96c7] transition-colors"
                   />
-                  <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white ${user.role === 'training_admin' ? 'bg-[#0b96c7]' : user.role === 'system_admin' ? 'bg-[#485261]' : 'bg-[#6bbada]'}`} />
+                  <span className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white ${
+                    user.role === 'training_admin'
+                      ? 'bg-[#0b96c7]'
+                      : user.role === 'system_admin'
+                        ? 'bg-[#485261]'
+                        : 'bg-[#6bbada]'
+                  }`} />
                 </div>
 
                 {/* Name and Title beside profile */}
                 <div className="hidden sm:block text-start leading-tight min-w-0 pr-1">
-                  <span className="font-bold text-[13px] text-[#485261] group-hover:text-[#0b96c7] truncate max-w-[140px] block transition-colors">
+                  <span className="font-bold text-[13px] text-[#485261] group-hover:text-[#0b96c7] truncate max-w-[120px] lg:max-w-[140px] block transition-colors">
                     {isRTL && user.nameAr ? user.nameAr : user.name}
                   </span>
-                  <span className="text-[11px] font-medium text-[#0b96c7] block truncate max-w-[140px]">
+                  <span className="text-[11px] font-medium text-[#0b96c7] block truncate max-w-[120px] lg:max-w-[140px]">
                     {activeBadge.label}
                   </span>
                 </div>

@@ -150,17 +150,17 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
 
   return (
     <>
-      {/* Desktop Persistent Sidebar: w-64 when open, w-[72px] when collapsed (rail mode) */}
+      {/* Desktop Persistent Sidebar: w-[272px] when open, w-[72px] when collapsed (rail mode) */}
       <aside
         className={`hidden lg:flex flex-col shrink-0 bg-white ${
           isRTL ? 'border-l' : 'border-r'
         } border-[#c0cad8] h-full select-none transition-all duration-300 ease-in-out ${
-          isOpen ? 'w-64' : 'w-[72px]'
+          isOpen ? 'w-[272px]' : 'w-[72px]'
         }`}
       >
         {isOpen ? (
-          /* ================= EXPANDED VIEW (256px) ================= */
-          <div className="flex flex-col h-full py-3 px-3 overflow-y-auto">
+          /* ================= EXPANDED VIEW (272px) ================= */
+          <div className="flex flex-col h-full py-3 px-3.5 overflow-y-auto">
             
             {/* Trainee Progress Bar (only for trainee) */}
             {user.role === 'trainee' && (
@@ -197,12 +197,13 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
                     key={item.id}
                     onClick={() => handleItemClick(item.id)}
                     className={`nav-link ${isActive ? 'nav-link-active' : ''}`}
+                    title={item.label}
                   >
                     <Icon className="w-4 h-4 shrink-0" />
-                    <span className="flex-1 truncate text-start font-medium">{item.label}</span>
+                    <span className="flex-1 text-start font-medium leading-snug whitespace-nowrap">{item.label}</span>
                     
                     {item.badge && (
-                      <span className={`text-[11px] px-2 py-0.5 rounded-full font-mono tabular-nums transition-colors shrink-0 ${
+                      <span className={`text-[11px] px-2 py-0.5 rounded-full font-mono tabular-nums transition-colors shrink-0 whitespace-nowrap ${
                         isActive 
                           ? 'bg-[#0b96c7] text-white font-bold' 
                           : 'text-[#0b96c7] bg-[#dee2e8]'
@@ -243,28 +244,34 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
               </div>
             )}
 
-            {/* Collapsed Rail Nav Icons */}
+            {/* Collapsed Rail Nav Icons with Accessible Tooltips */}
             <div className="space-y-1.5 flex-1 w-full mt-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = currentView === item.id || (item.id === 'trainee_dashboard' && currentView === 'dashboard');
 
                 return (
-                  <button
-                    key={item.id}
-                    onClick={() => handleItemClick(item.id)}
-                    title={item.label}
-                    className={`w-11 h-11 mx-auto flex items-center justify-center rounded-xl transition-all relative group cursor-pointer ${
-                      isActive 
-                        ? 'bg-[#dee2e8] text-[#0b96c7] font-bold border-s-3 border-[#0b96c7] shadow-2xs' 
-                        : 'text-[#485261] hover:bg-[#dee2e8] hover:text-[#0b96c7]'
-                    }`}
-                  >
-                    <Icon className="w-5 h-5 shrink-0" />
-                    {item.badge && (
-                      <span className="absolute top-1.5 end-1.5 w-2 h-2 rounded-full bg-[#0b96c7]" />
-                    )}
-                  </button>
+                  <div key={item.id} className="relative group flex justify-center w-full">
+                    <button
+                      onClick={() => handleItemClick(item.id)}
+                      title={item.label}
+                      aria-label={item.label}
+                      className={`w-11 h-11 flex items-center justify-center rounded-xl transition-all relative cursor-pointer ${
+                        isActive 
+                          ? 'bg-[#dee2e8] text-[#0b96c7] font-bold border-s-3 border-[#0b96c7] shadow-2xs' 
+                          : 'text-[#485261] hover:bg-[#dee2e8] hover:text-[#0b96c7]'
+                      }`}
+                    >
+                      <Icon className="w-5 h-5 shrink-0" />
+                      {item.badge && (
+                        <span className="absolute top-1.5 end-1.5 w-2 h-2 rounded-full bg-[#0b96c7]" />
+                      )}
+                    </button>
+                    {/* Tooltip on hover/focus */}
+                    <div className={`absolute ${isRTL ? 'right-full mr-2.5' : 'left-full ml-2.5'} top-1/2 -translate-y-1/2 px-2.5 py-1 bg-[#485261] text-white text-xs font-semibold rounded-md shadow-md opacity-0 pointer-events-none group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-50 whitespace-nowrap`}>
+                      {item.label}
+                    </div>
+                  </div>
                 );
               })}
             </div>
