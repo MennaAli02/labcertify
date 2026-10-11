@@ -225,7 +225,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsCreateAccountOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer active:scale-95"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#0B96C7] hover:bg-[#087fa8] text-white text-xs font-semibold shadow-xs transition-all cursor-pointer active:scale-95 hover-lift"
           >
             <UserPlus className="w-4 h-4" />
             <span>{t.createNewTrainee}</span>
@@ -233,7 +233,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
 
           <button
             onClick={handleExportExcel}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200 transition-all cursor-pointer hover-lift active:scale-95"
             title="Export to Excel"
           >
             <FileSpreadsheet className="w-4 h-4 text-emerald-700" />
@@ -242,7 +242,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
 
           <button
             onClick={() => onNavigate('system_admin')}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#dee2e8] hover:bg-[#dee2e8] text-[#0B96C7] text-xs font-semibold border border-[#c0cad8] transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#dee2e8] hover:bg-[#c0cad8] text-[#0B96C7] text-xs font-semibold border border-[#c0cad8] transition-all cursor-pointer hover-lift active:scale-95"
             title="Course Studio & Videos"
           >
             <Settings className="w-4 h-4" />
@@ -251,7 +251,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
 
           <button
             onClick={handleExportPDF}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200 transition-all cursor-pointer hover-lift active:scale-95"
             title="Export to PDF"
           >
             <FileText className="w-4 h-4 text-slate-600" />
@@ -264,7 +264,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5">
         
         {/* Total Cohort */}
-        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
+        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1 hover-lift cursor-default">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">{t.kpiTotalOrientation}</span>
             <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
@@ -280,7 +280,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         </div>
 
         {/* Completed */}
-        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
+        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1 hover-lift cursor-default">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">{t.kpiCompleted}</span>
             <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
@@ -296,7 +296,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         </div>
 
         {/* In Progress */}
-        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
+        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1 hover-lift cursor-default">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">{t.kpiInProgress}</span>
             <div className="w-7 h-7 rounded-lg bg-[#dee2e8] text-[#0B96C7] flex items-center justify-center">
@@ -312,7 +312,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         </div>
 
         {/* Overdue */}
-        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
+        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1 hover-lift cursor-default">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">{t.kpiOverdue}</span>
             <div className="w-7 h-7 rounded-lg bg-rose-50 text-rose-700 flex items-center justify-center">
@@ -328,7 +328,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         </div>
 
         {/* Average Passing Score */}
-        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1 col-span-2 lg:col-span-1">
+        <div className="bg-white p-4.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1 col-span-2 lg:col-span-1 hover-lift cursor-default">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">{t.kpiAvgScore}</span>
             <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
@@ -416,7 +416,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
         </div>
 
         {/* High Density Directory Table */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto custom-scrollbar">
           <table className="w-full text-start text-xs">
             <thead className="bg-slate-50 text-slate-500 font-semibold uppercase tracking-wider border-b border-slate-200/80">
               <tr>
@@ -438,7 +438,7 @@ export const TrainingAdminDashboardView: React.FC<TrainingAdminDashboardViewProp
                   <tr 
                     key={trainee.id}
                     onClick={() => setSelectedDrilldownTrainee(trainee)}
-                    className="hover:bg-slate-50/80 transition-colors cursor-pointer group"
+                    className="hover-row transition-colors cursor-pointer group"
                   >
                     {/* Name & Job Title */}
                     <td className="py-3.5 px-5">

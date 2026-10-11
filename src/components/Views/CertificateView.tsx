@@ -107,7 +107,7 @@ export const CertificateView: React.FC<CertificateViewProps> = ({
       )}
 
       {/* Official Certificate Visual Canvas Frame */}
-      <div className="w-full bg-white rounded-3xl p-4 sm:p-8 border border-[#c0cad8] shadow-sm relative overflow-hidden print:border-none print:shadow-none print:p-0">
+      <div className="certificate-paper w-full bg-white rounded-3xl p-4 sm:p-8 border border-[#c0cad8] shadow-sm relative overflow-hidden print:border-none print:shadow-none print:p-0">
         
         {/* Decorative Inner Border Line */}
         <div className="border border-[#c0cad8] p-6 sm:p-10 rounded-2xl relative bg-white">

@@ -46,9 +46,8 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
       return [
         {
           id: 'training_admin' as ViewType,
-          label: t.adminDashboardTitle,
+          label: t.navTrainingAdmin,
           icon: UserCheck,
-          badge: isRTL ? 'لوحة القيادة' : 'Dashboard',
         },
         {
           id: 'resources' as ViewType,
@@ -75,15 +74,13 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
       return [
         {
           id: 'system_admin' as ViewType,
-          label: t.sysAdminTitle,
+          label: t.navSystemAdmin,
           icon: Settings,
-          badge: isRTL ? 'مدير النظام' : 'System',
         },
         {
           id: 'training_admin' as ViewType,
-          label: t.adminDashboardTitle,
+          label: t.navTrainingAdmin,
           icon: UserCheck,
-          badge: isRTL ? 'لوحة التدريب' : 'Training',
         },
         {
           id: 'resources' as ViewType,
@@ -200,7 +197,7 @@ export const SideNavBar: React.FC<SideNavBarProps> = ({
                     title={item.label}
                   >
                     <Icon className="w-4 h-4 shrink-0" />
-                    <span className="flex-1 text-start font-medium leading-snug whitespace-nowrap">{item.label}</span>
+                    <span className="flex-1 text-start font-medium leading-snug truncate min-w-0 pr-1">{item.label}</span>
                     
                     {item.badge && (
                       <span className={`text-[10.5px] px-2 py-0.5 rounded-md font-mono tabular-nums transition-colors shrink-0 whitespace-nowrap font-bold ${

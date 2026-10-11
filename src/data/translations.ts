@@ -769,7 +769,7 @@ export const translations: Record<Language, Translations> = {
     contactAdminForRetake: "طلب فتح محاولة جديدة من مدير التدريب",
     randomQuestionNote: "تُسحب الأسئلة عشوائيًا من بنك الأسئلة لضمان مصداقية الاختبار.",
 
-    adminDashboardTitle: "لوحة تحكم مدير التدريب (Training Administrator)",
+    adminDashboardTitle: "لوحة تحكم مدير التدريب",
     adminDashboardSubtitle: "متابعة مسارات الموظفين الجدد، إنشاء الحسابات، مراقبة التقدم، وإصدار تقارير الامتثال والجودة.",
     kpiTotalOrientation: "موظفون في مسار التوجيه",
     kpiCompleted: "أتموا التوجيه بالكامل",

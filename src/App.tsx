@@ -349,7 +349,7 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen w-full max-w-full overflow-x-hidden overflow-y-hidden bg-[#dee2e8] text-[#485261] flex flex-col selection:bg-[#6bbada]/30 selection:text-[#0b96c7]">
+    <div className="h-screen w-full max-w-full overflow-x-hidden overflow-y-hidden bg-[#dee2e8] text-[#485261] flex flex-col selection:bg-[#6bbada]/30 selection:text-[#0b96c7] transition-colors duration-200">
       
       {/* Top Header Bar */}
       <TopNavBar

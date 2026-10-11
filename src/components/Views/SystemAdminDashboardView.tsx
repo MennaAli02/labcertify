@@ -392,63 +392,63 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
       </div>
 
       {/* Clean Segmented Tab Navigation */}
-      <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200/80 w-fit overflow-x-auto max-w-full">
+      <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-slate-100 dark:bg-[#132238] rounded-xl border border-slate-200/80 dark:border-[#1E3557] max-w-full">
         <button
           onClick={() => setActiveTab('studio')}
-          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer hover-lift ${
             activeTab === 'studio' 
-              ? 'bg-white text-slate-900 shadow-xs' 
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'bg-white dark:bg-[#1E3557] text-slate-900 dark:text-white shadow-xs border border-slate-200/60 dark:border-[#1E3557]' 
+              : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 hover:dark:text-white'
           }`}
         >
           <Video className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabCourseStudio}</span>
-          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#dee2e8] text-[#0B96C7] font-bold">
+          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#dee2e8] dark:bg-[#182A45] text-[#0B96C7] dark:text-[#6BBADA] font-bold">
             {isRTL ? 'محرر المحتوى' : 'Content Hub'}
           </span>
         </button>
 
         <button
           onClick={() => setActiveTab('rules')}
-          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer hover-lift ${
             activeTab === 'rules' 
-              ? 'bg-white text-slate-900 shadow-xs' 
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'bg-white dark:bg-[#1E3557] text-slate-900 dark:text-white shadow-xs border border-slate-200/60 dark:border-[#1E3557]' 
+              : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 hover:dark:text-white'
           }`}
         >
           <Sliders className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabSettingsPrograms}</span>
-          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-bold">
+          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-bold">
             {isRTL ? 'محرك القواعد' : 'Rules Engine'}
           </span>
         </button>
 
         <button
           onClick={() => setActiveTab('questions')}
-          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer hover-lift ${
             activeTab === 'questions' 
-              ? 'bg-white text-slate-900 shadow-xs' 
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'bg-white dark:bg-[#1E3557] text-slate-900 dark:text-white shadow-xs border border-slate-200/60 dark:border-[#1E3557]' 
+              : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 hover:dark:text-white'
           }`}
         >
           <HelpCircle className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabQuestionBank}</span>
-          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-bold tabular-nums">
+          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-200 dark:bg-[#182A45] text-slate-700 dark:text-[#DEE2E8] font-bold tabular-nums">
             {questions.length}
           </span>
         </button>
 
         <button
           onClick={() => setActiveTab('audit')}
-          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer hover-lift ${
             activeTab === 'audit' 
-              ? 'bg-white text-slate-900 shadow-xs' 
-              : 'text-slate-600 hover:text-slate-900'
+              ? 'bg-white dark:bg-[#1E3557] text-slate-900 dark:text-white shadow-xs border border-slate-200/60 dark:border-[#1E3557]' 
+              : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 hover:dark:text-white'
           }`}
         >
           <Activity className="w-3.5 h-3.5 text-[#0B96C7]" />
           <span>{t.tabAuditTrail}</span>
-          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-bold tabular-nums">
+          <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-200 dark:bg-[#182A45] text-slate-700 dark:text-[#DEE2E8] font-bold tabular-nums">
             {auditLogs.length}
           </span>
         </button>
@@ -509,8 +509,8 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
           </div>
 
           {/* Course Module Selector Chips */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1">
-            <span className="text-xs font-bold text-slate-500 whitespace-nowrap">
+          <div className="flex flex-wrap items-center gap-2 pb-1">
+            <span className="text-xs font-bold text-slate-500 dark:text-[#94A3B8] whitespace-nowrap">
               {isRTL ? 'اختر المقرر:' : 'Select Course:'}
             </span>
             {courses.map((c) => {
@@ -519,10 +519,10 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                 <button
                   key={c.id}
                   onClick={() => setSelectedStudioCourseId(c.id)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer hover-lift ${
                     isSelected
-                      ? 'bg-[#0B96C7] text-white shadow-xs'
-                      : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                      ? 'bg-[#0B96C7] text-white shadow-xs border border-[#0B96C7]'
+                      : 'bg-white dark:bg-[#132238] text-slate-700 dark:text-[#DEE2E8] border border-slate-200 dark:border-[#1E3557] hover:bg-slate-50 dark:hover:bg-[#182A45]'
                   }`}
                 >
                   <span className="font-mono font-bold">{c.code}</span>
@@ -1116,9 +1116,9 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
           </div>
 
           {/* Audit Trail Table */}
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto custom-scrollbar">
             <table className="w-full text-start text-xs">
-              <thead className="bg-[#DEE2E8] text-[#9995A6] font-bold uppercase tracking-wider border-b border-[#C0CAD8]">
+              <thead className="bg-[#dee2e8] dark:bg-[#182A45] text-[#9995A6] dark:text-[#94A3B8] font-bold uppercase tracking-wider border-b border-[#c0cad8] dark:border-[#1E3557]">
                 <tr>
                   <th className="py-3 px-6 text-start">{t.colTimestamp}</th>
                   <th className="py-3 px-4 text-start">{t.colUser}</th>
@@ -1129,9 +1129,9 @@ export const SystemAdminDashboardView: React.FC<SystemAdminDashboardViewProps> =
                   <th className="py-3 px-6 text-end">{t.colSeverity}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#C0CAD8]">
+              <tbody className="divide-y divide-[#c0cad8] dark:divide-[#1E3557]">
                 {filteredAuditLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-[#DEE2E8]/60 transition-colors">
+                  <tr key={log.id} className="hover-row transition-colors">
                     <td className="py-3.5 px-6 font-mono text-[11px] text-[#485261]">
                       {log.timestamp}
                     </td>

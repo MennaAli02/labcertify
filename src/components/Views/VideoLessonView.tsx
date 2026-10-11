@@ -290,7 +290,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
             <div className="flex items-center gap-1 overflow-hidden py-0.5 flex-wrap sm:flex-nowrap">
               <button
                 onClick={() => setActiveTab('video')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'video'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -302,7 +302,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
               <button
                 onClick={() => setActiveTab('sop')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'sop'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -314,7 +314,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
               <button
                 onClick={() => setActiveTab('slides')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'slides'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -326,7 +326,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
 
               <button
                 onClick={() => setActiveTab('notes')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-2 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   activeTab === 'notes'
                     ? 'bg-[#0B96C7] text-white shadow-xs'
                     : 'text-[#485261] hover:text-[#0B96C7] hover:bg-[#dee2e8]'
@@ -334,7 +334,7 @@ export const VideoLessonView: React.FC<VideoLessonViewProps> = ({
               >
                 <Edit3 className="w-3.5 h-3.5 shrink-0" />
                 <span>{t.tabNotes}</span>
-                <span className="font-mono text-[10px] bg-[#dee2e8] text-[#485261] px-1.5 py-0.2 rounded-full font-bold">
+                <span className="font-mono text-[9px] bg-[#dee2e8] text-[#485261] px-1.5 py-0.2 rounded-full font-bold">
                   {notes.length}
                 </span>
               </button>

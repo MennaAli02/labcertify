@@ -14,12 +14,14 @@ import {
   Sparkles,
   FlaskConical,
   Stethoscope,
-  Building2,
   FileCheck,
-  HelpCircle
+  HelpCircle,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { LOGO_URL, mockPersonas, mockTraineeAccounts } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface TopNavBarProps {
   currentView: ViewType;
@@ -51,6 +53,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
   const [showRoleMenu, setShowRoleMenu] = useState(false);
   const roleMenuRef = useRef<HTMLDivElement>(null);
   const { language, toggleLanguage, t, isRTL } = useLanguage();
+  const { toggleTheme, isDark } = useTheme();
 
   // Close dropdown when clicking any space in the page or pressing Escape
   useEffect(() => {
@@ -172,7 +175,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
           className={`hidden lg:flex items-center justify-between shrink-0 transition-all duration-300 ease-in-out ${
             isRTL ? 'border-l' : 'border-r'
           } border-[#c0cad8] ${
-            isSidebarOpen ? 'w-[290px] px-3.5' : 'w-[72px] px-2.5 justify-center'
+            isSidebarOpen ? 'w-[290px] px-3' : 'w-[72px] px-2 justify-center'
           } h-14`}
         >
           {isSidebarOpen ? (
@@ -180,19 +183,19 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
               {/* Brand Logo & Titles */}
               <div
                 onClick={() => onNavigate('dashboard')}
-                className="flex items-center gap-2.5 min-w-0 cursor-pointer group flex-1"
+                className="flex items-center gap-2 min-w-0 cursor-pointer group flex-1"
               >
                 <img
                   src={LOGO_URL}
                   alt="Shalaby Labs"
-                  className="w-9 h-9 object-contain shrink-0 rounded-lg transition-transform group-hover:scale-105"
+                  className="w-8 h-8 object-contain shrink-0 rounded-lg transition-transform group-hover:scale-105"
                 />
                 <div className="min-w-0 flex-1 pr-1">
-                  <span className="text-xs sm:text-[13px] font-bold text-[#0B96C7] tracking-wider uppercase block whitespace-nowrap">
+                  <span className="text-[11px] sm:text-xs font-bold text-[#0B96C7] tracking-wider uppercase block truncate">
                     {isRTL ? 'نظام LabCertify Clinical LMS' : 'LABCERTIFY CLINICAL LMS'}
                   </span>
-                  <span className="text-[11px] text-[#9995a6] font-medium leading-tight mt-0.5 block whitespace-nowrap">
-                    {isRTL ? 'معامل شلبي للتحاليل الطبية - مركز التدريب' : 'Shalaby Labs Training Center'}
+                  <span className="text-[10px] text-[#9995a6] font-medium leading-tight mt-0.5 block truncate">
+                    {isRTL ? 'معامل شلبي للتحاليل الطبية' : 'Shalaby Labs Training Center'}
                   </span>
                 </div>
               </div>
@@ -205,27 +208,20 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
                 title={isRTL ? "طي القائمة الجانبية" : "Collapse sidebar"}
                 aria-label="Collapse sidebar"
               >
-                <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5 shrink-0" />
               </button>
             </>
           ) : (
-            /* Collapsed Rail mode: Logo & Burger Toggle */
-            <div className="flex items-center justify-center gap-1.5 w-full">
-              <img
-                src={LOGO_URL}
-                alt="Shalaby Labs"
-                onClick={() => onNavigate('dashboard')}
-                className="w-8 h-8 object-contain rounded-lg cursor-pointer hover:scale-105 transition-transform"
-                title="LabCertify Clinical"
-              />
+            /* Collapsed Rail mode: Dedicated, prominent Burger Toggle that NEVER shrinks or disappears */
+            <div className="flex items-center justify-center w-full">
               <button
                 type="button"
                 onClick={onToggleSidebar}
-                className="p-1 rounded-lg text-[#485261] hover:text-[#0b96c7] hover:bg-[#dee2e8] transition-colors cursor-pointer"
+                className="w-10 h-10 flex items-center justify-center rounded-xl text-[#485261] hover:text-[#0b96c7] hover:bg-[#dee2e8] transition-colors cursor-pointer shrink-0"
                 title={isRTL ? "توسيع القائمة الجانبية" : "Expand sidebar"}
                 aria-label="Expand sidebar"
               >
-                <Menu className="w-4 h-4" />
+                <Menu className="w-5 h-5 shrink-0" />
               </button>
             </div>
           )}
@@ -302,6 +298,20 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
               className="p-2 rounded-lg hover:bg-[#dee2e8] text-[#0b96c7] active:scale-95 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
             >
               <Globe className="w-4 h-4 text-[#0b96c7]" />
+            </button>
+
+            {/* Dark / Light Mode Switcher */}
+            <button
+              onClick={toggleTheme}
+              title={isDark ? (isRTL ? "التحويل للوضع الفاتح" : "Switch to Light Mode") : (isRTL ? "التحويل للوضع الداكن" : "Switch to Dark Mode")}
+              aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              className="p-2 rounded-lg hover:bg-[#dee2e8] text-[#0b96c7] active:scale-95 cursor-pointer shrink-0 flex items-center justify-center transition-colors"
+            >
+              {isDark ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-[#0b96c7]" />
+              )}
             </button>
 
 

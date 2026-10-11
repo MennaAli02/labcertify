@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================================
    LabCertify Clinical — Exact Medical Color Palette
    Palette Hex Codes:
@@ -61,8 +63,8 @@
   --color-accent: #6BBADA;
   --color-accent-hover: #52a8c9;
   --color-text-main: #485261;
-  --color-text-heading: #485261;
-  --color-text-muted: #9995A6;
+  --color-text-heading: #1E293B;
+  --color-text-muted: #5D6778;
   --color-border: #C0CAD8;
   --color-border-subtle: #DEE2E8;
   --radius-card: 14px;
@@ -89,19 +91,21 @@
 }
 
 .dark {
-  --bg-page: #1e242c;
-  --bg-card: #28303b;
-  --color-brand: #6BBADA;
-  --color-brand-light: #0B96C7;
+  --bg-page: #0B1320;
+  --bg-card: #132238;
+  --bg-card-subtle: #182A45;
+  --color-brand: #0B96C7;
+  --color-brand-light: #6BBADA;
   --color-brand-dark: #DEE2E8;
   --color-text-main: #DEE2E8;
   --color-text-heading: #FFFFFF;
-  --color-text-muted: #9995A6;
-  --color-border: #485261;
-  --color-surface: #1e242c;
-  --color-surface-elevated: #28303b;
-  --color-surface-sunken: #181c22;
-  --color-surface-hover: #333d4b;
+  --color-text-muted: #94A3B8;
+  --color-border: #1E3557;
+  --color-border-subtle: #182A45;
+  --color-surface: #0B1320;
+  --color-surface-elevated: #132238;
+  --color-surface-sunken: #070D17;
+  --color-surface-hover: #1E3557;
 }
 
 /* ============================================================
@@ -156,85 +160,77 @@ optgroup {
    Typography System Rules (Senior UX Refined Scale)
    ============================================================ */
 
-/* Dashboard Headings: Clean modern sans-serif, tight hierarchy */
-h1, .h1 {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(1.25rem, 1.5vw, 1.5rem); /* 20px mobile, 24px desktop */
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  color: var(--color-text-heading);
-}
+@layer base {
+  /* Dashboard Headings: Clean modern sans-serif, tight hierarchy */
+  h1, .h1 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.5vw, 1.5rem); /* 20px mobile, 24px desktop */
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--color-text-heading);
+  }
 
-h2, .h2 {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(1.25rem, 1.8vw, 1.5rem); /* 20px mobile, 24px desktop */
-  line-height: 1.3;
-  letter-spacing: -0.015em;
-  color: var(--color-text-heading);
-}
+  h2, .h2 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem); /* 20px mobile, 24px desktop */
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--color-text-heading);
+  }
 
-h3, .h3 {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(1rem, 1.2vw, 1.125rem); /* 16px - 18px */
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  color: var(--color-text-heading);
-}
+  h3, .h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: clamp(1rem, 1.2vw, 1.125rem); /* 16px - 18px */
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: var(--color-text-heading);
+  }
 
-h4, h5, h6, .font-headline {
-  font-family: var(--font-body);
-  font-weight: 600;
-  color: var(--color-text-heading);
-  letter-spacing: -0.01em;
-}
+  h4, h5, h6, .font-headline {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-text-heading);
+    letter-spacing: -0.01em;
+  }
 
-/* Serif typography reserved for formal certificates & decorative headers */
-.font-serif, .serif-heading, .cert-heading {
-  font-family: var(--font-heading) !important;
-}
+  /* Serif typography reserved for formal certificates & decorative headers */
+  .font-serif, .serif-heading, .cert-heading {
+    font-family: var(--font-heading) !important;
+  }
 
-/* Body paragraphs: "Nunito Sans", 18px, weight 400, line-height 1.6, max line width about 65ch */
-p, .body-text {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.6;
-  color: var(--color-text-main);
-  max-width: 65ch;
-}
+  /* Body paragraphs */
+  p, .body-text {
+    font-family: var(--font-body);
+    color: var(--color-text-main);
+    max-width: none;
+  }
 
-/* Dense clinical tables & compact dashboard cards can use standard text sizing */
-.card p, .clinical-card p, .compact-text p, table p, nav p, header p, aside p {
-  max-width: none;
-  font-size: inherit;
-  line-height: inherit;
-}
+  /* Longform reading prose */
+  .prose p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 
-/* Navigation links: "Nunito Sans", 15-16px, weight 600 */
-nav a, nav button, .nav-link {
-  font-family: var(--font-body);
-  font-size: clamp(0.9375rem, 0.95vw, 1rem); /* 15-16px */
-  font-weight: 600;
-  line-height: 1.4;
-}
+  /* Navigation links */
+  nav a, nav button, .nav-link {
+    font-family: var(--font-body);
+    line-height: 1.4;
+  }
 
-/* Buttons: "Nunito Sans", 16px, weight 700, no uppercase, slightly rounded corners */
-button, .btn {
-  font-family: var(--font-body);
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  text-transform: none;
-  border-radius: var(--radius-btn);
-}
+  /* Buttons */
+  button, .btn {
+    font-family: var(--font-body);
+    text-transform: none;
+  }
 
-/* Small text & captions: "Nunito Sans", 14px */
-small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
-  font-family: var(--font-body);
-  font-size: 0.875rem; /* 14px */
-  color: var(--color-text-muted);
+  /* Small text & captions */
+  small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+  }
 }
 
 .num {
@@ -260,11 +256,290 @@ small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
   box-shadow: 0 4px 12px rgba(11, 150, 199, 0.08);
 }
 
-.dark .card, .dark .clinical-card {
-  background: var(--bg-card);
-  border-color: var(--color-border);
+/* ============================================================
+   Micro-Interactions & Professional Medical Hover Effects
+   ============================================================ */
+.hover-lift {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease !important;
+  will-change: transform, box-shadow;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2.5px);
+  box-shadow: 0 10px 24px -4px rgba(11, 150, 199, 0.14), 0 4px 10px -2px rgba(72, 82, 97, 0.08) !important;
+  border-color: #0B96C7 !important;
+}
+
+html.dark .hover-lift:hover {
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(107, 186, 218, 0.4) !important;
+  border-color: #6BBADA !important;
+}
+
+.hover-glow {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hover-glow:hover {
+  border-color: #0B96C7 !important;
+  box-shadow: 0 0 0 3px rgba(11, 150, 199, 0.18) !important;
+}
+
+html.dark .hover-glow:hover {
+  border-color: #6BBADA !important;
+  box-shadow: 0 0 0 3px rgba(107, 186, 218, 0.25) !important;
+}
+
+.hover-row {
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.hover-row:hover {
+  background-color: rgba(11, 150, 199, 0.05) !important;
+}
+
+html.dark .hover-row:hover {
+  background-color: rgba(24, 42, 69, 0.8) !important;
+}
+
+/* ============================================================
+   Light Mode Rules (Strict Clean Bleached White Canvas)
+   ============================================================ */
+html.light body,
+html:not(.dark) body,
+html.light .bg-\[\#dee2e8\],
+html:not(.dark) .bg-\[\#dee2e8\],
+html.light .bg-\[\#DEE2E8\],
+html:not(.dark) .bg-\[\#DEE2E8\] {
+  background-color: #DEE2E8 !important;
+  color: #485261 !important;
+}
+
+html.light header,
+html:not(.dark) header,
+html.light aside,
+html:not(.dark) aside,
+html.light .bg-white,
+html:not(.dark) .bg-white,
+html.light .card,
+html:not(.dark) .card,
+html.light .clinical-card,
+html:not(.dark) .clinical-card,
+html.light .bg-\[\#ffffff\],
+html:not(.dark) .bg-\[\#ffffff\] {
+  background-color: #FFFFFF !important;
+  color: #485261 !important;
+  border-color: #C0CAD8 !important;
+}
+
+/* ============================================================
+   Dark Mode Navy Medical Palette Rules (Active ONLY when html has .dark)
+   ============================================================ */
+html.dark body,
+html.dark main,
+html.dark #root > div {
+  background-color: #0B1320 !important;
+  color: #DEE2E8 !important;
+}
+
+/* Page canvas containers in dark mode */
+html.dark .bg-\[\#dee2e8\]:not(.certificate-paper),
+html.dark .bg-\[\#DEE2E8\]:not(.certificate-paper) {
+  background-color: #0B1320 !important;
+}
+
+/* Headers, sidebars, cards, modals, dropdowns in dark mode (excluding certificate paper) */
+html.dark header,
+html.dark aside,
+html.dark .bg-white:not(.certificate-paper):not(.certificate-paper *),
+html.dark .card:not(.certificate-paper):not(.certificate-paper *),
+html.dark .clinical-card:not(.certificate-paper):not(.certificate-paper *),
+html.dark .bg-\[\#ffffff\]:not(.certificate-paper):not(.certificate-paper *) {
+  background-color: #132238 !important;
+  border-color: #1E3557 !important;
+  color: #DEE2E8 !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  color: #DEE2E8;
+}
+
+/* Subtle surfaces inside cards and tables */
+html.dark .bg-\[\#dee2e8\]\/40:not(.certificate-paper *),
+html.dark .bg-\[\#dee2e8\]\/50:not(.certificate-paper *),
+html.dark .bg-\[\#dee2e8\]\/60:not(.certificate-paper *),
+html.dark .bg-\[\#dee2e8\]\/30:not(.certificate-paper *),
+html.dark .bg-\[\#dee2e8\]\/20:not(.certificate-paper *),
+html.dark .bg-slate-50:not(.certificate-paper *),
+html.dark .bg-gray-50:not(.certificate-paper *),
+html.dark .bg-neutral-50:not(.certificate-paper *),
+html.dark .bg-slate-100:not(.certificate-paper *) {
+  background-color: #182A45 !important;
+  border-color: #1E3557 !important;
+}
+
+/* Borders and dividers in dark mode */
+html.dark .border-\[\#c0cad8\]:not(.certificate-paper):not(.certificate-paper *),
+html.dark .border-\[\#C0CAD8\]:not(.certificate-paper):not(.certificate-paper *),
+html.dark .border-\[\#c0cad8\]\/80:not(.certificate-paper *),
+html.dark .border-slate-200:not(.certificate-paper *),
+html.dark .border-gray-200:not(.certificate-paper *),
+html.dark .border-slate-100:not(.certificate-paper *) {
+  border-color: #1E3557 !important;
+}
+
+/* Headings in dark mode - crisp high-contrast white */
+html.dark h1:not(.certificate-paper *),
+html.dark h2:not(.certificate-paper *),
+html.dark h3:not(.certificate-paper *),
+html.dark h4:not(.certificate-paper *),
+html.dark h5:not(.certificate-paper *),
+html.dark h6:not(.certificate-paper *),
+html.dark .h1:not(.certificate-paper *),
+html.dark .h2:not(.certificate-paper *),
+html.dark .h3:not(.certificate-paper *),
+html.dark .font-headline:not(.certificate-paper *),
+html.dark .text-slate-900:not(.certificate-paper *),
+html.dark .text-gray-900:not(.certificate-paper *) {
+  color: #FFFFFF !important;
+}
+
+/* Primary text in dark mode - clear light silver/slate */
+html.dark .text-\[\#485261\]:not(.certificate-paper *),
+html.dark .text-slate-800:not(.certificate-paper *),
+html.dark .text-slate-700:not(.certificate-paper *),
+html.dark .text-gray-800:not(.certificate-paper *),
+html.dark .text-gray-700:not(.certificate-paper *) {
+  color: #DEE2E8 !important;
+}
+
+/* Muted / secondary text in dark mode - readable slate 400 */
+html.dark .text-\[\#9995A6\]:not(.certificate-paper *),
+html.dark .text-\[\#9995a6\]:not(.certificate-paper *),
+html.dark .text-slate-500:not(.certificate-paper *),
+html.dark .text-slate-400:not(.certificate-paper *),
+html.dark .text-gray-500:not(.certificate-paper *),
+html.dark .text-gray-400:not(.certificate-paper *) {
+  color: #94A3B8 !important;
+}
+
+/* Form controls in dark mode */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #0B1320 !important;
+  border-color: #1E3557 !important;
+  color: #DEE2E8 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748B !important;
+}
+
+/* Hover background states in dark mode */
+html.dark .hover\:bg-\[\#dee2e8\]:hover:not(.certificate-paper *),
+html.dark .hover\:bg-\[\#dee2e8\]\/60:hover:not(.certificate-paper *),
+html.dark .hover\:bg-slate-50:hover:not(.certificate-paper *),
+html.dark .hover\:bg-gray-50:hover:not(.certificate-paper *),
+html.dark .hover\:bg-slate-100:hover:not(.certificate-paper *) {
+  background-color: #1E3557 !important;
+}
+
+/* Secondary buttons in dark mode */
+html.dark .btn-secondary {
+  background: #182A45 !important;
+  color: #DEE2E8 !important;
+  border-color: #1E3557 !important;
+}
+
+html.dark .btn-secondary:hover {
+  background: #1E3557 !important;
+  color: #FFFFFF !important;
+}
+
+/* ============================================================
+   Official Certificate Paper: STRICTLY Pure White in Light & Dark Mode
+   ============================================================ */
+.certificate-paper,
+html.dark .certificate-paper,
+html.light .certificate-paper {
+  background-color: #FFFFFF !important;
+  color: #485261 !important;
+  border: 1px solid #C0CAD8 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.certificate-paper div,
+html.dark .certificate-paper div,
+html.light .certificate-paper div {
+  background-color: transparent;
+  color: inherit;
+}
+
+.certificate-paper .bg-white,
+html.dark .certificate-paper .bg-white,
+html.light .certificate-paper .bg-white {
+  background-color: #FFFFFF !important;
+  border-color: #C0CAD8 !important;
+}
+
+.certificate-paper h2,
+html.dark .certificate-paper h2,
+html.light .certificate-paper h2 {
+  color: #0B96C7 !important;
+}
+
+.certificate-paper h3,
+html.dark .certificate-paper h3,
+html.light .certificate-paper h3 {
+  color: #1E293B !important;
+}
+
+.certificate-paper p,
+.certificate-paper span,
+html.dark .certificate-paper p,
+html.dark .certificate-paper span,
+html.light .certificate-paper p,
+html.light .certificate-paper span {
+  color: #485261 !important;
+}
+
+.certificate-paper .text-\[\#0B96C7\],
+html.dark .certificate-paper .text-\[\#0B96C7\],
+html.light .certificate-paper .text-\[\#0B96C7\] {
+  color: #0B96C7 !important;
+}
+
+.certificate-paper .text-\[\#9995A6\],
+html.dark .certificate-paper .text-\[\#9995A6\],
+html.light .certificate-paper .text-\[\#9995A6\] {
+  color: #64748B !important;
+}
+
+.certificate-paper .bg-\[\#6BBADA\]\/10,
+html.dark .certificate-paper .bg-\[\#6BBADA\]\/10,
+html.light .certificate-paper .bg-\[\#6BBADA\]\/10 {
+  background-color: rgba(107, 186, 218, 0.12) !important;
+  border-color: #6BBADA !important;
+}
+
+.certificate-paper .bg-emerald-50,
+html.dark .certificate-paper .bg-emerald-50,
+html.light .certificate-paper .bg-emerald-50 {
+  background-color: #ECFDF5 !important;
+  color: #047857 !important;
+  border-color: #6EE7B7 !important;
+}
+
+.certificate-paper .text-emerald-700,
+html.dark .certificate-paper .text-emerald-700,
+.certificate-paper .text-emerald-600,
+html.dark .certificate-paper .text-emerald-600 {
+  color: #047857 !important;
+}
+
+.certificate-paper .p-2\.5,
+html.dark .certificate-paper .p-2\.5,
+html.light .certificate-paper .p-2\.5 {
+  background-color: #FFFFFF !important;
+  border-color: #0B96C7 !important;
 }
 
 /* Buttons System */
@@ -654,10 +929,15 @@ small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
 }
 
 /* ============================================================
-   Arabic RTL Font Support
+   Arabic RTL Professional Medical Font Support (Cairo & IBM Plex)
    ============================================================ */
-[dir="rtl"] {
-  font-family: "Nunito Sans", "IBM Plex Sans Arabic", "Cairo", system-ui, sans-serif;
+[dir="rtl"],
+[dir="rtl"] body,
+[dir="rtl"] button,
+[dir="rtl"] input,
+[dir="rtl"] select,
+[dir="rtl"] textarea {
+  font-family: "IBM Plex Sans Arabic", "Cairo", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif !important;
 }
 
 [dir="rtl"] h1,
@@ -665,9 +945,11 @@ small, caption, figcaption, .caption, .text-caption, .text-xs-caption {
 [dir="rtl"] h3,
 [dir="rtl"] h4,
 [dir="rtl"] h5,
-[dir="rtl"] h6 {
-  font-family: "Source Serif 4", "Amiri", "Cairo", serif;
-  letter-spacing: normal;
+[dir="rtl"] h6,
+[dir="rtl"] .font-heading {
+  font-family: "Cairo", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
 }
 
 /* ============================================================
