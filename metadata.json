@@ -1,0 +1,6 @@
+{
+  "name": "LabCertify Clinical - Shalaby Labs Onboarding",
+  "description": "Clinical onboarding, laboratory safety training, and leadership path platform for Shalaby Labs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

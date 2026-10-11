@@ -1,0 +1,990 @@
+import { Language } from '../types';
+
+export interface Translations {
+  // Brand & General
+  brandTitle: string;
+  brandSubtitle: string;
+  searchPlaceholder: string;
+  switchLanguage: string;
+  languageName: string;
+
+  // Roles & Switcher
+  roleTrainee: string;
+  roleTrainingAdmin: string;
+  roleSystemAdmin: string;
+  switchRole: string;
+  viewingAs: string;
+  activeRole: string;
+  sampleTrainees: string;
+
+  // Navigation
+  navDashboard: string;
+  navTraineeDashboard: string;
+  navTrainingAdmin: string;
+  navSystemAdmin: string;
+  navCourses: string;
+  navLeadership: string;
+  navCoaching: string;
+  navQuiz: string;
+  navPerformance: string;
+  navResources: string;
+  navCertificate: string;
+  navAuditTrail: string;
+  navTraineeDirectory: string;
+  navCurriculumTrack: string;
+  navManagerDevelopment: string;
+  navClinicalTools: string;
+
+  // Trainee Orientation Dashboard
+  orientationTitle: string;
+  orientationSubtitle: string;
+  employeeInfo: string;
+  employeeId: string;
+  jobTitle: string;
+  department: string;
+  branch: string;
+  hireDate: string;
+  orientationPeriod: string;
+  assignedPath: string;
+  trainingStatus: string;
+  statusNotStarted: string;
+  statusInProgress: string;
+  statusCompleted: string;
+  statusOverdue: string;
+  daysRemaining: string;
+  completedCourses: string;
+  requiredCourses: string;
+  pendingCourses: string;
+  overallCompletion: string;
+  sequentialPathTitle: string;
+  sequentialPathDesc: string;
+  lockedPrerequisite: string;
+  prerequisiteMustPass: string;
+  passScoreRequired: string;
+  maxAttemptsAllowed: string;
+  attemptsUsedLabel: string;
+  courseDuration: string;
+  materialsIncluded: string;
+  takeOnlineAssessment: string;
+  resumeCourseContent: string;
+  startCourseContent: string;
+  courseCompletedBadge: string;
+  viewCertificateBadge: string;
+  masterOrientationCertTitle: string;
+  masterOrientationCertDesc: string;
+  unlockedBadge: string;
+  lockedBadge: string;
+
+  // Course & Learning Materials
+  courseMaterialsTitle: string;
+  tabVideo: string;
+  tabPresentation: string;
+  tabSOPDocument: string;
+  tabInstructions: string;
+  materialsRequirementNotice: string;
+  markAsStudied: string;
+  readyForAssessment: string;
+  contentStudyComplete: string;
+
+  // Assessment & Quiz
+  quizTitle: string;
+  quizSubtitle: string;
+  questionOf: string;
+  studyHint: string;
+  submitAnswer: string;
+  nextQuestion: string;
+  previousQuestion: string;
+  needRefresher: string;
+  retakeQuiz: string;
+  viewCertificate: string;
+  quizCompleted: string;
+  quizScoreDesc: string;
+  finalScore: string;
+  correctAnswer: string;
+  incorrectAnswer: string;
+  selectQuizCourse: string;
+  passStatus: string;
+  passScoreNote: string;
+  assessmentPassed: string;
+  assessmentFailed: string;
+  nextCourseUnlocked: string;
+  attemptsLeft: string;
+  noAttemptsLeft: string;
+  contactAdminForRetake: string;
+  randomQuestionNote: string;
+
+  // Training Administrator Dashboard
+  adminDashboardTitle: string;
+  adminDashboardSubtitle: string;
+  kpiTotalOrientation: string;
+  kpiCompleted: string;
+  kpiInProgress: string;
+  kpiOverdue: string;
+  kpiAvgScore: string;
+  traineeDirectoryTitle: string;
+  createNewTrainee: string;
+  searchTrainee: string;
+  filterByBranch: string;
+  filterByDept: string;
+  filterByStatus: string;
+  allBranches: string;
+  allDepartments: string;
+  allStatuses: string;
+  colName: string;
+  colId: string;
+  colDeptBranch: string;
+  colOrientationPeriod: string;
+  colProgress: string;
+  colStatus: string;
+  colActions: string;
+  viewDetails: string;
+  sendReminder: string;
+  reminderSentToast: string;
+  exportPdf: string;
+  exportExcel: string;
+  drilldownTitle: string;
+  drilldownSubtitle: string;
+  courseMatrix: string;
+  colCourse: string;
+  colStartDate: string;
+  colCompletionDate: string;
+  colScore: string;
+  colAttempts: string;
+  colCertStatus: string;
+  downloadCert: string;
+  downloadFullReport: string;
+  close: string;
+  createTraineeModalTitle: string;
+  fullNameEn: string;
+  fullNameAr: string;
+  assignedOrientationPath: string;
+  startDateLabel: string;
+  endDateLabel: string;
+  saveTraineeAccount: string;
+  cancel: string;
+
+  // System Administrator
+  sysAdminTitle: string;
+  sysAdminSubtitle: string;
+  tabCourseManager: string;
+  tabCourseStudio: string;
+  tabQuestionBank: string;
+  tabAuditTrail: string;
+  tabSettingsPrograms: string;
+  courseStudioTitle: string;
+  courseStudioSubtitle: string;
+  videoLessonsManager: string;
+  sopDocumentsManager: string;
+  addVideoLesson: string;
+  addSOPManual: string;
+  videoUrl: string;
+  videoDuration: string;
+  rulesEngineTitle: string;
+  rulesEngineDesc: string;
+  resetAttempts: string;
+  attemptsExhausted: string;
+  attemptsExhaustedDesc: string;
+  courseSettingsTitle: string;
+  addCourse: string;
+  editCourse: string;
+  passScoreThreshold: string;
+  maxAttemptsSetting: string;
+  validityMonthsLabel: string;
+  prerequisiteSetting: string;
+  nonePrerequisite: string;
+  materialsConfig: string;
+  questionBankTitle: string;
+  questionBankDesc: string;
+  addQuestion: string;
+  randomPoolSize: string;
+  tamperProtectionNotice: string;
+  auditTrailTitle: string;
+  auditTrailDesc: string;
+  colTimestamp: string;
+  colUser: string;
+  colRole: string;
+  colAction: string;
+  colTarget: string;
+  colIp: string;
+  colSeverity: string;
+  futureProgramsTitle: string;
+  futureProgramsDesc: string;
+  progOrientation: string;
+  progAnnualMandatory: string;
+  progRefresher: string;
+  progCompetency: string;
+  progDeptSpecific: string;
+  progPolicyUpdate: string;
+  progRecertification: string;
+  activeStatus: string;
+  plannedStatus: string;
+
+  // Certificate
+  certTitle: string;
+  certSub: string;
+  certCertifiesThat: string;
+  certHasFulfilled: string;
+  certCourseName: string;
+  certAccreditation: string;
+  certIssuedOn: string;
+  certChiefMedicalOfficer: string;
+  certDigitalVerification: string;
+  certStatusActive: string;
+  certPrintPdf: string;
+  certShareLinkedIn: string;
+  certCopyLink: string;
+  certCopied: string;
+  certRecipientLabel: string;
+  officialCert: string;
+  certOfCompletion: string;
+  downloadPrintPdf: string;
+  share: string;
+  credentialIdLabel: string;
+  verificationBadge: string;
+  qrScanToVerify: string;
+
+  // Performance & SOPs (existing keys preserved)
+  welcomeBack: string;
+  welcomeDesc: string;
+  resumeTraining: string;
+  overallProgress: string;
+  phaseCompleted: string;
+  phaseDesc: string;
+  upNext: string;
+  activeModulesTitle: string;
+  activeModulesDesc: string;
+  exploreRoadmap: string;
+  estTime: string;
+  mins: string;
+  hrs: string;
+  reviewMaterial: string;
+  resumeModule: string;
+  startModule: string;
+  lookingForSOPs: string;
+  sopBannerDesc: string;
+  viewSOPLibrary: string;
+  selectCourse: string;
+  allCourses: string;
+  curriculumPlaylist: string;
+  playing: string;
+  inVideoQuiz: string;
+  resumeVideo: string;
+  checkAnswer: string;
+  continueVideo: string;
+  playbackSpeed: string;
+  takeAssessment: string;
+  learningObjectives: string;
+  sopHandbooks: string;
+  tabOverview: string;
+  tabTranscript: string;
+  tabNotes: string;
+  addNotePlaceholder: string;
+  saveNote: string;
+  noNotesYet: string;
+  filterByCourse: string;
+  courseCompleted: string;
+  courseProgress: string;
+  leadershipTitle: string;
+  leadershipDesc: string;
+  stagesCount: string;
+  growTitle: string;
+  growSubtitle: string;
+  growDesc: string;
+  targetCompetencies: string;
+  leadershipToolkits: string;
+  interactiveGrowWorksheet: string;
+  goalTitle: string;
+  goalDesc: string;
+  realityTitle: string;
+  realityDesc: string;
+  optionsTitle: string;
+  optionsDesc: string;
+  willTitle: string;
+  willDesc: string;
+  saveCoachingPlan: string;
+  savedToast: string;
+  managersForum: string;
+  shareInsight: string;
+  postComment: string;
+  helpful: string;
+  replies: string;
+  performanceTitle: string;
+  performanceDesc: string;
+  proficiencyGrade: string;
+  proficiencyNote: string;
+  competenciesChecklist: string;
+  mastered: string;
+  inProgress: string;
+  assessmentHistory: string;
+  filterAll: string;
+  filterSafety: string;
+  filterSpecimen: string;
+  filterQC: string;
+  filterLeadership: string;
+  downloadResource: string;
+  coachingFramework: string;
+  welcomeSubtext: string;
+  activeModules: string;
+  performanceSubtext: string;
+  coreCompetencies: string;
+  sopLibrary: string;
+  assessmentCompleted: string;
+  finalScorePct: string;
+  viewCert: string;
+  question: string;
+  previous: string;
+  finishQuiz: string;
+}
+
+export const translations: Record<Language, Translations> = {
+  en: {
+    brandTitle: "LabCertify Clinical LMS",
+    brandSubtitle: "Shalaby Labs Training System",
+    searchPlaceholder: "Search training path, courses, employees, SOPs...",
+    switchLanguage: "العربية",
+    languageName: "English",
+
+    roleTrainee: "Trainee",
+    roleTrainingAdmin: "Training Administrator",
+    roleSystemAdmin: "System Administrator",
+    switchRole: "Switch Role",
+    viewingAs: "Active Persona",
+    activeRole: "Current Role",
+    sampleTrainees: "Sample Trainees",
+
+    navDashboard: "Trainee Dashboard",
+    navTraineeDashboard: "Orientation Path",
+    navTrainingAdmin: "Training Admin Portal",
+    navSystemAdmin: "System Admin Portal",
+    navCourses: "Course Materials",
+    navLeadership: "Leadership Roadmap",
+    navCoaching: "GROW Framework",
+    navQuiz: "Online Assessment",
+    navPerformance: "Trainee Performance",
+    navResources: "SOP Document Library",
+    navCertificate: "Official Certificates",
+    navAuditTrail: "Audit Trail",
+    navTraineeDirectory: "Trainee Accounts",
+    navCurriculumTrack: "Curriculum Track",
+    navManagerDevelopment: "Manager Development",
+    navClinicalTools: "Quality & Accreditation",
+
+    orientationTitle: "Laboratory Orientation & Onboarding Path",
+    orientationSubtitle: "Mandatory sequential orientation curriculum for newly appointed clinical laboratory staff.",
+    employeeInfo: "Employee Profile & Assignment",
+    employeeId: "Employee ID",
+    jobTitle: "Job Title",
+    department: "Department",
+    branch: "Branch / Facility",
+    hireDate: "Hire Date",
+    orientationPeriod: "Orientation Period",
+    assignedPath: "Assigned Training Path",
+    trainingStatus: "Orientation Status",
+    statusNotStarted: "Not Started",
+    statusInProgress: "In Progress",
+    statusCompleted: "Completed",
+    statusOverdue: "Overdue",
+    daysRemaining: "Days Remaining",
+    completedCourses: "Completed Courses",
+    requiredCourses: "Required Courses",
+    pendingCourses: "Pending Courses",
+    overallCompletion: "Overall Progress",
+    sequentialPathTitle: "Mandatory Sequential Learning Path",
+    sequentialPathDesc: "Courses unlock sequentially. You must review the materials and pass the assessment (≥ 80%) to unlock the subsequent course and obtain your accredited certificate.",
+    lockedPrerequisite: "Locked — Complete prerequisite course & quiz first",
+    prerequisiteMustPass: "Requires passing score of",
+    passScoreRequired: "Pass Score",
+    maxAttemptsAllowed: "Attempts Allowed",
+    attemptsUsedLabel: "Attempts Used",
+    courseDuration: "Estimated Duration",
+    materialsIncluded: "Resources: Video, SOP Slides, Protocol PDF",
+    takeOnlineAssessment: "Start Assessment",
+    resumeCourseContent: "Resume Course Content",
+    startCourseContent: "Start Course Content",
+    courseCompletedBadge: "Passed & Certified",
+    viewCertificateBadge: "View Certificate",
+    masterOrientationCertTitle: "Master Clinical Orientation Credential",
+    masterOrientationCertDesc: "Granted automatically upon successful completion and verification of all 5 orientation modules.",
+    unlockedBadge: "Unlocked 🔓",
+    lockedBadge: "Locked 🔒",
+
+    courseMaterialsTitle: "Course Learning Materials & SOPs",
+    tabVideo: "Video Lecture",
+    tabPresentation: "Presentation Slides",
+    tabSOPDocument: "Clinical SOP (PDF)",
+    tabInstructions: "Laboratory Instructions",
+    materialsRequirementNotice: "You must complete the required materials before the online assessment opens.",
+    markAsStudied: "Confirm Material Reviewed",
+    readyForAssessment: "All materials reviewed! You may now begin the assessment.",
+    contentStudyComplete: "Materials Reviewed",
+
+    quizTitle: "Course Knowledge Assessment",
+    quizSubtitle: "Randomized questions drawn from the accredited Laboratory Question Bank.",
+    questionOf: "Question",
+    studyHint: "Clinical SOP Reference Hint",
+    submitAnswer: "Submit Answer",
+    nextQuestion: "Next Question",
+    previousQuestion: "Previous Question",
+    needRefresher: "Need a refresher?",
+    retakeQuiz: "Retake Assessment",
+    viewCertificate: "View & Download Certificate",
+    quizCompleted: "Assessment Complete",
+    quizScoreDesc: "Official score recorded in the Laboratory Training Management System.",
+    finalScore: "Final Score",
+    correctAnswer: "Accredited Standard Answer",
+    incorrectAnswer: "Clinical Deviation",
+    selectQuizCourse: "Select Course Assessment",
+    passStatus: "Assessment Result",
+    passScoreNote: "Passing standard is set to 80%.",
+    assessmentPassed: "Passed! Certificate Generated & Next Course Unlocked",
+    assessmentFailed: "Not Passed — Score below required threshold",
+    nextCourseUnlocked: "Next Course Unlocked",
+    attemptsLeft: "Attempts remaining",
+    noAttemptsLeft: "No attempts remaining. Please contact your Training Administrator.",
+    contactAdminForRetake: "Request Attempt Reset from Training Admin",
+    randomQuestionNote: "Questions are dynamically pulled from the secure question bank.",
+
+    adminDashboardTitle: "Training Administrator Dashboard",
+    adminDashboardSubtitle: "Executive orientation tracking, trainee account provisioning, progress monitoring, and compliance reporting.",
+    kpiTotalOrientation: "Employees in Orientation",
+    kpiCompleted: "Orientation Completed",
+    kpiInProgress: "In Progress",
+    kpiOverdue: "Overdue / Attention Needed",
+    kpiAvgScore: "Average Passing Score",
+    traineeDirectoryTitle: "Trainee Accounts & Orientation Progress",
+    createNewTrainee: "+ New Trainee Account",
+    searchTrainee: "Search by employee name, ID, or job title...",
+    filterByBranch: "Filter by Branch",
+    filterByDept: "Filter by Department",
+    filterByStatus: "Filter by Status",
+    allBranches: "All Branches",
+    allDepartments: "All Departments",
+    allStatuses: "All Statuses",
+    colName: "Employee Name",
+    colId: "Employee ID",
+    colDeptBranch: "Department & Branch",
+    colOrientationPeriod: "Orientation Window",
+    colProgress: "Progress",
+    colStatus: "Status",
+    colActions: "Actions",
+    viewDetails: "Drill Down",
+    sendReminder: "Send Reminder",
+    reminderSentToast: "Orientation reminder email & notification sent successfully.",
+    exportPdf: "Export Report (PDF)",
+    exportExcel: "Export Data (Excel)",
+    drilldownTitle: "Employee Orientation Drill-Down",
+    drilldownSubtitle: "Detailed course-by-course audit, assessment attempts, scores, and certificate status.",
+    courseMatrix: "Assigned Sequential Courses",
+    colCourse: "Course Module",
+    colStartDate: "Start Date",
+    colCompletionDate: "Completion Date",
+    colScore: "Score",
+    colAttempts: "Attempts Used",
+    colCertStatus: "Certificate Status",
+    downloadCert: "Download Certificate",
+    downloadFullReport: "Download Full Orientation Dossier (PDF)",
+    close: "Close",
+    createTraineeModalTitle: "Create New Laboratory Trainee Account",
+    fullNameEn: "Full Name (English)",
+    fullNameAr: "Full Name (Arabic)",
+    assignedOrientationPath: "Assigned Orientation Path",
+    startDateLabel: "Orientation Start Date",
+    endDateLabel: "Orientation End Date",
+    saveTraineeAccount: "Create Account & Assign Path",
+    cancel: "Cancel",
+
+    sysAdminTitle: "System Administrator Portal",
+    sysAdminSubtitle: "Course architecture, question bank management, tamper-proof grading, and comprehensive audit trail.",
+    tabCourseManager: "Courses & Curricula",
+    tabCourseStudio: "Course Content Studio",
+    tabQuestionBank: "Question Bank & Assessments",
+    tabAuditTrail: "System Audit Trail",
+    tabSettingsPrograms: "Rules Engine & Programs",
+    courseStudioTitle: "Laboratory Course Content Studio",
+    courseStudioSubtitle: "Add and manage course videos (YouTube, MP4, embed), SOP documentation, clinical protocols, and assessment questions.",
+    videoLessonsManager: "Video Lectures & Media",
+    sopDocumentsManager: "Standard Operating Procedures (SOPs)",
+    addVideoLesson: "Add Video Lesson",
+    addSOPManual: "Add SOP Manual",
+    videoUrl: "Video Stream / Embed URL",
+    videoDuration: "Video Duration (e.g. 14:20)",
+    rulesEngineTitle: "Sequential Rules & Prerequisites Engine",
+    rulesEngineDesc: "Enforce strict linear prerequisites, prevent rule conflicts, and manage attempt policies with full audit logging.",
+    resetAttempts: "Reset Attempts & Unlock",
+    attemptsExhausted: "Attempts Exhausted (3/3)",
+    attemptsExhaustedDesc: "Maximum assessment attempts reached. Contact the Training Administrator or Supervisor for remediation and exam reset.",
+    courseSettingsTitle: "Laboratory Course Configuration",
+    addCourse: "+ Add New Course",
+    editCourse: "Configure Settings",
+    passScoreThreshold: "Passing Score Threshold (%)",
+    maxAttemptsSetting: "Allowed Assessment Attempts",
+    validityMonthsLabel: "Training Validity (Months)",
+    prerequisiteSetting: "Prerequisite Course",
+    nonePrerequisite: "None (Initial Course)",
+    materialsConfig: "Associated Learning Materials",
+    questionBankTitle: "Accredited Laboratory Question Bank",
+    questionBankDesc: "Maintain verified clinical questions. Assessments draw randomized pools per trainee attempt.",
+    addQuestion: "+ Add Question to Bank",
+    randomPoolSize: "Random Questions Pulled Per Exam",
+    tamperProtectionNotice: "Audit Guard Active: Grade modifications without super-admin elevation are strictly blocked and flagged.",
+    auditTrailTitle: "Regulatory Compliance Audit Trail",
+    auditTrailDesc: "Immutable log recording user authentications, course progressions, assessment attempts, score registrations, and certificate issuance.",
+    colTimestamp: "Timestamp",
+    colUser: "User",
+    colRole: "Role",
+    colAction: "Action Performed",
+    colTarget: "Target Record",
+    colIp: "IP Address",
+    colSeverity: "Log Status",
+    futureProgramsTitle: "Enterprise Training Lifecycle Expansion",
+    futureProgramsDesc: "Extend the LMS beyond new-hire orientation to support the complete employee lifecycle.",
+    progOrientation: "New Employee Orientation & Onboarding",
+    progAnnualMandatory: "Annual Mandatory Safety & Compliance",
+    progRefresher: "Refresher & Protocol Updates",
+    progCompetency: "Clinical Competency Assessments",
+    progDeptSpecific: "Department-Specific Specializations",
+    progPolicyUpdate: "Quality & Policy Updates",
+    progRecertification: "Biennial Laboratory Re-certification",
+    activeStatus: "Active in Production",
+    plannedStatus: "Configured / Expansion Ready",
+
+    certTitle: "Certificate of Clinical Training Completion",
+    certSub: "Shalaby Labs Center for Diagnostic Excellence & Training",
+    certCertifiesThat: "This is to officially certify that",
+    certHasFulfilled: "has successfully satisfied all rigorous clinical, theoretical, and safety requirements for",
+    certCourseName: "Course Title",
+    certAccreditation: "Accredited in accordance with CAP / ISO 15189 Quality Standards",
+    certIssuedOn: "Date of Verification",
+    certChiefMedicalOfficer: "Laboratory Director & Training Chair",
+    certDigitalVerification: "Electronic Verification QR & Credential ID",
+    certStatusActive: "Status: Verified & Active",
+    certPrintPdf: "Print / Save PDF Certificate",
+    certShareLinkedIn: "Share Credential",
+    certCopyLink: "Copy Verification Link",
+    certCopied: "Verification Link Copied!",
+    certRecipientLabel: "Recipient",
+    officialCert: "Accredited Certificate",
+    certOfCompletion: "Certificate of Completion",
+    downloadPrintPdf: "Download / Print PDF",
+    share: "Share",
+    credentialIdLabel: "Credential ID",
+    verificationBadge: "Digitally Verified",
+    qrScanToVerify: "Scan to Verify Authenticity",
+
+    welcomeBack: "Welcome back",
+    welcomeDesc: "You are progressing through your mandatory Laboratory Orientation Path. Complete each step in order.",
+    resumeTraining: "Resume Training",
+    overallProgress: "Overall Progress",
+    phaseCompleted: "Orientation Milestone",
+    phaseDesc: "All modules must be verified with ≥ 80% pass score.",
+    upNext: "Up Next in Sequence",
+    activeModulesTitle: "Orientation Modules & Sequence",
+    activeModulesDesc: "Select an unlocked module to view materials and take your exam.",
+    exploreRoadmap: "Explore Curriculum Path",
+    estTime: "Estimated Duration",
+    mins: "mins",
+    hrs: "hrs",
+    reviewMaterial: "Review Material",
+    resumeModule: "Resume Module",
+    startModule: "Start Module",
+    lookingForSOPs: "Looking for Clinical SOPs and Guidelines?",
+    sopBannerDesc: "Access the laboratory standard operating procedures library.",
+    viewSOPLibrary: "Open SOP Library",
+    selectCourse: "Select Course",
+    allCourses: "All Orientation Courses",
+    curriculumPlaylist: "Module Lessons",
+    playing: "Currently Playing",
+    inVideoQuiz: "Mid-Lesson Checkpoint",
+    resumeVideo: "Resume",
+    checkAnswer: "Verify Answer",
+    continueVideo: "Continue Lesson",
+    playbackSpeed: "Playback Speed",
+    takeAssessment: "Take Course Assessment",
+    learningObjectives: "Key Learning Objectives",
+    sopHandbooks: "SOP Handbooks & Protocols",
+    tabOverview: "Module Overview",
+    tabTranscript: "Audio Transcript",
+    tabNotes: "Clinical Notes",
+    addNotePlaceholder: "Record key notes for this module...",
+    saveNote: "Save Note",
+    noNotesYet: "No notes saved yet.",
+    filterByCourse: "Filter Courses",
+    courseCompleted: "Course Completed",
+    courseProgress: "Course Progress",
+    leadershipTitle: "Clinical Leadership Roadmap",
+    leadershipDesc: "Seven core developmental phases for laboratory supervisors.",
+    stagesCount: "Stages",
+    growTitle: "GROW Coaching Model",
+    growSubtitle: "Goal, Reality, Options, Will Framework",
+    growDesc: "Operational coaching for lab technicians and technologists.",
+    targetCompetencies: "Target Competencies",
+    leadershipToolkits: "Leadership Toolkits",
+    interactiveGrowWorksheet: "Interactive GROW Worksheet",
+    goalTitle: "1. Goal Definition",
+    goalDesc: "Define clear, quantifiable laboratory targets.",
+    realityTitle: "2. Current Reality",
+    realityDesc: "Assess current specimen metrics and operational bottlenecks.",
+    optionsTitle: "3. Explore Options",
+    optionsDesc: "Identify creative clinical interventions and protocol shifts.",
+    willTitle: "4. Way Forward & Will",
+    willDesc: "Lock in accountability, timeline, and audit reviews.",
+    saveCoachingPlan: "Save Coaching Plan",
+    savedToast: "Saved to your clinical profile.",
+    managersForum: "Supervisor Discussion Forum",
+    shareInsight: "Share Insight",
+    postComment: "Post Comment",
+    helpful: "Helpful",
+    replies: "Replies",
+    performanceTitle: "Clinical Competency & Audit Record",
+    performanceDesc: "Demonstrated scores, attempts, and masteries across laboratory standards.",
+    proficiencyGrade: "Overall Proficiency",
+    proficiencyNote: "Based on first-time quiz attempts and SOP completions.",
+    competenciesChecklist: "Core Competency Checklist",
+    mastered: "Mastered",
+    inProgress: "In Progress",
+    assessmentHistory: "Assessment History",
+    filterAll: "All Records",
+    filterSafety: "Safety & Biosafety",
+    filterSpecimen: "Pre-Analytics",
+    filterQC: "Quality Control",
+    filterLeadership: "Supervisory",
+    downloadResource: "Download Document",
+    coachingFramework: "GROW Coaching Model",
+    welcomeSubtext: "Orientation LMS for Shalaby Laboratories",
+    activeModules: "Sequential Curriculum Modules",
+    performanceSubtext: "Audit-ready competency tracking",
+    coreCompetencies: "Demonstrated Competencies",
+    sopLibrary: "Standard Operating Procedures (SOP)",
+    assessmentCompleted: "Assessment Completed",
+    finalScorePct: "Final Score (%)",
+    viewCert: "View Certificate",
+    question: "Question",
+    previous: "Previous",
+    finishQuiz: "Finish Assessment",
+  },
+  ar: {
+    brandTitle: "نظام إدارة التدريب المخبري LabCertify",
+    brandSubtitle: "معامل شلبي للتحاليل الطبية",
+    searchPlaceholder: "ابحث في مسار التدريب، الكورسات، الموظفين، وأدلة العمل...",
+    switchLanguage: "English",
+    languageName: "العربية",
+
+    roleTrainee: "المتدرب",
+    roleTrainingAdmin: "مدير التدريب",
+    roleSystemAdmin: "مسؤول النظام",
+    switchRole: "تبديل الصلاحية",
+    viewingAs: "المستخدم الحالي",
+    activeRole: "الصلاحية النشطة",
+    sampleTrainees: "نماذج المتدربين",
+
+    navDashboard: "لوحة المتدرب",
+    navTraineeDashboard: "مسار التوجيه الإلزامي",
+    navTrainingAdmin: "لوحة مدير التدريب",
+    navSystemAdmin: "لوحة مسؤول النظام",
+    navCourses: "محتوى الكورسات",
+    navLeadership: "مسار القيادة الإكلينيكية",
+    navCoaching: "نموذج GROW",
+    navQuiz: "الاختبار الإلكتروني",
+    navPerformance: "سجل الأداء والكفاءة",
+    navResources: "مكتبة أدلة العمل SOP",
+    navCertificate: "الشهادات المعتمدة",
+    navAuditTrail: "سجل التدقيق والرقابة",
+    navTraineeDirectory: "حسابات المتدربين",
+    navCurriculumTrack: "المسار الأكاديمي",
+    navManagerDevelopment: "التطوير الإشرافي",
+    navClinicalTools: "الجودة والاعتماد",
+
+    orientationTitle: "مسار التدريب والتوجيه الإلزامي للموظفين الجدد",
+    orientationSubtitle: "مسار تدريبي متسلسل ومنضبط للموظفين الجدد في المختبرات الطبية حتى إثبات الكفاءة التامة.",
+    employeeInfo: "بيانات الموظف والتعيين",
+    employeeId: "الرقم التعريفي للموظف",
+    jobTitle: "المسمى الوظيفي",
+    department: "القسم الإكلينيكي",
+    branch: "الفرع / المنشأة",
+    hireDate: "تاريخ التعيين",
+    orientationPeriod: "فترة التوجيه (Orientation)",
+    assignedPath: "المسار التدريبي المحدد",
+    trainingStatus: "حالة التدريب",
+    statusNotStarted: "لم يبدأ بعد",
+    statusInProgress: "قيد المتابعة",
+    statusCompleted: "مكتمل بنجاح",
+    statusOverdue: "متأخر عن الموعد",
+    daysRemaining: "الأيام المتبقية",
+    completedCourses: "الكورسات المنجزة",
+    requiredCourses: "الكورسات الإلزامية",
+    pendingCourses: "الكورسات المتبقية",
+    overallCompletion: "نسبة الإنجاز الكلية",
+    sequentialPathTitle: "مسار التعلم المتسلسل الإلزامي (Sequential Path)",
+    sequentialPathDesc: "الكورسات تفتح بالتسلسل الصارم؛ يجب إنهاء دراسة محتوى الكورس واجتياز الاختبار بنسبة ≥ 80% لفتح الكورس التالي وإصدار الشهادة.",
+    lockedPrerequisite: "مغلق 🔒 — يتطلب اجتياز الكورس السابق واختباره أولاً",
+    prerequisiteMustPass: "يتطلب درجة نجاح لا تقل عن",
+    passScoreRequired: "درجة النجاح المطلوبة",
+    maxAttemptsAllowed: "المحاولات المسموحة",
+    attemptsUsedLabel: "المحاولات المستخدمة",
+    courseDuration: "المدة التقديرية",
+    materialsIncluded: "المحتوى: فيديو تدريبي، عرض تقديمي، ودليل SOP",
+    takeOnlineAssessment: "دخول الاختبار الإلكتروني",
+    resumeCourseContent: "استكمال محتوى الكورس",
+    startCourseContent: "بدء محتوى الكورس",
+    courseCompletedBadge: "تم الاجتياز والاعتماد",
+    viewCertificateBadge: "عرض الشهادة الرسمية",
+    masterOrientationCertTitle: "شهادة إتمام التوجيه والتأهيل المخبري الشامل",
+    masterOrientationCertDesc: "تُمنح تلقائيًا وتُعتمد فور اجتياز جميع مقررات التوجيه الخمسة بنجاح.",
+    unlockedBadge: "مفتوح 🔓",
+    lockedBadge: "مغلق 🔒",
+
+    courseMaterialsTitle: "المحتوى التدريبي وأدلة التشغيل القياسية",
+    tabVideo: "المحاضرة المرئية",
+    tabPresentation: "العرض التقديمي",
+    tabSOPDocument: "دليل العمل القياسي (PDF)",
+    tabInstructions: "تعليمات العمل المخبري",
+    materialsRequirementNotice: "يجب استكمال مراجعة المحتوى التدريبي بالكامل قبل فتح الاختبار الإلكتروني.",
+    markAsStudied: "تأكيد إنهاء مراجعة المحتوى",
+    readyForAssessment: "تم إنهاء مراجعة المحتوى! يمكنك الآن التقدم للاختبار.",
+    contentStudyComplete: "تمت دراسة المحتوى",
+
+    quizTitle: "اختبار قياس الكفاءة النظرية",
+    quizSubtitle: "أسئلة منتقاة عشوائيًا من بنك الأسئلة المعتمد للمختبرات.",
+    questionOf: "السؤال",
+    studyHint: "إشارة إلى دليل العمل القياسي (SOP)",
+    submitAnswer: "اعتماد الإجابة",
+    nextQuestion: "السؤال التالي",
+    previousQuestion: "السؤال السابق",
+    needRefresher: "بحاجة لمراجعة سريعة؟",
+    retakeQuiz: "إعادة الاختبار",
+    viewCertificate: "عرض وتنزيل الشهادة",
+    quizCompleted: "تم إنهاء الاختبار",
+    quizScoreDesc: "تم تسجيل النتيجة رسميًا في سجل التدريب الإلكتروني للمختبر.",
+    finalScore: "الدرجة النهائية",
+    correctAnswer: "الإجابة النموذجية المعتمدة",
+    incorrectAnswer: "انحراف عن البروتوكول",
+    selectQuizCourse: "اختر اختبار الكورس",
+    passStatus: "نتيجة الاختبار",
+    passScoreNote: "حد النجاح المطلوب هو 80% فأكثر.",
+    assessmentPassed: "تم الاجتياز بنجاح! تم إصدار الشهادة وفتح الكورس التالي 🔓",
+    assessmentFailed: "لم يتم الاجتياز — الدرجة أقل من النسبة المطلوبة",
+    nextCourseUnlocked: "تم فتح الكورس التالي",
+    attemptsLeft: "المحاولات المتبقية",
+    noAttemptsLeft: "استنفذت جميع المحاولات. يرجى مراجعة مدير التدريب.",
+    contactAdminForRetake: "طلب فتح محاولة جديدة من مدير التدريب",
+    randomQuestionNote: "تُسحب الأسئلة عشوائيًا من بنك الأسئلة لضمان مصداقية الاختبار.",
+
+    adminDashboardTitle: "لوحة تحكم مدير التدريب (Training Administrator)",
+    adminDashboardSubtitle: "متابعة مسارات الموظفين الجدد، إنشاء الحسابات، مراقبة التقدم، وإصدار تقارير الامتثال والجودة.",
+    kpiTotalOrientation: "موظفون في مسار التوجيه",
+    kpiCompleted: "أتموا التوجيه بالكامل",
+    kpiInProgress: "قيد المتابعة والتدريب",
+    kpiOverdue: "متأخرون عن الموعد المحدد",
+    kpiAvgScore: "متوسط درجات الاجتياز",
+    traineeDirectoryTitle: "سجل المتدربين ومتابعة مسار التوجيه",
+    createNewTrainee: "+ إضافة موظف جديد وتعيين مسار",
+    searchTrainee: "بحث باسم الموظف، الرقم الوظيفي، أو المسمى...",
+    filterByBranch: "تصفية حسب الفرع",
+    filterByDept: "تصفية حسب القسم",
+    filterByStatus: "تصفية حسب الحالة",
+    allBranches: "جميع الفروع",
+    allDepartments: "جميع الأقسام",
+    allStatuses: "جميع الحالات",
+    colName: "اسم الموظف",
+    colId: "الرقم الوظيفي",
+    colDeptBranch: "القسم والفرع",
+    colOrientationPeriod: "فترة التوجيه",
+    colProgress: "نسبة الإنجاز",
+    colStatus: "الحالة",
+    colActions: "إجراءات",
+    viewDetails: "تفاصيل الموظف",
+    sendReminder: "إرسال تذكير",
+    reminderSentToast: "تم إرسال تنبيه وتذكير بالبريد والنظام للموظف بنجاح.",
+    exportPdf: "تصدير التقرير (PDF)",
+    exportExcel: "تصدير البيانات (Excel)",
+    drilldownTitle: "الملف التفصيلي للموظف في مسار التوجيه",
+    drilldownSubtitle: "متابعة دقيقة لكل كورس: تاريخ البدء، الإكمال، الدرجة المحققة، عدد المحاولات، والشهادات.",
+    courseMatrix: "مقررات المسار التوجيهي الإلزامي",
+    colCourse: "المقرر التدريبي",
+    colStartDate: "تاريخ البدء",
+    colCompletionDate: "تاريخ الإكمال",
+    colScore: "الدرجة",
+    colAttempts: "المحاولات",
+    colCertStatus: "حالة الشهادة",
+    downloadCert: "تنزيل الشهادة",
+    downloadFullReport: "تحميل تقرير التوجيه الكامل (PDF Dossier)",
+    close: "إغلاق",
+    createTraineeModalTitle: "إنشاء حساب موظف جديد وتعيين مسار التوجيه",
+    fullNameEn: "الاسم الكامل (بالإنجليزية)",
+    fullNameAr: "الاسم الكامل (بالعربية)",
+    assignedOrientationPath: "المسار التدريبي المحدد",
+    startDateLabel: "تاريخ بداية التوجيه",
+    endDateLabel: "تاريخ نهاية التوجيه",
+    saveTraineeAccount: "إنشاء الحساب وتعيين المسار",
+    cancel: "إلغاء",
+
+    sysAdminTitle: "بوابة مسؤول النظام (System Administrator)",
+    sysAdminSubtitle: "إدارة هيكل الكورسات، بنك الأسئلة، منع التلاعب بالنتائج، وسجل العمليات والرقابة (Audit Trail).",
+    tabCourseManager: "المقررات والمناهج",
+    tabCourseStudio: "استوديو محتوى المقررات",
+    tabQuestionBank: "بنك الأسئلة والامتحانات",
+    tabAuditTrail: "سجل العمليات والرقابة (Audit Trail)",
+    tabSettingsPrograms: "محرك القواعد والبرامج",
+    courseStudioTitle: "استوديو إدارة محتوى المقررات المخبرية",
+    courseStudioSubtitle: "إضافة وإدارة فيديوهات الكورسات (يوتيوب، ملفات مباشرة)، أدلة الـ SOP، العروض التقديمية، والأسئلة التقييمية.",
+    videoLessonsManager: "المحاضرات المرئية والوسائط",
+    sopDocumentsManager: "أدلة التشغيل القياسية (SOPs)",
+    addVideoLesson: "إضافة فيديو تدريبي",
+    addSOPManual: "إضافة دليل SOP",
+    videoUrl: "رابط تشغيل / تضمين الفيديو (URL)",
+    videoDuration: "مدة الفيديو (مثال: 14:20)",
+    rulesEngineTitle: "محرك القواعد والمتطلبات السابقة والتسلسل",
+    rulesEngineDesc: "فرض التسلسل الإلزامي، منع تعارض القواعد السابقة، وإدارة حدود المحاولات المسموحة مع التوثيق الرقابي التام.",
+    resetAttempts: "إعادة ضبط المحاولات وفك القفل",
+    attemptsExhausted: "استنفاد كافة المحاولات (3/3)",
+    attemptsExhaustedDesc: "تم استنفاد جميع محاولات الاختبار المسموحة. يرجى التواصل مع إدارة التدريب أو المشرف الأكاديمي لإعادة المحاولة.",
+    courseSettingsTitle: "تكوين وإعداد المقررات التدريبية",
+    addCourse: "+ إضافة كورس جديد",
+    editCourse: "تعديل الإعدادات",
+    passScoreThreshold: "نسبة النجاح الإلزامية (%)",
+    maxAttemptsSetting: "عدد المحاولات المسموحة",
+    validityMonthsLabel: "صلاحية التدريب (بالأشهر)",
+    prerequisiteSetting: "الكورس السابق الإلزامي (Prerequisite)",
+    nonePrerequisite: "لا يوجد (كورس البداية)",
+    materialsConfig: "المحتوى والمواد التدريبية المرفقة",
+    questionBankTitle: "بنك الأسئلة المخبري المعتمد",
+    questionBankDesc: "إدارة وتصنيف الأسئلة الإكلينيكية المعتمدة، وسحب أسئلة عشوائية لكل محاولة متدرب.",
+    addQuestion: "+ إضافة سؤال لبنك الأسئلة",
+    randomPoolSize: "عدد الأسئلة العشوائية المسحوبة في الاختبار",
+    tamperProtectionNotice: "نظام حماية النزاهة فعال: يمنع تعديل أي درجة بدون صلاحية عليا مع تسجيل أي تعديل فورياً في سجل التدقيق.",
+    auditTrailTitle: "سجل الرقابة والتدقيق (Audit Trail)",
+    auditTrailDesc: "سجل إلكتروني غير قابل للتعديل يوثق جميع عمليات تسجيل الدخول، إنهاء الكورسات، محاولات الاختبارات، تسجيل الدرجات، وإصدار الشهادات.",
+    colTimestamp: "التاريخ والوقت",
+    colUser: "المستخدم",
+    colRole: "الصلاحية",
+    colAction: "الإجراء المنفذ",
+    colTarget: "السجل المستهدف",
+    colIp: "عنوان IP",
+    colSeverity: "حالة السجل",
+    futureProgramsTitle: "التوسع المستقبلي في برامج التدريب",
+    futureProgramsDesc: "تمكين المنظومة من استيعاب كافة أنواع التدريب طوال دورة حياة الموظف في المختبر.",
+    progOrientation: "التوجيه والتأهيل للموظفين الجدد (Orientation)",
+    progAnnualMandatory: "التدريب السنوي الإلزامي للسلامة والجودة",
+    progRefresher: "التدريب التنشيطي وتحديث البروتوكولات",
+    progCompetency: "تقييم الكفاءة المهنية الإكلينيكية",
+    progDeptSpecific: "التدريبات التخصصية بالأقسام",
+    progPolicyUpdate: "تحديثات السياسات والمعايير المخبرية",
+    progRecertification: "إعادة الاعتماد والتأهيل الدوري",
+    activeStatus: "نشط في بيئة العمل",
+    plannedStatus: "جاهز ومُهيأ للتوسيع",
+
+    certTitle: "شهادة اجتياز البرنامج التدريبي المخبري",
+    certSub: "مركز التميز والتدريب الإكلينيكي - معامل شلبي للتحاليل الطبية",
+    certCertifiesThat: "يشهد المركز رسميًا بأن الزميل / الزميلة",
+    certHasFulfilled: "قد أتم بنجاح كافة المتطلبات النظرية والعملية المقررة لمساق",
+    certCourseName: "اسم المقرر التدريبي",
+    certAccreditation: "معتمدة وفق معايير الجودة والاعتماد المخبري الدولي CAP و ISO 15189",
+    certIssuedOn: "تاريخ الاعتماد والإصدار",
+    certChiefMedicalOfficer: "مدير عام المختبرات ورئيس لجنة التدريب",
+    certDigitalVerification: "التحقق الرقمي ورمز QR الرسمي",
+    certStatusActive: "الحالة: معتمدة وموثقة إلكترونيًا",
+    certPrintPdf: "طباعة / حفظ الشهادة PDF",
+    certShareLinkedIn: "مشاركة الإنجاز",
+    certCopyLink: "نسخ رابط التحقق",
+    certCopied: "تم نسخ رابط التحقق!",
+    certRecipientLabel: "المتدرب المعتمد",
+    officialCert: "شهادة معتمدة",
+    certOfCompletion: "شهادة إتمام مسار",
+    downloadPrintPdf: "تنزيل / طباعة PDF",
+    share: "مشاركة",
+    credentialIdLabel: "الرقم التسلسلي للشهادة",
+    verificationBadge: "موثقة رقميًا",
+    qrScanToVerify: "امسح الرمز للتحقق من مصداقية الشهادة",
+
+    welcomeBack: "أهلاً بك مجددًا",
+    welcomeDesc: "أنت تتابع مسارك التوجيهي الإلزامي في المختبر. أكمل الخطوات بالتسلسل المعتمد.",
+    resumeTraining: "استكمال التدريب",
+    overallProgress: "نسبة الإنجاز الإجمالية",
+    phaseCompleted: "محطة الإنجاز",
+    phaseDesc: "تتطلب جميع المقررات تحقيق نسبة اجتياز 80% فأكثر.",
+    upNext: "المقرر التالي في المسار",
+    activeModulesTitle: "مقررات المسار التوجيهي المتسلسل",
+    activeModulesDesc: "اضغط على المقرر المفتوح لمراجعة المواد والدخول للاختبار.",
+    exploreRoadmap: "استعراض المسار الأكاديمي",
+    estTime: "الوقت التقديري",
+    mins: "دقيقة",
+    hrs: "ساعات",
+    reviewMaterial: "مراجعة المحتوى",
+    resumeModule: "متابعة المقرر",
+    startModule: "بدء المقرر",
+    lookingForSOPs: "هل تبحث عن أدلة العمل القياسية (SOP)؟",
+    sopBannerDesc: "تصفح مكتبة البروتوكولات المخبرية وإجراءات التشغيل المعتمدة.",
+    viewSOPLibrary: "فتح مكتبة الأدلة القياسية",
+    selectCourse: "اختر المقرر",
+    allCourses: "كافة مقررات التوجيه",
+    curriculumPlaylist: "دروس المقرر",
+    playing: "قيد التشغيل",
+    inVideoQuiz: "سؤال أثناء المحاضرة",
+    resumeVideo: "استئناف",
+    checkAnswer: "تحقق من الإجابة",
+    continueVideo: "متابعة الدرس",
+    playbackSpeed: "سرعة التشغيل",
+    takeAssessment: "دخول اختبار المقرر",
+    learningObjectives: "الأهداف التعليمية للمقرر",
+    sopHandbooks: "أدلة وبروتوكولات العمل القياسية",
+    tabOverview: "نظرة عامة",
+    tabTranscript: "النص المفرغ",
+    tabNotes: "ملاحظات إكلينيكية",
+    addNotePlaceholder: "اكتب ملاحظاتك حول هذا الكورس...",
+    saveNote: "حفظ الملاحظة",
+    noNotesYet: "لا توجد ملاحظات مدونة بعد.",
+    filterByCourse: "تصفية المقررات",
+    courseCompleted: "تم إكمال المقرر",
+    courseProgress: "نسبة إنجاز المقرر",
+    leadershipTitle: "مسار القيادة الإكلينيكية",
+    leadershipDesc: "سبع مراحل رئيسية لتأهيل المشرفين في المختبرات الطبية.",
+    stagesCount: "مراحل",
+    growTitle: "نموذج GROW للتوجيه الإداري",
+    growSubtitle: "الهدف، الواقع، الخيارات، والإرادة",
+    growDesc: "إطار عملي لتوجيه أخصائيي وفنيي المختبر في بيئة العمل اليومية.",
+    targetCompetencies: "الكفاءات المستهدفة",
+    leadershipToolkits: "أدوات القيادة",
+    interactiveGrowWorksheet: "استمارة تطبيق نموذج GROW",
+    goalTitle: "1. تحديد الهدف (Goal)",
+    goalDesc: "صياغة أهداف مخبرية محددة وقابلة للقياس.",
+    realityTitle: "2. فحص الواقع (Reality)",
+    realityDesc: "تقييم سير العينات الحالي ونقاط الاختناق.",
+    optionsTitle: "3. استكشاف الخيارات (Options)",
+    optionsDesc: "ابتكار حلول تشغيلية وبدائل لتحسين الأداء.",
+    willTitle: "4. الإرادة وخطة العمل (Will)",
+    willDesc: "تحديد المسؤوليات والجدول الزمني للرقابة.",
+    saveCoachingPlan: "حفظ خطة التوجيه",
+    savedToast: "تم حفظ الخطة في سجلك الإكلينيكي.",
+    managersForum: "منتدى نقاش المشرفين",
+    shareInsight: "مشاركة تجربة",
+    postComment: "نشر التعليق",
+    helpful: "مفيد",
+    replies: "ردود",
+    performanceTitle: "سجل الكفاءات والتدقيق المخبري",
+    performanceDesc: "نتائج الاختبارات والمحاولات وسجل إتقان معايير الجودة.",
+    proficiencyGrade: "مستوى الكفاءة العام",
+    proficiencyNote: "مبني على نتائج المحاولات الأولى وتطبيقات أدلة SOP.",
+    competenciesChecklist: "قائمة الكفاءات الأساسية",
+    mastered: "مُتقن",
+    inProgress: "قيد المتابعة",
+    assessmentHistory: "سجل نتائج الاختبارات",
+    filterAll: "كافة السجلات",
+    filterSafety: "السلامة والأمان الحيوي",
+    filterSpecimen: "المرحلة ما قبل التحليلية",
+    filterQC: "مراقبة الجودة",
+    filterLeadership: "الممارسات الإشرافية",
+    downloadResource: "تنزيل الوثيقة",
+    coachingFramework: "نموذج التدريب GROW",
+    welcomeSubtext: "منظومة التوجيه المخبري لمعامل شلبي",
+    activeModules: "مقررات المسار التوجيهي الإلزامي",
+    performanceSubtext: "سجل الكفاءات الجاهز لتدقيق الجودة",
+    coreCompetencies: "الكفاءات المثبتة",
+    sopLibrary: "أدلة التشغيل القياسية (SOP)",
+    assessmentCompleted: "تم إكمال التقييم",
+    finalScorePct: "الدرجة النهائية (%)",
+    viewCert: "عرض الشهادة",
+    question: "السؤال",
+    previous: "السابق",
+    finishQuiz: "إنهاء الاختبار",
+  }
+};
