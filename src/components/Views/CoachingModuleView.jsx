@@ -1,78 +1,53 @@
 import React, { useState } from 'react';
-import { ViewType, ForumPost } from '../../types';
-import { 
-  GraduationCap, 
-  Clock, 
-  Award, 
-  Download, 
-  CheckCircle, 
-  Play, 
-  Lock, 
-  MessageSquare, 
-  ThumbsUp, 
-  Send, 
-  ChevronRight, 
-  Sparkles, 
-  FileText 
-} from 'lucide-react';
+import { Clock, Award, Download, CheckCircle, Play, Lock, MessageSquare, ThumbsUp, Send, ChevronRight, Sparkles, FileText } from 'lucide-react';
 import { mockForumPosts } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
-
-interface CoachingModuleViewProps {
-  onNavigate: (view: ViewType) => void;
-}
-
-export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNavigate }) => {
-  const { t, isRTL } = useLanguage();
-  const [posts, setPosts] = useState<ForumPost[]>(mockForumPosts);
-  const [newComment, setNewComment] = useState('');
-
-  const handleLike = (id: string) => {
-    setPosts(prev => prev.map(p => {
-      if (p.id === id) {
-        return {
-          ...p,
-          likes: p.userLiked ? p.likes - 1 : p.likes + 1,
-          userLiked: !p.userLiked
-        };
-      }
-      return p;
-    }));
-  };
-
-  const handleAddComment = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newComment.trim()) return;
-
-    const post: ForumPost = {
-      id: `post-${Date.now()}`,
-      author: isRTL ? 'د. سارة المنصوري' : 'Dr. Sarah Al-Mansouri',
-      role: isRTL ? 'أخصائي إكلينيكي أول' : 'SENIOR SPECIALIST',
-      avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAGgUBhTHQtOx4cCa4r8Jj9pCBL-Z07YKFjSf7em3NxZFQBtPP7yBbC2SsxYkRTDWegzmmj71XVB3dpi_IYu_D8t8BPQ7I8UyXItx8YZXouwPh2NWBmAFs7dnZWj89DMN9ERFYIaEh1keS445KPjAGw6-N3oa1Nx8nBrViO0o3zWlrSeZOFMuygDnonqgSUJybRYiPUbwlxZWhYhMy4ttdfI8HVY0Qj1PTyoWDWwpxnu9hDQ2gzdUXRRA',
-      timeAgo: isRTL ? 'الآن' : 'Just now',
-      content: newComment,
-      likes: 0,
-      userLiked: false,
-      replies: 0,
+export const CoachingModuleView = ({ onNavigate }) => {
+    const { t, isRTL } = useLanguage();
+    const [posts, setPosts] = useState(mockForumPosts);
+    const [newComment, setNewComment] = useState('');
+    const handleLike = (id) => {
+        setPosts(prev => prev.map(p => {
+            if (p.id === id) {
+                return {
+                    ...p,
+                    likes: p.userLiked ? p.likes - 1 : p.likes + 1,
+                    userLiked: !p.userLiked
+                };
+            }
+            return p;
+        }));
     };
-
-    setPosts([post, ...posts]);
-    setNewComment('');
-  };
-
-  return (
-    <div className="space-y-8 animate-in fade-in duration-300 text-start">
+    const handleAddComment = (e) => {
+        e.preventDefault();
+        if (!newComment.trim())
+            return;
+        const post = {
+            id: `post-${Date.now()}`,
+            author: isRTL ? 'د. سارة المنصوري' : 'Dr. Sarah Al-Mansouri',
+            role: isRTL ? 'أخصائي إكلينيكي أول' : 'SENIOR SPECIALIST',
+            avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAGgUBhTHQtOx4cCa4r8Jj9pCBL-Z07YKFjSf7em3NxZFQBtPP7yBbC2SsxYkRTDWegzmmj71XVB3dpi_IYu_D8t8BPQ7I8UyXItx8YZXouwPh2NWBmAFs7dnZWj89DMN9ERFYIaEh1keS445KPjAGw6-N3oa1Nx8nBrViO0o3zWlrSeZOFMuygDnonqgSUJybRYiPUbwlxZWhYhMy4ttdfI8HVY0Qj1PTyoWDWwpxnu9hDQ2gzdUXRRA',
+            timeAgo: isRTL ? 'الآن' : 'Just now',
+            content: newComment,
+            likes: 0,
+            userLiked: false,
+            replies: 0,
+        };
+        setPosts([post, ...posts]);
+        setNewComment('');
+    };
+    return (<div className="space-y-8 animate-in fade-in duration-300 text-start">
       
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs font-semibold text-[#9995A6]">
         <button onClick={() => onNavigate('dashboard')} className="hover:text-[#0B96C7] cursor-pointer">
           {t.navDashboard}
         </button>
-        <ChevronRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
+        <ChevronRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`}/>
         <button onClick={() => onNavigate('leadership_path')} className="hover:text-[#0B96C7] cursor-pointer">
           {t.navLeadership}
         </button>
-        <ChevronRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
+        <ChevronRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`}/>
         <span className="text-[#0B96C7]">{t.coachingFramework}</span>
       </nav>
 
@@ -85,34 +60,31 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
                 {isRTL ? "المرحلة 02 • مقرر معتمد" : "Stage 02 • Certified Module"}
               </span>
               <span className="px-3 py-1 bg-[#0B96C7]/10 text-[#0B96C7] text-xs font-bold rounded-full flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5" />
+                <Clock className="w-3.5 h-3.5"/>
                 {isRTL ? "المدة: ساعتان ونصف" : "2.5 hrs Duration"}
               </span>
               <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full flex items-center gap-1">
-                <Award className="w-3.5 h-3.5" />
+                <Award className="w-3.5 h-3.5"/>
                 5 CME Credits
               </span>
             </div>
 
             <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-[#485261]">
-              {isRTL 
-                ? "التوجيه للنجاح: تطبيق نموذج GROW وحلقات التغذية الراجعة" 
-                : "Coaching for Success: GROW Model & Feedback Loops"}
+              {isRTL
+            ? "التوجيه للنجاح: تطبيق نموذج GROW وحلقات التغذية الراجعة"
+            : "Coaching for Success: GROW Model & Feedback Loops"}
             </h1>
 
             <p className="text-sm text-[#9995A6] max-w-3xl leading-relaxed">
-              {isRTL 
-                ? "تزويد قادة المختبرات بمنهجية تدريبية منظمة للبيئات الطبية. تعلم كيفية تحويل المواقف التشغيلية اليومية لفرص تطوير لكادر الفنيين باستخدام الاستماع النشط والتغذية الراجعة الفعالة."
-                : "Equip yourself with structured coaching frameworks designed for clinical environments. Learn how to transform daily lab interactions into growth opportunities using active listening and empathetic feedback."}
+              {isRTL
+            ? "تزويد قادة المختبرات بمنهجية تدريبية منظمة للبيئات الطبية. تعلم كيفية تحويل المواقف التشغيلية اليومية لفرص تطوير لكادر الفنيين باستخدام الاستماع النشط والتغذية الراجعة الفعالة."
+            : "Equip yourself with structured coaching frameworks designed for clinical environments. Learn how to transform daily lab interactions into growth opportunities using active listening and empathetic feedback."}
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <button
-              onClick={() => onNavigate('video_lesson')}
-              className="px-6 py-3 bg-[#0B96C7] hover:bg-[#0B96C7] text-white font-bold text-sm rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <Play className={`w-4 h-4 fill-current ${isRTL ? 'rotate-180' : ''}`} />
+            <button onClick={() => onNavigate('video_lesson')} className="px-6 py-3 bg-[#0B96C7] hover:bg-[#0B96C7] text-white font-bold text-sm rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <Play className={`w-4 h-4 fill-current ${isRTL ? 'rotate-180' : ''}`}/>
               <span>{t.resumeModule}</span>
             </button>
           </div>
@@ -125,23 +97,21 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
           </h3>
           <div className="flex flex-wrap gap-2">
             {(isRTL ? [
-              'الاستماع السريري الفعّال',
-              'إطار تدريب GROW (الهدف، الواقع، الخيارات، المسار)',
-              'حلقات التغذية الراجعة البناءة',
-              'بناء عقلية النمو المهني',
-              'بروتوكولات التهدئة وحل الخلافات'
-            ] : [
-              'Active Listening',
-              'GROW Coaching Framework',
-              'Feedback Loops',
-              'Growth Mindset Catalyst',
-              'De-escalation Protocols'
-            ]).map((comp, i) => (
-              <span key={i} className="px-3 py-1.5 bg-[#DEE2E8] text-[#485261] text-xs font-semibold rounded-xl border border-[#C0CAD8] flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#0B96C7]" />
+            'الاستماع السريري الفعّال',
+            'إطار تدريب GROW (الهدف، الواقع، الخيارات، المسار)',
+            'حلقات التغذية الراجعة البناءة',
+            'بناء عقلية النمو المهني',
+            'بروتوكولات التهدئة وحل الخلافات'
+        ] : [
+            'Active Listening',
+            'GROW Coaching Framework',
+            'Feedback Loops',
+            'Growth Mindset Catalyst',
+            'De-escalation Protocols'
+        ]).map((comp, i) => (<span key={i} className="px-3 py-1.5 bg-[#DEE2E8] text-[#485261] text-xs font-semibold rounded-xl border border-[#C0CAD8] flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#0B96C7]"/>
                 {comp}
-              </span>
-            ))}
+              </span>))}
           </div>
         </div>
       </div>
@@ -149,7 +119,7 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
       {/* Leadership Tools & Downloads Section */}
       <div className="bg-gradient-to-r from-[#0B96C7]/5 to-[#0B96C7]/5 rounded-3xl p-6 border border-[#C0CAD8]">
         <h2 className="font-headline font-bold text-lg text-[#485261] mb-4 flex items-center gap-2">
-          <FileText className="w-5 h-5 text-[#0B96C7]" />
+          <FileText className="w-5 h-5 text-[#0B96C7]"/>
           <span>{isRTL ? "حقائب الأدوات القيادية والنماذج الجاهزة" : "Leadership Toolkits & Templates"}</span>
         </h2>
 
@@ -168,13 +138,8 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
                 </p>
               </div>
             </div>
-            <a
-              href="#download"
-              onClick={(e) => { e.preventDefault(); alert(isRTL ? 'جاري تحميل نموذج GROW التدريبي...' : 'Downloading GROW Model Template PDF...'); }}
-              className="p-2 text-[#0B96C7] hover:bg-[#DEE2E8] rounded-xl transition-colors cursor-pointer"
-              title="Download PDF"
-            >
-              <Download className="w-5 h-5" />
+            <a href="#download" onClick={(e) => { e.preventDefault(); alert(isRTL ? 'جاري تحميل نموذج GROW التدريبي...' : 'Downloading GROW Model Template PDF...'); }} className="p-2 text-[#0B96C7] hover:bg-[#DEE2E8] rounded-xl transition-colors cursor-pointer" title="Download PDF">
+              <Download className="w-5 h-5"/>
             </a>
           </div>
 
@@ -192,13 +157,8 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
                 </p>
               </div>
             </div>
-            <a
-              href="#download"
-              onClick={(e) => { e.preventDefault(); alert(isRTL ? 'جاري تحميل دليل التغذية الراجعة...' : 'Downloading Feedback Canvas PDF...'); }}
-              className="p-2 text-[#0B96C7] hover:bg-[#DEE2E8] rounded-xl transition-colors cursor-pointer"
-              title="Download PDF"
-            >
-              <Download className="w-5 h-5" />
+            <a href="#download" onClick={(e) => { e.preventDefault(); alert(isRTL ? 'جاري تحميل دليل التغذية الراجعة...' : 'Downloading Feedback Canvas PDF...'); }} className="p-2 text-[#0B96C7] hover:bg-[#DEE2E8] rounded-xl transition-colors cursor-pointer" title="Download PDF">
+              <Download className="w-5 h-5"/>
             </a>
           </div>
         </div>
@@ -214,22 +174,19 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
           {/* Lesson 1 */}
           <div className="p-4 rounded-2xl border border-[#C0CAD8] bg-[#DEE2E8] flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
+              <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0"/>
               <div>
                 <h4 className="font-bold text-sm text-[#485261]">
                   {isRTL ? "الدرس 01: المبادئ الأساسية للتوجيه الإكلينيكي" : "Lesson 01: Foundational Coaching Principles"}
                 </h4>
                 <p className="text-xs text-[#9995A6]">
-                  {isRTL 
-                    ? "التحول من الإدارة التوجيهية الصرفة إلى التمكين القيادي الملهم. (35 دقيقة)"
-                    : "Understanding the shift from directive management to empowering leadership. (35 mins)"}
+                  {isRTL
+            ? "التحول من الإدارة التوجيهية الصرفة إلى التمكين القيادي الملهم. (35 دقيقة)"
+            : "Understanding the shift from directive management to empowering leadership. (35 mins)"}
                 </p>
               </div>
             </div>
-            <button
-              onClick={() => onNavigate('video_lesson')}
-              className="px-3.5 py-1.5 bg-[#DEE2E8] hover:bg-[#C0CAD8] text-[#485261] text-xs font-semibold rounded-xl cursor-pointer"
-            >
+            <button onClick={() => onNavigate('video_lesson')} className="px-3.5 py-1.5 bg-[#DEE2E8] hover:bg-[#C0CAD8] text-[#485261] text-xs font-semibold rounded-xl cursor-pointer">
               {isRTL ? "مراجعة" : "Review"}
             </button>
           </div>
@@ -250,17 +207,14 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
                   </span>
                 </div>
                 <p className="text-xs text-[#9995A6] mt-0.5">
-                  {isRTL 
-                    ? "الهدف، الواقع، الخيارات، وخطة العمل - دراسات حالة تطبيقية. (45 دقيقة)"
-                    : "Goal, Reality, Options, and Way Forward interactive case studies. (45 mins)"}
+                  {isRTL
+            ? "الهدف، الواقع، الخيارات، وخطة العمل - دراسات حالة تطبيقية. (45 دقيقة)"
+            : "Goal, Reality, Options, and Way Forward interactive case studies. (45 mins)"}
                 </p>
               </div>
             </div>
-            <button
-              onClick={() => onNavigate('video_lesson')}
-              className="px-4 py-2 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-xl shadow-xs flex items-center gap-1.5 shrink-0 cursor-pointer"
-            >
-              <Play className={`w-3.5 h-3.5 fill-current ${isRTL ? 'rotate-180' : ''}`} />
+            <button onClick={() => onNavigate('video_lesson')} className="px-4 py-2 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-xl shadow-xs flex items-center gap-1.5 shrink-0 cursor-pointer">
+              <Play className={`w-3.5 h-3.5 fill-current ${isRTL ? 'rotate-180' : ''}`}/>
               <span>{isRTL ? "استئناف" : "Resume"}</span>
             </button>
           </div>
@@ -268,15 +222,15 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
           {/* Lesson 3 */}
           <div className="p-4 rounded-2xl border border-[#DEE2E8] bg-white opacity-70 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <Lock className="w-5 h-5 text-[#C0CAD8] shrink-0" />
+              <Lock className="w-5 h-5 text-[#C0CAD8] shrink-0"/>
               <div>
                 <h4 className="font-bold text-sm text-[#485261]">
                   {isRTL ? "الدرس 03: حلقات التغذية الراجعة البناءة" : "Lesson 03: Constructive Feedback Loops"}
                 </h4>
                 <p className="text-xs text-[#9995A6]">
-                  {isRTL 
-                    ? "إتقان أساليب التقييم غير الدفاعية خلال الورديات الطبية الحرجة. (40 دقيقة)"
-                    : "Mastering non-defensive feedback techniques in high-pressure lab shifts. (40 mins)"}
+                  {isRTL
+            ? "إتقان أساليب التقييم غير الدفاعية خلال الورديات الطبية الحرجة. (40 دقيقة)"
+            : "Mastering non-defensive feedback techniques in high-pressure lab shifts. (40 mins)"}
                 </p>
               </div>
             </div>
@@ -292,46 +246,32 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
         <div className="flex items-center justify-between">
           <div>
             <h2 className="font-headline font-bold text-xl text-[#485261] flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-[#0B96C7]" />
+              <MessageSquare className="w-5 h-5 text-[#0B96C7]"/>
               <span>{isRTL ? "منتدى قادة المختبرات وتبادل الخبرات" : "Manager's Forum & Peer Insights"}</span>
             </h2>
             <p className="text-xs text-[#9995A6] mt-0.5">
-              {isRTL 
-                ? "ناقش سيناريوهات الإرشاد والتوجيه الواقعية مع زملاء العمل بمختبرات شلبي."
-                : "Discuss real-world coaching scenarios with fellow lab leaders across Shalaby Labs locations."}
+              {isRTL
+            ? "ناقش سيناريوهات الإرشاد والتوجيه الواقعية مع زملاء العمل بمختبرات شلبي."
+            : "Discuss real-world coaching scenarios with fellow lab leaders across Shalaby Labs locations."}
             </p>
           </div>
         </div>
 
         {/* Comment Input */}
         <form onSubmit={handleAddComment} className="flex gap-3">
-          <input
-            type="text"
-            placeholder={isRTL ? "شارك رؤيتك التوجيهية أو اطرح استفساراً لقيادات المختبر..." : "Share your coaching insights or ask a question..."}
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            className="flex-1 px-4 py-2.5 bg-[#DEE2E8] border border-[#C0CAD8] focus:border-[#0B96C7] rounded-2xl text-sm focus:outline-none transition-all"
-          />
-          <button
-            type="submit"
-            className="px-5 py-2.5 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-2xl shadow-sm flex items-center gap-2 transition-all cursor-pointer"
-          >
-            <Send className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+          <input type="text" placeholder={isRTL ? "شارك رؤيتك التوجيهية أو اطرح استفساراً لقيادات المختبر..." : "Share your coaching insights or ask a question..."} value={newComment} onChange={(e) => setNewComment(e.target.value)} className="flex-1 px-4 py-2.5 bg-[#DEE2E8] border border-[#C0CAD8] focus:border-[#0B96C7] rounded-2xl text-sm focus:outline-none transition-all"/>
+          <button type="submit" className="px-5 py-2.5 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-2xl shadow-sm flex items-center gap-2 transition-all cursor-pointer">
+            <Send className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`}/>
             <span>{isRTL ? "نشر" : "Post"}</span>
           </button>
         </form>
 
         {/* Posts List */}
         <div className="space-y-4">
-          {posts.map((post) => (
-            <div key={post.id} className="p-5 rounded-2xl bg-[#DEE2E8] border border-[#C0CAD8] space-y-3">
+          {posts.map((post) => (<div key={post.id} className="p-5 rounded-2xl bg-[#DEE2E8] border border-[#C0CAD8] space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <img
-                    src={post.avatarUrl}
-                    alt={post.author}
-                    className="w-9 h-9 rounded-full object-cover border border-[#0B96C7]"
-                  />
+                  <img src={post.avatarUrl} alt={post.author} className="w-9 h-9 rounded-full object-cover border border-[#0B96C7]"/>
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-bold text-[#485261]">{post.author}</span>
@@ -349,26 +289,19 @@ export const CoachingModuleView: React.FC<CoachingModuleViewProps> = ({ onNaviga
               </p>
 
               <div className="flex items-center gap-4 pt-2 text-xs text-[#9995A6]">
-                <button
-                  onClick={() => handleLike(post.id)}
-                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition-colors cursor-pointer ${
-                    post.userLiked ? 'bg-[#0B96C7]/15 text-[#0B96C7] font-bold' : 'hover:bg-[#C0CAD8]'
-                  }`}
-                >
-                  <ThumbsUp className="w-3.5 h-3.5" />
+                <button onClick={() => handleLike(post.id)} className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition-colors cursor-pointer ${post.userLiked ? 'bg-[#0B96C7]/15 text-[#0B96C7] font-bold' : 'hover:bg-[#C0CAD8]'}`}>
+                  <ThumbsUp className="w-3.5 h-3.5"/>
                   <span>{post.likes} {isRTL ? "مفيد" : "Helpful"}</span>
                 </button>
 
                 <button className="flex items-center gap-1.5 px-3 py-1 hover:bg-[#C0CAD8] rounded-full transition-colors cursor-pointer">
-                  <MessageSquare className="w-3.5 h-3.5" />
+                  <MessageSquare className="w-3.5 h-3.5"/>
                   <span>{post.replies} {isRTL ? "ردود" : "Replies"}</span>
                 </button>
               </div>
-            </div>
-          ))}
+            </div>))}
         </div>
       </div>
 
-    </div>
-  );
+    </div>);
 };

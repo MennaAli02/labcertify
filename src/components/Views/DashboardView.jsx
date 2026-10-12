@@ -1,48 +1,21 @@
 import React from 'react';
-import { ViewType, UserProfile, Course } from '../../types';
-import { 
-  Play, 
-  CheckCircle2, 
-  Clock, 
-  BookOpen, 
-  Star, 
-  ArrowRight, 
-  Award, 
-  ShieldCheck, 
-  TrendingUp, 
-  FileText 
-} from 'lucide-react';
+import { Play, CheckCircle2, Clock, BookOpen, Star, ArrowRight, Award, ShieldCheck, TrendingUp, FileText } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { mockCourses } from '../../data/mockData';
-
-interface DashboardViewProps {
-  user: UserProfile;
-  modules: Course[];
-  onNavigate: (view: ViewType) => void;
-  onSelectModule: (module: Course) => void;
-}
-
-export const DashboardView: React.FC<DashboardViewProps> = ({
-  user,
-  modules = mockCourses,
-  onNavigate,
-  onSelectModule,
-}) => {
-  const { t, isRTL } = useLanguage();
-  const activeCourse = modules.find(m => m.status === 'In Progress') || modules[1] || modules[0];
-
-  return (
-    <div className="space-y-8 animate-in fade-in duration-300">
+export const DashboardView = ({ user, modules = mockCourses, onNavigate, onSelectModule, }) => {
+    const { t, isRTL } = useLanguage();
+    const activeCourse = modules.find(m => m.status === 'In Progress') || modules[1] || modules[0];
+    return (<div className="space-y-8 animate-in fade-in duration-300">
       
       {/* Welcome Banner Header */}
       <div className="bg-gradient-to-r from-[#0B96C7] via-[#0B96C7] to-[#0B96C7] rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
         {/* Subtle background glow */}
-        <div className={`absolute ${isRTL ? '-left-10' : '-right-10'} -bottom-10 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none`} />
+        <div className={`absolute ${isRTL ? '-left-10' : '-right-10'} -bottom-10 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none`}/>
         
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 text-start">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/15 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide">
-              <ShieldCheck className="w-4 h-4 text-emerald-300" />
+              <ShieldCheck className="w-4 h-4 text-emerald-300"/>
               <span>{isRTL ? user.phaseAr || "المرحلة الأولى: السلامة المخبرية والمعايير" : user.phase}</span>
             </div>
 
@@ -56,22 +29,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
-            <button
-              onClick={() => {
-                onSelectModule(activeCourse);
-                onNavigate('video_lesson');
-              }}
-              className="px-6 py-3 bg-[#ffffff] text-[#0B96C7] font-bold text-sm rounded-2xl shadow-lg hover:bg-emerald-50 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <Play className={`w-4 h-4 fill-current text-[#0B96C7] ${isRTL ? 'rotate-180' : ''}`} />
+            <button onClick={() => {
+            onSelectModule(activeCourse);
+            onNavigate('video_lesson');
+        }} className="px-6 py-3 bg-[#ffffff] text-[#0B96C7] font-bold text-sm rounded-2xl shadow-lg hover:bg-emerald-50 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer">
+              <Play className={`w-4 h-4 fill-current text-[#0B96C7] ${isRTL ? 'rotate-180' : ''}`}/>
               <span>{t.resumeTraining}</span>
             </button>
-            <button
-              onClick={() => onNavigate('certificate')}
-              className="p-3 bg-white/15 hover:bg-white/25 rounded-2xl transition-colors text-white cursor-pointer"
-              title={t.officialCert}
-            >
-              <Award className="w-5 h-5" />
+            <button onClick={() => onNavigate('certificate')} className="p-3 bg-white/15 hover:bg-white/25 rounded-2xl transition-colors text-white cursor-pointer" title={t.officialCert}>
+              <Award className="w-5 h-5"/>
             </button>
           </div>
         </div>
@@ -88,7 +54,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 {t.overallProgress}
               </h2>
               <span className="p-2 bg-[#DEE2E8] text-[#0B96C7] rounded-xl">
-                <TrendingUp className="w-5 h-5" />
+                <TrendingUp className="w-5 h-5"/>
               </span>
             </div>
 
@@ -96,22 +62,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               {/* Circular Progress SVG */}
               <div className="relative w-24 h-24 shrink-0 flex items-center justify-center">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                  <path
-                    className="text-[#C0CAD8]"
-                    strokeWidth="3.5"
-                    stroke="currentColor"
-                    fill="none"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    className="text-[#0B96C7]"
-                    strokeDasharray={`${user.overallProgress}, 100`}
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                    stroke="currentColor"
-                    fill="none"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
+                  <path className="text-[#C0CAD8]" strokeWidth="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                  <path className="text-[#0B96C7]" strokeDasharray={`${user.overallProgress}, 100`} strokeWidth="3.5" strokeLinecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 </svg>
                 <div className="absolute text-center">
                   <span className="font-headline font-extrabold text-xl text-[#485261]">
@@ -125,9 +77,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   {isRTL ? "إكمال المرحلة الأولى" : "Phase 1 Progress"}
                 </p>
                 <p className="text-xs text-[#9995A6] mt-1 leading-relaxed">
-                  {isRTL 
-                    ? "تم إنجاز 3 من أصل 4 مقررات أساسية ومطلوبة." 
-                    : "3 of 4 core modules completed on track."}
+                  {isRTL
+            ? "تم إنجاز 3 من أصل 4 مقررات أساسية ومطلوبة."
+            : "3 of 4 core modules completed on track."}
                 </p>
               </div>
             </div>
@@ -135,12 +87,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
           <div className="mt-4 pt-4 border-t border-[#DEE2E8] flex items-center justify-between text-xs font-semibold text-[#0B96C7]">
             <span>{isRTL ? "معتمد لمعايير المستوى الثاني BSL-2" : "Level 2 Safety Certified"}</span>
-            <button 
-              onClick={() => onNavigate('performance')}
-              className="hover:underline flex items-center gap-1 cursor-pointer"
-            >
+            <button onClick={() => onNavigate('performance')} className="hover:underline flex items-center gap-1 cursor-pointer">
               <span>{isRTL ? "عرض الإحصائيات" : "View stats"}</span>
-              <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
+              <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`}/>
             </button>
           </div>
         </div>
@@ -161,33 +110,26 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               </p>
             </div>
 
-            <img
-              src={activeCourse.imageUrl}
-              alt={activeCourse.title}
-              className="w-24 h-24 rounded-2xl object-cover shadow-sm border border-[#C0CAD8] hidden sm:block shrink-0"
-            />
+            <img src={activeCourse.imageUrl} alt={activeCourse.title} className="w-24 h-24 rounded-2xl object-cover shadow-sm border border-[#C0CAD8] hidden sm:block shrink-0"/>
           </div>
 
           <div className="mt-6 pt-4 border-t border-[#C0CAD8] flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-4 text-xs font-medium text-[#485261]">
               <span className="flex items-center gap-1">
-                <Clock className="w-4 h-4 text-[#0B96C7]" />
+                <Clock className="w-4 h-4 text-[#0B96C7]"/>
                 {t.estTime}: {activeCourse.estMinutes} {t.mins}
               </span>
               <span className="flex items-center gap-1 font-semibold text-[#0B96C7]">
-                <CheckCircle2 className="w-4 h-4" />
+                <CheckCircle2 className="w-4 h-4"/>
                 {isRTL ? "نسبة الإنجاز" : "Progress"}: {activeCourse.progress}%
               </span>
             </div>
 
-            <button
-              onClick={() => {
-                onSelectModule(activeCourse);
-                onNavigate('video_lesson');
-              }}
-              className="px-5 py-2.5 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <Play className={`w-4 h-4 fill-current ${isRTL ? 'rotate-180' : ''}`} />
+            <button onClick={() => {
+            onSelectModule(activeCourse);
+            onNavigate('video_lesson');
+        }} className="px-5 py-2.5 bg-[#0B96C7] hover:bg-[#0B96C7] text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer">
+              <Play className={`w-4 h-4 fill-current ${isRTL ? 'rotate-180' : ''}`}/>
               <span>{t.resumeModule}</span>
             </button>
           </div>
@@ -204,18 +146,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               {t.activeModules}
             </h2>
             <p className="text-xs text-[#9995A6]">
-              {isRTL 
-                ? "اختر المقرر للاطلاع على الفيديوهات، بروتوكولات SOP واختبارات التقييم."
-                : "Select a course to view structured video lessons, SOP protocols, and assessments."}
+              {isRTL
+            ? "اختر المقرر للاطلاع على الفيديوهات، بروتوكولات SOP واختبارات التقييم."
+            : "Select a course to view structured video lessons, SOP protocols, and assessments."}
             </p>
           </div>
 
-          <button
-            onClick={() => onNavigate('leadership_path')}
-            className="text-xs font-bold text-[#0B96C7] hover:text-[#0B96C7] flex items-center gap-1 cursor-pointer self-start sm:self-auto"
-          >
+          <button onClick={() => onNavigate('leadership_path')} className="text-xs font-bold text-[#0B96C7] hover:text-[#0B96C7] flex items-center gap-1 cursor-pointer self-start sm:self-auto">
             <span>{isRTL ? "استعراض مسار القيادة المخبرية" : "Explore Leadership Roadmap"}</span>
-            <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+            <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`}/>
           </button>
         </div>
 
@@ -224,44 +163,31 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           {mockCourses.map((module) => {
             const isCompleted = module.status === 'Completed';
             const isInProgress = module.status === 'In Progress';
-
-            return (
-              <div
-                key={module.id}
-                className="bg-white rounded-3xl overflow-hidden border border-[#C0CAD8] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between group text-start"
-              >
+            return (<div key={module.id} className="bg-white rounded-3xl overflow-hidden border border-[#C0CAD8] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between group text-start">
                 <div>
                   {/* Module Card Image Banner */}
                   <div className="relative h-44 overflow-hidden bg-slate-100">
-                    <img
-                      src={module.imageUrl}
-                      alt={module.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <img src={module.imageUrl} alt={module.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
                     
                     <div className={`absolute top-3 ${isRTL ? 'right-3' : 'left-3'} flex items-center gap-2`}>
                       <span className="px-2.5 py-1 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold rounded-lg font-mono">
                         {module.code}
                       </span>
-                      {module.isStarred && (
-                        <span className="p-1 bg-amber-400 text-slate-900 rounded-lg shadow-xs">
-                          <Star className="w-3.5 h-3.5 fill-current" />
-                        </span>
-                      )}
+                      {module.isStarred && (<span className="p-1 bg-amber-400 text-slate-900 rounded-lg shadow-xs">
+                          <Star className="w-3.5 h-3.5 fill-current"/>
+                        </span>)}
                     </div>
 
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full backdrop-blur-md ${
-                        isCompleted ? 'bg-emerald-500/90 text-white' :
-                        isInProgress ? 'bg-[#0B96C7]/90 text-white' :
-                        'bg-slate-700/80 text-slate-200'
-                      }`}>
-                        {isCompleted 
-                          ? (isRTL ? 'مكتمل' : 'Completed') 
-                          : isInProgress 
-                          ? (isRTL ? 'قيد الدراسة' : 'In Progress') 
-                          : (isRTL ? 'متاح' : 'Upcoming')}
+                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full backdrop-blur-md ${isCompleted ? 'bg-emerald-500/90 text-white' :
+                    isInProgress ? 'bg-[#0B96C7]/90 text-white' :
+                        'bg-slate-700/80 text-slate-200'}`}>
+                        {isCompleted
+                    ? (isRTL ? 'مكتمل' : 'Completed')
+                    : isInProgress
+                        ? (isRTL ? 'قيد الدراسة' : 'In Progress')
+                        : (isRTL ? 'متاح' : 'Upcoming')}
                       </span>
 
                       <span className="text-xs font-medium text-white/90">
@@ -299,50 +225,33 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                       <span>{module.progress}%</span>
                     </div>
                     <div className="w-full h-1.5 bg-[#C0CAD8] rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full rounded-full transition-all ${
-                          isCompleted ? 'bg-emerald-500' : 'bg-[#0B96C7]'
-                        }`}
-                        style={{ width: `${module.progress}%` }}
-                      />
+                      <div className={`h-full rounded-full transition-all ${isCompleted ? 'bg-emerald-500' : 'bg-[#0B96C7]'}`} style={{ width: `${module.progress}%` }}/>
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => {
-                      onSelectModule(module);
-                      onNavigate('video_lesson');
-                    }}
-                    className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                      isCompleted
-                        ? 'bg-[#DEE2E8] hover:bg-[#C0CAD8] text-[#485261]'
-                        : isInProgress
+                  <button onClick={() => {
+                    onSelectModule(module);
+                    onNavigate('video_lesson');
+                }} className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${isCompleted
+                    ? 'bg-[#DEE2E8] hover:bg-[#C0CAD8] text-[#485261]'
+                    : isInProgress
                         ? 'bg-[#0B96C7] hover:bg-[#0B96C7] text-white shadow-xs'
-                        : 'bg-[#0B96C7]/10 hover:bg-[#0B96C7]/20 text-[#0B96C7]'
-                    }`}
-                  >
-                    {isCompleted ? (
-                      <>
-                        <BookOpen className="w-4 h-4" />
+                        : 'bg-[#0B96C7]/10 hover:bg-[#0B96C7]/20 text-[#0B96C7]'}`}>
+                    {isCompleted ? (<>
+                        <BookOpen className="w-4 h-4"/>
                         <span>{t.reviewMaterial}</span>
-                      </>
-                    ) : isInProgress ? (
-                      <>
-                        <Play className={`w-4 h-4 fill-current ${isRTL ? 'rotate-180' : ''}`} />
+                      </>) : isInProgress ? (<>
+                        <Play className={`w-4 h-4 fill-current ${isRTL ? 'rotate-180' : ''}`}/>
                         <span>{t.resumeModule}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Play className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                      </>) : (<>
+                        <Play className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`}/>
                         <span>{t.startModule}</span>
-                      </>
-                    )}
+                      </>)}
                   </button>
                 </div>
 
-              </div>
-            );
-          })}
+              </div>);
+        })}
         </div>
       </div>
 
@@ -350,30 +259,26 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="bg-[#ffffff] rounded-3xl p-6 border border-[#C0CAD8] flex flex-col sm:flex-row items-center justify-between gap-4 text-start">
         <div className="flex items-center gap-4">
           <div className="p-3 bg-[#0B96C7]/10 text-[#0B96C7] rounded-2xl shrink-0">
-            <FileText className="w-6 h-6" />
+            <FileText className="w-6 h-6"/>
           </div>
           <div>
             <h4 className="font-headline font-bold text-sm text-[#485261]">
-              {isRTL 
-                ? "هل تبحث عن أدلة الممارسة الإكلينيكية وإجراءات التشغيل القياسية (SOPs)؟" 
-                : "Looking for Clinical Guidelines & SOP Manuals?"}
+              {isRTL
+            ? "هل تبحث عن أدلة الممارسة الإكلينيكية وإجراءات التشغيل القياسية (SOPs)؟"
+            : "Looking for Clinical Guidelines & SOP Manuals?"}
             </h4>
             <p className="text-xs text-[#9995A6] mt-0.5 leading-relaxed">
-              {isRTL 
-                ? "يمكنك الوصول المباشر إلى كتيبات السلامة الكيميائية، ومصفوفات المعايرة، ونماذج نموذج GROW القيادي." 
-                : "Access standard operating procedures, chemical safety matrices, and printable GROW model canvases."}
+              {isRTL
+            ? "يمكنك الوصول المباشر إلى كتيبات السلامة الكيميائية، ومصفوفات المعايرة، ونماذج نموذج GROW القيادي."
+            : "Access standard operating procedures, chemical safety matrices, and printable GROW model canvases."}
             </p>
           </div>
         </div>
 
-        <button
-          onClick={() => onNavigate('resources')}
-          className="px-5 py-2.5 bg-[#DEE2E8] hover:bg-[#C0CAD8] text-[#0B96C7] text-xs font-bold rounded-xl transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-        >
+        <button onClick={() => onNavigate('resources')} className="px-5 py-2.5 bg-[#DEE2E8] hover:bg-[#C0CAD8] text-[#0B96C7] text-xs font-bold rounded-xl transition-colors whitespace-nowrap shrink-0 cursor-pointer">
           {isRTL ? "مكتبة البروتوكولات (SOP)" : "View SOP Library"}
         </button>
       </div>
 
-    </div>
-  );
+    </div>);
 };
