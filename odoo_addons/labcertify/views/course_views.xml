@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Course List View -->
+    <record id="view_lab_course_list" model="ir.ui.view">
+        <field name="name">lab.course.list</field>
+        <field name="model">lab.course</field>
+        <field name="arch" type="xml">
+            <list string="Laboratory Courses">
+                <field name="module_number"/>
+                <field name="code"/>
+                <field name="title"/>
+                <field name="category"/>
+                <field name="pass_score"/>
+                <field name="allowed_attempts"/>
+                <field name="validity_months"/>
+                <field name="status" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Course Form View -->
+    <record id="view_lab_course_form" model="ir.ui.view">
+        <field name="name">lab.course.form</field>
+        <field name="model">lab.course</field>
+        <field name="arch" type="xml">
+            <form string="Laboratory Course">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="code" string="Course Code"/>
+                        <h1><field name="code" placeholder="e.g. SP-100"/></h1>
+                    </div>
+                    <group>
+                        <group string="Basic Information">
+                            <field name="external_id"/>
+                            <field name="module_number"/>
+                            <field name="title"/>
+                            <field name="title_ar"/>
+                            <field name="category"/>
+                            <field name="category_ar"/>
+                            <field name="training_type"/>
+                            <field name="instructor"/>
+                        </group>
+                        <group string="Governance &amp; Policy">
+                            <field name="pass_score"/>
+                            <field name="allowed_attempts"/>
+                            <field name="validity_months"/>
+                            <field name="est_minutes"/>
+                            <field name="cme_credits"/>
+                            <field name="certificate_available"/>
+                            <field name="prerequisite_course_id"/>
+                            <field name="status"/>
+                            <field name="progress"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                                <field name="description_ar"/>
+                                <field name="image_url"/>
+                            </group>
+                        </page>
+                        <page string="Lessons">
+                            <field name="lesson_ids">
+                                <list>
+                                    <field name="lesson_number"/>
+                                    <field name="title"/>
+                                    <field name="duration"/>
+                                    <field name="protocol_id"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Materials">
+                            <field name="material_ids">
+                                <list>
+                                    <field name="title"/>
+                                    <field name="material_type"/>
+                                    <field name="duration_or_pages"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Question Bank">
+                            <field name="question_ids">
+                                <list>
+                                    <field name="question_number"/>
+                                    <field name="question"/>
+                                    <field name="correct_index"/>
+                                    <field name="difficulty"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_course" model="ir.actions.act_window">
+        <field name="name">Laboratory Courses</field>
+        <field name="res_model">lab.course</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new laboratory orientation course</p>
+        </field>
+    </record>
+</odoo>

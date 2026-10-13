@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Question List View -->
+    <record id="view_lab_quiz_question_list" model="ir.ui.view">
+        <field name="name">lab.quiz.question.list</field>
+        <field name="model">lab.quiz.question</field>
+        <field name="arch" type="xml">
+            <list string="Question Bank">
+                <field name="course_id"/>
+                <field name="question_number"/>
+                <field name="question"/>
+                <field name="correct_index"/>
+                <field name="difficulty" widget="badge"/>
+                <field name="module_ref"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Question Form View -->
+    <record id="view_lab_quiz_question_form" model="ir.ui.view">
+        <field name="name">lab.quiz.question.form</field>
+        <field name="model">lab.quiz.question</field>
+        <field name="arch" type="xml">
+            <form string="Quiz Question">
+                <sheet>
+                    <group>
+                        <group string="Question Details">
+                            <field name="course_id"/>
+                            <field name="question_number"/>
+                            <field name="question"/>
+                            <field name="question_ar"/>
+                            <field name="difficulty"/>
+                            <field name="module_ref"/>
+                        </group>
+                        <group string="Options &amp; Correct Answer">
+                            <field name="option1"/>
+                            <field name="option2"/>
+                            <field name="option3"/>
+                            <field name="option4"/>
+                            <field name="correct_index"/>
+                        </group>
+                    </group>
+                    <group string="Guidance &amp; Hints">
+                        <field name="hint"/>
+                        <field name="hint_ar"/>
+                        <field name="explanation"/>
+                        <field name="explanation_ar"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_quiz_question" model="ir.actions.act_window">
+        <field name="name">Question Bank</field>
+        <field name="res_model">lab.quiz.question</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Trainee List View -->
+    <record id="view_lab_trainee_list" model="ir.ui.view">
+        <field name="name">lab.trainee.list</field>
+        <field name="model">lab.trainee</field>
+        <field name="arch" type="xml">
+            <list string="Trainees &amp; Technologists">
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="job_title"/>
+                <field name="department"/>
+                <field name="branch"/>
+                <field name="role" widget="badge"/>
+                <field name="overall_progress" widget="progressbar"/>
+                <field name="status" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Trainee Form View -->
+    <record id="view_lab_trainee_form" model="ir.ui.view">
+        <field name="name">lab.trainee.form</field>
+        <field name="model">lab.trainee</field>
+        <field name="arch" type="xml">
+            <form string="Trainee Profile">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Full Name"/>
+                        <h1><field name="name" placeholder="Full Employee Name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Personnel Details">
+                            <field name="external_id"/>
+                            <field name="employee_id"/>
+                            <field name="name_ar"/>
+                            <field name="job_title"/>
+                            <field name="job_title_ar"/>
+                            <field name="role"/>
+                            <field name="department"/>
+                            <field name="branch"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group string="Orientation Status">
+                            <field name="status"/>
+                            <field name="overall_progress"/>
+                            <field name="hire_date"/>
+                            <field name="orientation_start_date"/>
+                            <field name="orientation_end_date"/>
+                            <field name="assigned_path_title"/>
+                            <field name="phase"/>
+                            <field name="last_active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Enrolled Courses">
+                            <field name="enrollment_ids">
+                                <list>
+                                    <field name="course_code"/>
+                                    <field name="status" widget="badge"/>
+                                    <field name="progress" widget="progressbar"/>
+                                    <field name="score"/>
+                                    <field name="attempts_used"/>
+                                    <field name="completed_date"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Certificates">
+                            <field name="certificate_ids">
+                                <list>
+                                    <field name="certificate_id"/>
+                                    <field name="course_code"/>
+                                    <field name="issue_date"/>
+                                    <field name="score"/>
+                                    <field name="status" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_trainee" model="ir.actions.act_window">
+        <field name="name">Trainees &amp; Staff</field>
+        <field name="res_model">lab.trainee</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top-level Root Menu -->
+    <menuitem id="menu_labcertify_root"
+              name="LabCertify"
+              web_icon="labcertify,static/description/icon.png"
+              sequence="10"/>
+
+    <!-- Main Navigation Submenus -->
+    <menuitem id="menu_labcertify_courses"
+              name="Curriculum &amp; Courses"
+              parent="menu_labcertify_root"
+              action="action_lab_course"
+              sequence="10"/>
+
+    <menuitem id="menu_labcertify_trainees"
+              name="Trainees &amp; Staff"
+              parent="menu_labcertify_root"
+              action="action_lab_trainee"
+              sequence="20"/>
+
+    <menuitem id="menu_labcertify_questions"
+              name="Question Bank"
+              parent="menu_labcertify_root"
+              action="action_lab_quiz_question"
+              sequence="30"/>
+
+    <menuitem id="menu_labcertify_certificates"
+              name="Certificates"
+              parent="menu_labcertify_root"
+              action="action_lab_certificate"
+              sequence="40"/>
+
+    <menuitem id="menu_labcertify_audit"
+              name="Audit Trail"
+              parent="menu_labcertify_root"
+              action="action_lab_audit_log"
+              sequence="50"/>
+</odoo>

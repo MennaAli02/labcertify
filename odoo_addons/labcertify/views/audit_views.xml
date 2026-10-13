@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Audit Log List View -->
+    <record id="view_lab_audit_log_list" model="ir.ui.view">
+        <field name="name">lab.audit.log.list</field>
+        <field name="model">lab.audit.log</field>
+        <field name="arch" type="xml">
+            <list string="Audit Trail Logs">
+                <field name="timestamp"/>
+                <field name="user_id_ref"/>
+                <field name="user_name"/>
+                <field name="user_role"/>
+                <field name="action"/>
+                <field name="target"/>
+                <field name="ip_address"/>
+                <field name="status" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Audit Log Form View -->
+    <record id="view_lab_audit_log_form" model="ir.ui.view">
+        <field name="name">lab.audit.log.form</field>
+        <field name="model">lab.audit.log</field>
+        <field name="arch" type="xml">
+            <form string="Audit Log Entry">
+                <sheet>
+                    <group>
+                        <group string="Event Details">
+                            <field name="timestamp"/>
+                            <field name="action"/>
+                            <field name="action_ar"/>
+                            <field name="target"/>
+                            <field name="status"/>
+                        </group>
+                        <group string="Origin &amp; User">
+                            <field name="user_id_ref"/>
+                            <field name="user_name"/>
+                            <field name="user_role"/>
+                            <field name="ip_address"/>
+                        </group>
+                    </group>
+                    <group string="Payload &amp; Details">
+                        <field name="details"/>
+                        <field name="details_ar"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_audit_log" model="ir.actions.act_window">
+        <field name="name">Compliance Audit Trail</field>
+        <field name="res_model">lab.audit.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

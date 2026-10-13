@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { mockPersonas, mockSequentialCourses, mockAuditTrailLogs, mockLessons, mockQuestionBank } from './data/mockData';
+import { labCertifyApi } from './services/api';
+
 // Top & Side Navigation
 import { TopNavBar } from './components/Navigation/TopNavBar';
 import { SideNavBar } from './components/Navigation/SideNavBar';
+
 // Modals
 import { NotificationsModal } from './components/Modals/NotificationsModal';
 import { SupportModal } from './components/Modals/SupportModal';
 import { SearchModal } from './components/Modals/SearchModal';
+
 // Views
 import { TraineeDashboardView } from './components/Views/TraineeDashboardView';
 import { TrainingAdminDashboardView } from './components/Views/TrainingAdminDashboardView';
@@ -17,10 +21,12 @@ import { PerformanceTrackerView } from './components/Views/PerformanceTrackerVie
 import { CertificateView } from './components/Views/CertificateView';
 import { LeadershipPathView } from './components/Views/LeadershipPathView';
 import { CoachingModuleView } from './components/Views/CoachingModuleView';
+
 export default function App() {
     const [currentView, setCurrentView] = useState('trainee_dashboard');
     const [user, setUser] = useState(mockPersonas.trainee);
-    // Centralized Courses State (persisted to localStorage)
+
+    // Centralized Courses State (persisted to localStorage & synced with Odoo)
     const [courses, setCourses] = useState(() => {
         try {
             const saved = localStorage.getItem('shalaby_courses_v3');
@@ -30,7 +36,8 @@ export default function App() {
             return mockSequentialCourses;
         }
     });
-    // Centralized Lessons State (persisted to localStorage)
+
+    // Centralized Lessons State (persisted to localStorage & synced with Odoo)
     const [lessons, setLessons] = useState(() => {
         try {
             const saved = localStorage.getItem('shalaby_lessons_v3');
@@ -40,7 +47,8 @@ export default function App() {
             return mockLessons;
         }
     });
-    // Centralized Questions State (persisted to localStorage)
+
+    // Centralized Questions State (persisted to localStorage & synced with Odoo)
     const [questions, setQuestions] = useState(() => {
         try {
             const saved = localStorage.getItem('shalaby_questions_v3');
@@ -50,18 +58,69 @@ export default function App() {
             return mockQuestionBank;
         }
     });
+
     // Rule: Strict sequential enforcement toggle (ON by default)
     const [sequentialEnforced, setSequentialEnforced] = useState(true);
     const [selectedCourse, setSelectedCourse] = useState(courses[1] || courses[0]);
     const [selectedCertificateCourseId, setSelectedCertificateCourseId] = useState("course-1");
     const [auditLogs, setAuditLogs] = useState(mockAuditTrailLogs);
+
     // Modals state
     const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
     const [isSupportOpen, setIsSupportOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    // Save courses when updated
+
+    // Initial Data Sync with Odoo 19 Backend
+    useEffect(() => {
+        let isMounted = true;
+        async function syncFromBackend() {
+            try {
+                const [liveCourses, liveLessons, liveQuestions, liveLogs, liveSettings, liveProfile] = await Promise.all([
+                    labCertifyApi.getCourses().catch(() => null),
+                    labCertifyApi.getLessons().catch(() => null),
+                    labCertifyApi.getQuestions().catch(() => null),
+                    labCertifyApi.getAuditLogs().catch(() => null),
+                    labCertifyApi.getSettings().catch(() => null),
+                    labCertifyApi.getProfile('trainee').catch(() => null),
+                ]);
+
+                if (!isMounted) return;
+
+                if (liveCourses && Array.isArray(liveCourses) && liveCourses.length > 0) {
+                    setCourses(liveCourses);
+                    setSelectedCourse(prev => liveCourses.find(c => c.id === prev?.id) || liveCourses[1] || liveCourses[0]);
+                }
+                if (liveLessons && Array.isArray(liveLessons) && liveLessons.length > 0) {
+                    setLessons(liveLessons);
+                }
+                if (liveQuestions && Array.isArray(liveQuestions) && liveQuestions.length > 0) {
+                    setQuestions(liveQuestions);
+                }
+                if (liveLogs && Array.isArray(liveLogs) && liveLogs.length > 0) {
+                    setAuditLogs(liveLogs);
+                }
+                if (liveSettings && typeof liveSettings.sequentialEnforced === 'boolean') {
+                    setSequentialEnforced(liveSettings.sequentialEnforced);
+                }
+                if (liveProfile && liveProfile.name) {
+                    setUser(prev => ({
+                        ...prev,
+                        ...liveProfile,
+                        id: liveProfile.id || prev.id,
+                    }));
+                }
+            } catch (err) {
+                console.warn('[LabCertify] Backend sync error, continuing with local storage:', err);
+            }
+        }
+
+        syncFromBackend();
+        return () => { isMounted = false; };
+    }, []);
+
+    // Save courses when updated & sync to Odoo
     const handleUpdateCourse = (updatedCourse) => {
         setCourses(prev => {
             const updated = prev.map(c => c.id === updatedCourse.id ? updatedCourse : c);
@@ -76,8 +135,12 @@ export default function App() {
         if (selectedCourse.id === updatedCourse.id) {
             setSelectedCourse(updatedCourse);
         }
+        labCertifyApi.updateCourse(updatedCourse.id, updatedCourse).catch(err => {
+            console.warn('[LabCertify] Backend course update failed:', err);
+        });
     };
-    // Add video lesson to course
+
+    // Add video lesson to course & sync to Odoo
     const handleAddLesson = (newLesson) => {
         setLessons(prev => {
             const updated = [newLesson, ...prev];
@@ -89,8 +152,12 @@ export default function App() {
             }
             return updated;
         });
+        labCertifyApi.createLesson(newLesson).catch(err => {
+            console.warn('[LabCertify] Backend create lesson failed:', err);
+        });
     };
-    // Update existing video lesson
+
+    // Update existing video lesson & sync to Odoo
     const handleUpdateLesson = (updatedLesson) => {
         setLessons(prev => {
             const updated = prev.map(l => l.id === updatedLesson.id ? updatedLesson : l);
@@ -102,8 +169,12 @@ export default function App() {
             }
             return updated;
         });
+        labCertifyApi.updateLesson(updatedLesson.id, updatedLesson).catch(err => {
+            console.warn('[LabCertify] Backend update lesson failed:', err);
+        });
     };
-    // Delete video lesson
+
+    // Delete video lesson & sync to Odoo
     const handleDeleteLesson = (lessonId) => {
         setLessons(prev => {
             const updated = prev.filter(l => l.id !== lessonId);
@@ -115,8 +186,12 @@ export default function App() {
             }
             return updated;
         });
+        labCertifyApi.deleteLesson(lessonId).catch(err => {
+            console.warn('[LabCertify] Backend delete lesson failed:', err);
+        });
     };
-    // Add question to question bank
+
+    // Add question to question bank & sync to Odoo
     const handleAddQuestion = (newQuestion) => {
         setQuestions(prev => {
             const updated = [newQuestion, ...prev];
@@ -128,8 +203,12 @@ export default function App() {
             }
             return updated;
         });
+        labCertifyApi.createQuestion(newQuestion).catch(err => {
+            console.warn('[LabCertify] Backend create question failed:', err);
+        });
     };
-    // Delete question from question bank
+
+    // Delete question from question bank & sync to Odoo
     const handleDeleteQuestion = (questionId) => {
         setQuestions(prev => {
             const updated = prev.filter(q => q.id !== questionId);
@@ -141,9 +220,14 @@ export default function App() {
             }
             return updated;
         });
+        labCertifyApi.deleteQuestion(questionId).catch(err => {
+            console.warn('[LabCertify] Backend delete question failed:', err);
+        });
     };
+
     const completedCoursesCount = courses.filter(c => c.status === 'Completed').length;
-    // Add audit trail entry
+
+    // Add audit trail entry & sync to Odoo
     const handleAddAuditLog = (action, actionAr, details, detailsAr, target) => {
         const newEntry = {
             id: `log-${Date.now()}`,
@@ -160,11 +244,16 @@ export default function App() {
             status: action.includes("Failed") || action.includes("Warning") ? "Warning" : action.includes("Blocked") ? "Security Alert" : "Success"
         };
         setAuditLogs(prev => [newEntry, ...prev]);
+        labCertifyApi.addAuditLog(newEntry).catch(err => {
+            console.warn('[LabCertify] Backend audit log sync failed:', err);
+        });
     };
-    // PASS COURSE LOGIC (Linear, conflict-free rule engine):
+
+    // PASS COURSE LOGIC:
     // 1. Mark current course as Completed with 100% progress
     // 2. Unlock the immediate next sequential course if sequentialEnforced is true
     // 3. Issue certificate and update user orientation progress
+    // 4. Sync status with Odoo backend
     const handlePassCourse = (courseId, score) => {
         setCourses(prevCourses => {
             const courseIndex = prevCourses.findIndex(c => c.id === courseId);
@@ -204,8 +293,21 @@ export default function App() {
             }));
             return updated;
         });
+
         setSelectedCertificateCourseId(courseId);
+
+        labCertifyApi.passCourse(courseId, score, user.id).catch(err => {
+            console.warn('[LabCertify] Backend passCourse sync failed:', err);
+        });
     };
+
+    const handleToggleSequential = (enabled) => {
+        setSequentialEnforced(enabled);
+        labCertifyApi.updateSettings({ sequentialEnforced: enabled }).catch(err => {
+            console.warn('[LabCertify] Backend update settings failed:', err);
+        });
+    };
+
     const renderView = () => {
         switch (currentView) {
             case 'dashboard':
@@ -222,7 +324,7 @@ export default function App() {
                         setSelectedCertificateCourseId(courseId);
                     }} onAddAuditLog={handleAddAuditLog}/>);
             case 'system_admin':
-                return (<SystemAdminDashboardView user={user.role === 'system_admin' ? user : mockPersonas.system_admin} onNavigate={setCurrentView} auditLogs={auditLogs} onAddAuditLog={handleAddAuditLog} courses={courses} onUpdateCourse={handleUpdateCourse} lessons={lessons} onAddLesson={handleAddLesson} onUpdateLesson={handleUpdateLesson} onDeleteLesson={handleDeleteLesson} questions={questions} onAddQuestion={handleAddQuestion} onDeleteQuestion={handleDeleteQuestion} sequentialEnforced={sequentialEnforced} onToggleSequentialEnforced={setSequentialEnforced}/>);
+                return (<SystemAdminDashboardView user={user.role === 'system_admin' ? user : mockPersonas.system_admin} onNavigate={setCurrentView} auditLogs={auditLogs} onAddAuditLog={handleAddAuditLog} courses={courses} onUpdateCourse={handleUpdateCourse} lessons={lessons} onAddLesson={handleAddLesson} onUpdateLesson={handleUpdateLesson} onDeleteLesson={handleDeleteLesson} questions={questions} onAddQuestion={handleAddQuestion} onDeleteQuestion={handleDeleteQuestion} sequentialEnforced={sequentialEnforced} onToggleSequentialEnforced={handleToggleSequential}/>);
             case 'video_lesson':
             case 'course_player':
                 return (<VideoLessonView onNavigate={setCurrentView} initialCourseId={selectedCourse.id} courses={courses} lessons={lessons} user={user} onSelectCourseForQuiz={(courseId) => {
@@ -248,18 +350,19 @@ export default function App() {
                 return (<TraineeDashboardView user={user} courses={courses} onNavigate={setCurrentView} onSelectCourse={setSelectedCourse}/>);
         }
     };
+
     return (<div className="h-screen w-full max-w-full overflow-x-hidden overflow-y-hidden bg-[#dee2e8] text-[#485261] flex flex-col selection:bg-[#6bbada]/30 selection:text-[#0b96c7] transition-colors duration-200">
       
       {/* Top Header Bar */}
       <TopNavBar currentView={currentView} onNavigate={setCurrentView} user={user} onChangeUser={setUser} onOpenNotifications={() => setIsNotificationsOpen(true)} onOpenSupport={() => setIsSupportOpen(true)} onOpenSearch={() => setIsSearchOpen(true)} onToggleMobileMenu={() => setIsMobileNavOpen(!isMobileNavOpen)} onToggleSidebar={() => setIsSidebarOpen(prev => !prev)} isSidebarOpen={isSidebarOpen} unreadCount={2}/>
 
-      {/* Main Container Layout — spans full width without horizontal overflow */}
+      {/* Main Container Layout â€” spans full width without horizontal overflow */}
       <div className="flex-1 flex w-full max-w-full overflow-hidden min-w-0">
         
         {/* Navigation Sidebar with Collapsed/Expanded Rail Mode */}
         <SideNavBar currentView={currentView} onNavigate={setCurrentView} isMobileOpen={isMobileNavOpen} onCloseMobile={() => setIsMobileNavOpen(false)} completedModulesCount={completedCoursesCount} totalModulesCount={courses.length} user={user} isOpen={isSidebarOpen} onToggleCollapse={() => setIsSidebarOpen(prev => !prev)}/>
 
-        {/* Dynamic View Content Area — expands to fit all screen when sidebar collapsed */}
+        {/* Dynamic View Content Area â€” expands to fit all screen when sidebar collapsed */}
         <main className="flex-1 p-3 sm:p-5 lg:p-6 w-full max-w-full min-w-0 overflow-y-auto overflow-x-hidden">
           {renderView()}
         </main>

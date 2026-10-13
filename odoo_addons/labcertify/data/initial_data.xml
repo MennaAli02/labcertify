@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- System Governance Settings -->
+        <record id="lab_settings_default" model="lab.system.settings">
+            <field name="sequential_enforced">True</field>
+            <field name="default_pass_score">80</field>
+            <field name="default_allowed_attempts">3</field>
+            <field name="default_validity_months">24</field>
+        </record>
+
+        <!-- The 5 Sequential Laboratory Orientation Courses -->
+        <!-- Course 1 -->
+        <record id="course_1" model="lab.course">
+            <field name="external_id">course-1</field>
+            <field name="module_number">1</field>
+            <field name="code">SP-100</field>
+            <field name="title">New Employee Orientation &amp; Laboratory Organization</field>
+            <field name="title_ar">التهيئة والتعريف بأنظمة ومعايير المختبرات</field>
+            <field name="description">Introduction to Shalaby Labs code of conduct, organizational hierarchy, compliance protocols, and core patient identification policies.</field>
+            <field name="description_ar">الميثاق المهني لمعامل شلبي، الهيكل التنظيمي للمختبر، سياسات السرية والأمان، وإجراءات التعريف الدقيق بالمرضى.</field>
+            <field name="category">Orientation Fundamentals</field>
+            <field name="category_ar">أساسيات التوجيه المهني</field>
+            <field name="training_type">Orientation</field>
+            <field name="training_type_ar">مسار التوجيه الإلزامي</field>
+            <field name="status">Completed</field>
+            <field name="progress">100</field>
+            <field name="est_minutes">30</field>
+            <field name="pass_score">80</field>
+            <field name="allowed_attempts">3</field>
+            <field name="validity_months">24</field>
+            <field name="certificate_available">True</field>
+            <field name="image_url">https://lh3.googleusercontent.com/aida-public/AB6AXuD8cazw4juCQCBfRGq_bzncciOP2nna16naJJOnuOHNG4aWEhHh3AdomEp9IyczOVmf_abndRToBYWFFpVeSpa50fxBNvY_Ao1qAP5OqkFtD78ejcx-ubxhJUzFw4L4RRBWPbaxdeKMSEJFYkxqukGAsBirbr-G0yUx006qUBlLMyV4C5VK03D3aVrCf7SqrnR6nn4m-MtLj99VaGvzfKNp6TfTwwl5lj8VjnMXsbZLX6NHxBKlsVeh_A</field>
+            <field name="instructor">Dr. Sarah Mansour</field>
+            <field name="instructor_ar">د. سارة منصور</field>
+            <field name="cme_credits">2</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <!-- Course 2 -->
+        <record id="course_2" model="lab.course">
+            <field name="external_id">course-2</field>
+            <field name="module_number">2</field>
+            <field name="code">SP-101</field>
+            <field name="title">Laboratory Safety &amp; Biosafety Level 2 Protocols</field>
+            <field name="title_ar">السلامة المهنية وبروتوكولات الأمان الحيوي BSL-2</field>
+            <field name="description">Personal protective equipment (PPE), chemical storage, emergency eyewash stations, biological spill cleanup, and fire safety.</field>
+            <field name="description_ar">معدات الوقاية الشخصية، التخزين الكيميائي الآمن، محطات غسيل العيون، إدارة الانسكابات البيولوجية، وإجراءات الإخلاء.</field>
+            <field name="category">Safety &amp; Compliance</field>
+            <field name="category_ar">السلامة والامتثال المهني</field>
+            <field name="training_type">Orientation</field>
+            <field name="training_type_ar">مسار التوجيه الإلزامي</field>
+            <field name="status">In Progress</field>
+            <field name="progress">40</field>
+            <field name="est_minutes">45</field>
+            <field name="pass_score">80</field>
+            <field name="allowed_attempts">3</field>
+            <field name="validity_months">12</field>
+            <field name="certificate_available">True</field>
+            <field name="image_url">https://lh3.googleusercontent.com/aida-public/AB6AXuA9c4yqXcqESQ7PWpL_k8P038Kt5i5xvqsVrG3jM8UM9_XsTtEMzxhAnnT36M0ZydgjygROQXdJKYFalG9RQyUT_s7b075a5iIEJfd8LRaCl5MKbePu2C7ANHHbGlnNnn4j58jrLVjJSlu-cjxqj3uJRfOM1rbaLhU0Z1Bmt8KWAmoZevoOay4uQlX2KtGLGz8hgFTCsjP-TM0q78xTvX6TwG6mCuJi6GrUdZINhRvScl9HVQSQWKsfWA</field>
+            <field name="instructor">Dr. Amira Shalaby</field>
+            <field name="instructor_ar">د. أميرة شلبي</field>
+            <field name="cme_credits">3</field>
+            <field name="prerequisite_course_id" ref="course_1"/>
+            <field name="sequence">2</field>
+        </record>
+
+        <!-- Course 3 -->
+        <record id="course_3" model="lab.course">
+            <field name="external_id">course-3</field>
+            <field name="module_number">3</field>
+            <field name="code">SP-102</field>
+            <field name="title">Infection Control, Disinfection &amp; Biomedical Waste</field>
+            <field name="title_ar">مكافحة العدوى، التطهير والتخلص الآمن من النفايات الطبية</field>
+            <field name="description">Color-coded biohazard bag sorting, autoclave validation, post-exposure needle-stick prophylaxis, and bench surface sterilization.</field>
+            <field name="description_ar">فرز أكياس النفايات الطبية الملونة، التحقق من كفاءة الأوتوكلاف، بروتوكولات وخز الإبر، وتطهير أسطح العمل المخبرية.</field>
+            <field name="category">Infection Prevention</field>
+            <field name="category_ar">الوقاية ومكافحة العدوى</field>
+            <field name="training_type">Orientation</field>
+            <field name="training_type_ar">مسار التوجيه الإلزامي</field>
+            <field name="status">Locked</field>
+            <field name="progress">0</field>
+            <field name="est_minutes">40</field>
+            <field name="pass_score">80</field>
+            <field name="allowed_attempts">3</field>
+            <field name="validity_months">12</field>
+            <field name="certificate_available">True</field>
+            <field name="image_url">https://lh3.googleusercontent.com/aida-public/AB6AXuCfiPXundRl1LkDBYNDs1fplS5qTKu4Umg3TTxCeSJpaIEIlSyhXtJ3-ANEENKUNRd8Itf5-tggZjEEzy6N5gBWfCB0fpb0QSzaZd40bNMitqNAq1ZuHkRklC0Ta8P7kQ-xpxi_vVgRKcFh1Yc_Xz7o4w6pM1ImkVBU8FSsh9CMsmCpCc7usSRHZc7oo_StMWhlSNJK5kh3XBweFmJGxKmrZ3WG8TG_K1_0YgCIHDy-f9qFSFUQJpvr5g</field>
+            <field name="instructor">Dr. Hesham Tawfik</field>
+            <field name="instructor_ar">د. هشام توفيق</field>
+            <field name="cme_credits">2</field>
+            <field name="prerequisite_course_id" ref="course_2"/>
+            <field name="sequence">3</field>
+        </record>
+
+        <!-- Course 4 -->
+        <record id="course_4" model="lab.course">
+            <field name="external_id">course-4</field>
+            <field name="module_number">4</field>
+            <field name="code">SP-201</field>
+            <field name="title">Phlebotomy, Specimen Accessioning &amp; Pre-Analytics</field>
+            <field name="title_ar">سحب العينات، تسجيل الأكواد وإدارة المرحلة قبل التحليلية</field>
+            <field name="description">Order of draw, anticoagulant tube inversions, centrifugation speeds and temperatures, hemolysis rejection criteria, and cold-chain integrity.</field>
+            <field name="description_ar">ترتيب سحب أنابيب الدم، تقليب مضادات التخثر، سرعات وحرارة الطرد المركزي، معايير رفض العينات المنحلة، وسلسلة التبريد.</field>
+            <field name="category">Pre-Analytical Quality</field>
+            <field name="category_ar">جودة ما قبل التحليل</field>
+            <field name="training_type">Orientation</field>
+            <field name="training_type_ar">مسار التوجيه الإلزامي</field>
+            <field name="status">Locked</field>
+            <field name="progress">0</field>
+            <field name="est_minutes">60</field>
+            <field name="pass_score">85</field>
+            <field name="allowed_attempts">3</field>
+            <field name="validity_months">24</field>
+            <field name="certificate_available">True</field>
+            <field name="image_url">https://lh3.googleusercontent.com/aida-public/AB6AXuDFWq7wz5N4d2j0F2qI2tN349x4q08gP9_1931-gKjLzXmZ19n24Y17pXfD6M8f84_v792b0-M2o7G2K9_5eX0X7542z42kX8e08dM2b6r07w9L_5q9e7r5</field>
+            <field name="instructor">Dr. Sarah Mansour</field>
+            <field name="instructor_ar">د. سارة منصور</field>
+            <field name="cme_credits">4</field>
+            <field name="prerequisite_course_id" ref="course_3"/>
+            <field name="sequence">4</field>
+        </record>
+
+        <!-- Course 5 -->
+        <record id="course_5" model="lab.course">
+            <field name="external_id">course-5</field>
+            <field name="module_number">5</field>
+            <field name="code">SP-301</field>
+            <field name="title">Analytical Quality Control &amp; Critical Result Reporting</field>
+            <field name="title_ar">ضبط الجودة التحليلية وإبلاغ النتائج الحرجة والإنذار</field>
+            <field name="description">Westgard multirules (1:2s, 1:3s, 2:2s, R:4s), Levey-Jennings chart troubleshooting, calibration verification, and critical call logging.</field>
+            <field name="description_ar">قواعد ويستغارد الإحصائية، تفسير مخططات ليفي جينينغز، التحقق من المعايرة، وإجراءات التبليغ الإلزامي للقيم الحرجة (Panic Values).</field>
+            <field name="category">Analytical Quality Control</field>
+            <field name="category_ar">مراقبة الجودة التحليلية</field>
+            <field name="training_type">Orientation</field>
+            <field name="training_type_ar">مسار التوجيه الإلزامي</field>
+            <field name="status">Locked</field>
+            <field name="progress">0</field>
+            <field name="est_minutes">60</field>
+            <field name="pass_score">85</field>
+            <field name="allowed_attempts">3</field>
+            <field name="validity_months">24</field>
+            <field name="certificate_available">True</field>
+            <field name="image_url">https://lh3.googleusercontent.com/aida-public/AB6AXuCHm7f6828b8k4r416_m87v32h2K_m8Gj4L793x0182_93d791240_98r4v72b07L82j4M19n02</field>
+            <field name="instructor">Dr. Amira Shalaby</field>
+            <field name="instructor_ar">د. أميرة شلبي</field>
+            <field name="cme_credits">4</field>
+            <field name="prerequisite_course_id" ref="course_4"/>
+            <field name="sequence">5</field>
+        </record>
+
+        <!-- Course 1 Materials -->
+        <record id="mat_1_1" model="lab.course.material">
+            <field name="course_id" ref="course_1"/>
+            <field name="external_id">mat-1-1</field>
+            <field name="material_type">video</field>
+            <field name="title">Welcome &amp; Laboratory Governance Video</field>
+            <field name="title_ar">فيديو الترحيب وحوكمة المنظومة المخبرية</field>
+            <field name="duration_or_pages">12 mins</field>
+            <field name="duration_or_pages_ar">12 دقيقة</field>
+        </record>
+        <record id="mat_1_2" model="lab.course.material">
+            <field name="course_id" ref="course_1"/>
+            <field name="external_id">mat-1-2</field>
+            <field name="material_type">pdf</field>
+            <field name="title">Employee Handbook &amp; SOP Guidelines</field>
+            <field name="title_ar">دليل الموظف الجديد وسياسات المختبر SOP</field>
+            <field name="duration_or_pages">24 pages</field>
+            <field name="duration_or_pages_ar">24 صفحة</field>
+        </record>
+
+        <!-- Course 2 Materials -->
+        <record id="mat_2_1" model="lab.course.material">
+            <field name="course_id" ref="course_2"/>
+            <field name="external_id">mat-2-1</field>
+            <field name="material_type">video</field>
+            <field name="title">BSL-2 Biosafety Demonstration Video</field>
+            <field name="title_ar">فيديو تطبيقي لإجراءات الأمان الحيوي BSL-2</field>
+            <field name="duration_or_pages">14 mins</field>
+            <field name="duration_or_pages_ar">14 دقيقة</field>
+        </record>
+        <record id="mat_2_2" model="lab.course.material">
+            <field name="course_id" ref="course_2"/>
+            <field name="external_id">mat-2-2</field>
+            <field name="material_type">pdf</field>
+            <field name="title">Chemical Hygiene Plan &amp; Spill Protocol</field>
+            <field name="title_ar">خطة النظافة الكيميائية وبروتوكول الانسكابات</field>
+            <field name="duration_or_pages">18 pages</field>
+            <field name="duration_or_pages_ar">18 صفحة</field>
+        </record>
+
+        <!-- Lessons for Course 1 -->
+        <record id="les_1_1" model="lab.lesson">
+            <field name="external_id">les-1-1</field>
+            <field name="course_id" ref="course_1"/>
+            <field name="stage_number">01</field>
+            <field name="lesson_number">1</field>
+            <field name="title">Clinical Hierarchy &amp; Regulatory Accreditations (CAP &amp; ISO 15189)</field>
+            <field name="title_ar">الهيكل التنظيمي للمختبر ومعايير الاعتماد الدولي</field>
+            <field name="duration">08:45</field>
+            <field name="status">Completed</field>
+            <field name="completed">True</field>
+            <field name="protocol_id">SOP-100.1</field>
+            <field name="description">Overview of Shalaby Labs standard operational hierarchy, medical confidentiality agreements, and quality standards.</field>
+            <field name="description_ar">شرح الهيكل التنظيمي العام، معايير الجودة الدولية ISO 15189، والتزامات سرية بيانات المرضى.</field>
+            <field name="video_url">https://lh3.googleusercontent.com/aida-public/AB6AXuD8cazw4juCQCBfRGq_bzncciOP2nna16naJJOnuOHNG4aWEhHh3AdomEp9IyczOVmf_abndRToBYWFFpVeSpa50fxBNvY_Ao1qAP5OqkFtD78ejcx-ubxhJUzFw4L4RRBWPbaxdeKMSEJFYkxqukGAsBirbr-G0yUx006qUBlLMyV4C5VK03D3aVrCf7SqrnR6nn4m-MtLj99VaGvzfKNp6TfTwwl5lj8VjnMXsbZLX6NHxBKlsVeh_A</field>
+            <field name="learning_objectives_json">["Understand line management reporting and supervisory chains.", "Comply with strict HIPAA and local patient privacy charters."]</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="les_1_2" model="lab.lesson">
+            <field name="external_id">les-1-2</field>
+            <field name="course_id" ref="course_1"/>
+            <field name="stage_number">02</field>
+            <field name="lesson_number">2</field>
+            <field name="title">Patient Identification &amp; Code of Conduct Protocols</field>
+            <field name="title_ar">إجراءات التحقق من هوية المريض وميثاق الشرف المهني</field>
+            <field name="duration">11:20</field>
+            <field name="status">Completed</field>
+            <field name="completed">True</field>
+            <field name="protocol_id">SOP-100.2</field>
+            <field name="description">Dual-identifier verification protocols at specimen reception and electronic accessioning.</field>
+            <field name="description_ar">التحقق الثنائي من الاسم ورقم الملف الطبي وتجنب أخطاء التبديل عند الاستلام.</field>
+            <field name="video_url">https://lh3.googleusercontent.com/aida-public/AB6AXuD8cazw4juCQCBfRGq_bzncciOP2nna16naJJOnuOHNG4aWEhHh3AdomEp9IyczOVmf_abndRToBYWFFpVeSpa50fxBNvY_Ao1qAP5OqkFtD78ejcx-ubxhJUzFw4L4RRBWPbaxdeKMSEJFYkxqukGAsBirbr-G0yUx006qUBlLMyV4C5VK03D3aVrCf7SqrnR6nn4m-MtLj99VaGvzfKNp6TfTwwl5lj8VjnMXsbZLX6NHxBKlsVeh_A</field>
+            <field name="learning_objectives_json">["Master two-identifier verification before any specimen draw.", "Understand ethical handling of diagnostic data and confidential patient charts."]</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <!-- Lessons for Course 2 -->
+        <record id="les_2_1" model="lab.lesson">
+            <field name="external_id">les-2-1</field>
+            <field name="course_id" ref="course_2"/>
+            <field name="stage_number">01</field>
+            <field name="lesson_number">1</field>
+            <field name="title">BSL-2 Safety Guidelines &amp; Personal Protective Gear</field>
+            <field name="title_ar">معدات الوقاية الشخصية وإرشادات الأمان الحيوي</field>
+            <field name="duration">14:20</field>
+            <field name="status">Currently Playing</field>
+            <field name="completed">False</field>
+            <field name="protocol_id">SOP-101.1</field>
+            <field name="description">Detailed protocols for PPE donning, doffing, eye wash emergency stations, and chemical hood air velocities.</field>
+            <field name="description_ar">بروتوكولات ارتداء وخلع معدات الوقاية الشخصية، محطات غسيل العيون، ومعدل سحب الهواء في كبائن الأمان.</field>
+            <field name="video_url">https://lh3.googleusercontent.com/aida-public/AB6AXuA9c4yqXcqESQ7PWpL_k8P038Kt5i5xvqsVrG3jM8UM9_XsTtEMzxhAnnT36M0ZydgjygROQXdJKYFalG9RQyUT_s7b075a5iIEJfd8LRaCl5MKbePu2C7ANHHbGlnNnn4j58jrLVjJSlu-cjxqj3uJRfOM1rbaLhU0Z1Bmt8KWAmoZevoOay4uQlX2KtGLGz8hgFTCsjP-TM0q78xTvX6TwG6mCuJi6GrUdZINhRvScl9HVQSQWKsfWA</field>
+            <field name="learning_objectives_json">["Master correct order of doffing PPE without hand contamination.", "Demonstrate emergency flush procedure for ocular chemical exposure."]</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="les_2_2" model="lab.lesson">
+            <field name="external_id">les-2-2</field>
+            <field name="course_id" ref="course_2"/>
+            <field name="stage_number">02</field>
+            <field name="lesson_number">2</field>
+            <field name="title">Biological Spill Kit Management &amp; Chemical Storage</field>
+            <field name="title_ar">إدارة الانسكابات البيولوجية والتخزين الكيميائي الآمن</field>
+            <field name="duration">12:15</field>
+            <field name="status">Not Started</field>
+            <field name="completed">False</field>
+            <field name="protocol_id">SOP-101.4</field>
+            <field name="description">Step-by-step procedures for deploying biological spill kits and handling corrosive acid bottles.</field>
+            <field name="description_ar">خطوات استخدام طقم الانسكابات البيولوجية والتخزين الصحيح للأحماض والمذيبات المتطايرة.</field>
+            <field name="video_url">https://lh3.googleusercontent.com/aida-public/AB6AXuA9c4yqXcqESQ7PWpL_k8P038Kt5i5xvqsVrG3jM8UM9_XsTtEMzxhAnnT36M0ZydgjygROQXdJKYFalG9RQyUT_s7b075a5iIEJfd8LRaCl5MKbePu2C7ANHHbGlnNnn4j58jrLVjJSlu-cjxqj3uJRfOM1rbaLhU0Z1Bmt8KWAmoZevoOay4uQlX2KtGLGz8hgFTCsjP-TM0q78xTvX6TwG6mCuJi6GrUdZINhRvScl9HVQSQWKsfWA</field>
+            <field name="learning_objectives_json">["Correctly cordon off a biological spill and allow 15 minutes of bleach dwell time.", "Store flammable organic solvents in certified flame-rated cabinets."]</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <!-- Question Bank Questions -->
+        <!-- Course 1 Questions -->
+        <record id="q_101" model="lab.quiz.question">
+            <field name="external_id">q-101</field>
+            <field name="course_id" ref="course_1"/>
+            <field name="question_number">1</field>
+            <field name="question">According to laboratory accreditation standards, what are the primary two patient identifiers required before specimen collection?</field>
+            <field name="question_ar">وفقاً لمعايير الاعتماد المخبري، ما هما المعرّفان الأساسيان الواجب التحقق منهما قبل سحب العينة؟</field>
+            <field name="hint">Recall standard patient safety goals regarding full names and unique medical records.</field>
+            <field name="hint_ar">تذكر معايير أمان المرضى بخصوص الاسم الكامل ورقم الملف الطبي.</field>
+            <field name="option1">Patient's room number and bed location.</field>
+            <field name="option2">Patient's full official name and unique Medical Record Number (MRN).</field>
+            <field name="option3">Attending physician's name and clinic number.</field>
+            <field name="option4">Insurance policy card number and test date.</field>
+            <field name="option1_ar">رقم غرفة المريض ورقم السرير.</field>
+            <field name="option2_ar">الاسم الرسمي الكامل للمريض ورقم السجل الطبي الموحد (MRN).</field>
+            <field name="option3_ar">اسم الطبيب المعالج ورقم العيادة.</field>
+            <field name="option4_ar">رقم بطاقة التأمين وتاريخ إجراء التحليل.</field>
+            <field name="correct_index">1</field>
+            <field name="explanation">Accreditation guidelines strictly mandate at least two unique identifiers (Full Name and MRN or Date of Birth). Room or bed numbers are never acceptable identifiers.</field>
+            <field name="explanation_ar">تشترط معايير الاعتماد معرّفين فريدين على الأقل (الاسم الكامل ورقم الملف الطبي أو تاريخ الميلاد)، ولا يُعتمد رقم الغرفة أو السرير مطلقاً.</field>
+            <field name="module_ref">SOP-001: Patient Identification Policy</field>
+            <field name="difficulty">Basic</field>
+        </record>
+
+        <record id="q_102" model="lab.quiz.question">
+            <field name="external_id">q-102</field>
+            <field name="course_id" ref="course_1"/>
+            <field name="question_number">2</field>
+            <field name="question">Under Shalaby Labs confidentiality and patient data regulations, when is an employee allowed to disclose lab results over the telephone?</field>
+            <field name="question_ar">في إطار سياسات سرية وحماية بيانات المرضى، متى يُسمح للموظف بإبلاغ نتائج التحاليل هاتفياً؟</field>
+            <field name="hint">Critical lab results have a strict documented verbal read-back procedure.</field>
+            <field name="hint_ar">النتائج الحرجة تتطلب إجراءات إبلاغ شفهي محددة مع طلب إعادة القراءة للتأكيد.</field>
+            <field name="option1">To any caller who states they are a family relative.</field>
+            <field name="option2">Only for authorized critical/panic values to verified clinical personnel using mandatory read-back.</field>
+            <field name="option3">At any time if the caller knows the patient's age and tests.</field>
+            <field name="option4">Never under any circumstances, even in acute emergency care.</field>
+            <field name="option1_ar">لأي متصل يدعي أنه من أفراد عائلة المريض.</field>
+            <field name="option2_ar">فقط في حالات النتائج الحرجة (Critical Values) للكوادر الطبية المعتمدة مع التحقق وإعادة القراءة Read-Back.</field>
+            <field name="option3_ar">في أي وقت إذا كان المتصل يعلم سن المريض ونوع الفحص.</field>
+            <field name="option4_ar">لا يُسمح إطلاقاً بأي حال من الأحوال حتى في الطوارئ.</field>
+            <field name="correct_index">1</field>
+            <field name="explanation">Verbal transmission of results is restricted to urgent critical values to licensed caregivers with documented read-back to prevent fatal diagnostic errors.</field>
+            <field name="explanation_ar">يقتصر الإبلاغ الهاتفي على النتائج الحرجة المستعجلة للكوادر الطبية المرخصة مع توثيق إعادة القراءة منعاً للأخطاء الطبية القاتلة.</field>
+            <field name="module_ref">SOP-004: Communication of Diagnostic Findings</field>
+            <field name="difficulty">Intermediate</field>
+        </record>
+
+        <!-- Course 2 Questions -->
+        <record id="q_201" model="lab.quiz.question">
+            <field name="external_id">q-201</field>
+            <field name="course_id" ref="course_2"/>
+            <field name="question_number">1</field>
+            <field name="question">What is the mandatory minimum duration for flushing eyes at an emergency eyewash station after accidental chemical splash?</field>
+            <field name="question_ar">ما هو الحد الأدنى الإلزامي لغسيل العينين في محطة غسيل العيون الطارئة عند التعرض لرذاذ كيميائي؟</field>
+            <field name="hint">Chemical ocular decontamination requires prolonged irrigation to neutralize residual substances.</field>
+            <field name="hint_ar">يتطلب التطهير العيني غسيلاً مستمراً لضمان إزالة المادة الكيميائية بالكامل.</field>
+            <field name="option1">2 minutes with gentle blinking.</field>
+            <field name="option2">5 minutes with eyes closed.</field>
+            <field name="option3">15 full consecutive minutes holding eyelids open.</field>
+            <field name="option4">30 seconds followed by sterile saline drops.</field>
+            <field name="option1_ar">دقيقتان مع الرمش الخفيف.</field>
+            <field name="option2_ar">5 دقائق مع إغلاق العينين.</field>
+            <field name="option3_ar">15 دقيقة كاملة متواصلة مع إبقاء الجفون مفتوحة بالقوة.</field>
+            <field name="option4_ar">30 ثانية تليها قطرات محلول ملحي معقم.</field>
+            <field name="correct_index">2</field>
+            <field name="explanation">OSHA and CDC guidelines require a minimum of 15 continuous minutes of irrigation with eyelids held open to prevent corrosive chemical burns.</field>
+            <field name="explanation_ar">تشترط معايير OSHA ومراكز مكافحة الأمراض 15 دقيقة متصلة لغسيل العينين بالماء الجاري مع فتح الجفون لتفادي الحروق الكيميائية الدائمة.</field>
+            <field name="module_ref">SOP-012: Chemical Safety &amp; Eyewash Protocols</field>
+            <field name="difficulty">Basic</field>
+        </record>
+
+        <record id="q_202" model="lab.quiz.question">
+            <field name="external_id">q-202</field>
+            <field name="course_id" ref="course_2"/>
+            <field name="question_number">2</field>
+            <field name="question">What is the proper action sequence when dealing with a major biological blood spill in the laboratory corridor?</field>
+            <field name="question_ar">ما هو التسلسل الصحيح عند التعامل مع انسكاب بيولوجي كبير لعينة دم في ممر المختبر؟</field>
+            <field name="hint">First alert others, protect yourself with PPE, cover the spill, and observe disinfectant dwell time.</field>
+            <field name="hint_ar">نبه الزملاء، ارتدِ معدات الوقاية، غطِّ الانسكاب بمناشف واترك المطهر لزمن التفاعل المحدد.</field>
+            <field name="option1">Wipe up immediately with dry paper towels then discard in general trash.</field>
+            <field name="option2">Evacuate area, don appropriate PPE, cover with absorbent towels, saturate with 1:10 sodium hypochlorite, and wait 15 minutes.</field>
+            <field name="option3">Pour water over it to dilute the concentration before mopping.</field>
+            <field name="option4">Spray air freshener and continue regular testing.</field>
+            <field name="option1_ar">المسح الفوري بمناشف ورقية جافة وإلقاؤها في القمامة العادية.</field>
+            <field name="option2_ar">تطويق المنطقة، ارتداء معدات الوقاية، التغطية بمناشف ماصة، الغمر بمحلول الكلور 1:10، والانتظار 15 دقيقة للتفاعل.</field>
+            <field name="option3_ar">صب الماء لتخفيف تركيز الدم قبل المسح العادي.</field>
+            <field name="option4_ar">رش معطر جو واستكمال العمل دون توقف.</field>
+            <field name="correct_index">1</field>
+            <field name="explanation">Biological spills require 10% sodium hypochlorite (1:10 household bleach) with a minimum 15-minute contact dwell time to effectively kill bloodborne pathogens.</field>
+            <field name="explanation_ar">تتطلب الانسكابات البيولوجية محلول هيبوكلوريت الصوديوم 10% مع زمن تفاعل 15 دقيقة لقتل الفيروسات ومسببات الأمراض المنقولة بالدم.</field>
+            <field name="module_ref">SOP-015: Biohazard Spill Response Plan</field>
+            <field name="difficulty">Intermediate</field>
+        </record>
+
+        <!-- Personas / Core Trainees -->
+        <!-- Trainee Persona: Ahmed Mohamed -->
+        <record id="trainee_ahmed" model="lab.trainee">
+            <field name="external_id">user-trainee-1</field>
+            <field name="name">Ahmed Mohamed</field>
+            <field name="name_ar">أحمد محمد</field>
+            <field name="employee_id">SL-2024-0482</field>
+            <field name="job_title">Medical Laboratory Technologist</field>
+            <field name="job_title_ar">أخصائي تحاليل طبية</field>
+            <field name="role">trainee</field>
+            <field name="department">Clinical Chemistry &amp; Hematology</field>
+            <field name="department_ar">الكيمياء الإكلينيكية وأمراض الدم</field>
+            <field name="branch">Cairo Main Facility (Al-Nasr)</field>
+            <field name="branch_ar">فرع القاهرة الرئيسي (النصر)</field>
+            <field name="hire_date">2024-09-01</field>
+            <field name="orientation_start_date">01 Sep 2024</field>
+            <field name="orientation_end_date">30 Nov 2024</field>
+            <field name="assigned_path_id">path-orientation-1</field>
+            <field name="assigned_path_title">Mandatory Clinical Laboratory Orientation Path</field>
+            <field name="assigned_path_title_ar">المسار التوجيهي الإلزامي لأخصائيي المختبرات الطبية</field>
+            <field name="phase">Course 2: Laboratory Safety</field>
+            <field name="phase_ar">المقرر الثاني: السلامة والأمان الحيوي</field>
+            <field name="avatar_url">https://lh3.googleusercontent.com/aida-public/AB6AXuAGgUBhTHQtOx4cCa4r8Jj9pCBL-Z07YKFjSf7em3NxZFQBtPP7yBbC2SsxYkRTDWegzmmj71XVB3dpi_IYu_D8t8BPQ7I8UyXItx8YZXouwPh2NWBmAFs7dnZWj89DMN9ERFYIaEh1keS445KPjAGw6-N3oa1Nx8nBrViO0o3zWlrSeZOFMuygDnonqgSUJybRYiPUbwlxZWhYhMy4ttdfI8HVY0Qj1PTyoWDWwpxnu9hDQ2gzdUXRRA</field>
+            <field name="initials">AM</field>
+            <field name="credential_id">SL-8924-AM</field>
+            <field name="overall_progress">20</field>
+            <field name="status">In Progress</field>
+            <field name="email">ahmed.mohamed@shalabylabs.com</field>
+            <field name="phone">+20 100 248 9912</field>
+        </record>
+
+        <!-- Training Admin Persona: Dr. Sarah Mansour -->
+        <record id="admin_sarah" model="lab.trainee">
+            <field name="external_id">user-admin-1</field>
+            <field name="name">Dr. Sarah Mansour</field>
+            <field name="name_ar">د. سارة منصور</field>
+            <field name="employee_id">SL-TRN-0012</field>
+            <field name="job_title">Head of Laboratory Training &amp; Development</field>
+            <field name="job_title_ar">رئيسة التدريب والتطوير المهني بالمختبرات</field>
+            <field name="role">training_admin</field>
+            <field name="department">Clinical Education &amp; Quality Training</field>
+            <field name="department_ar">التعليم الإكلينيكي وتدريب الجودة</field>
+            <field name="branch">Headquarters (Cairo)</field>
+            <field name="branch_ar">المقر الرئيسي (القاهرة)</field>
+            <field name="hire_date">2019-03-15</field>
+            <field name="phase">Training Supervision</field>
+            <field name="phase_ar">الإشراف والرقابة التدريبية</field>
+            <field name="avatar_url">https://lh3.googleusercontent.com/aida-public/AB6AXuDcuHaEnB3yQGNi0mnbYRO7SDI5gaYsJqGWcLx6StdQ0g5QUDKvIo3qpQyLQc3nramXV9vHwnShnNM-8CLuLmiYfFQVbm_d_s8GRIIX4W4399ChKFkG1tDEGMdV8UxKV27Vndv1MpcHMDG5vURDI40lkAz6T8mcC5wwVdE1B_Ha0qcJrPt7yY8r41w812VpobVFEsA0eYqoSgPlnsKOcC5s8lW9f0jVW11XKgF_hRI-5LyBTf6aGN3PQw</field>
+            <field name="initials">SM</field>
+            <field name="credential_id">SL-ADMIN-SM</field>
+            <field name="overall_progress">100</field>
+            <field name="status">Completed</field>
+            <field name="email">sarah.mansour@shalabylabs.com</field>
+            <field name="phone">+20 102 334 1122</field>
+        </record>
+
+        <!-- System Admin Persona: Eng. Khaled El-Sayed -->
+        <record id="admin_khaled" model="lab.trainee">
+            <field name="external_id">user-sys-1</field>
+            <field name="name">Eng. Khaled El-Sayed</field>
+            <field name="name_ar">م. خالد السيد</field>
+            <field name="employee_id">SL-SYS-0004</field>
+            <field name="job_title">Lead Systems &amp; LIMS Administrator</field>
+            <field name="job_title_ar">مدير النظم والبرمجيات الطبية LIMS</field>
+            <field name="role">system_admin</field>
+            <field name="department">Health Informatics &amp; IT Infrastructure</field>
+            <field name="department_ar">المعلوماتية الصحية والبنية التقنية</field>
+            <field name="branch">Enterprise Operations Center</field>
+            <field name="branch_ar">مركز العمليات التقنية الموحد</field>
+            <field name="hire_date">2018-01-10</field>
+            <field name="phase">LMS Systems Governance</field>
+            <field name="phase_ar">حوكمة نظم التدريب والرقابة</field>
+            <field name="avatar_url">https://lh3.googleusercontent.com/aida-public/AB6AXuAwUsZNPxMzYeGBRAjUJHubDNpr3REdJAYWQSJrnYwzbLnATIsPu5OWeJAgbXXC3DLjQnuZjQV40SMA8JuWO4_cfwyHgcbps9PPyAzebImxiR6LnhBU2bNozcfHPua4iPVkZ6bJkRuxGeDwhmemGs2Y3pvEg_1zHRmeblNKIhqxaUB35HxpVohx0-jpQbRrfLjnABnxnkVs8Cg1x9OCHK-SVhMJEfOmaGNrlSCaU4wC2g-z_tTc68eJxMRZa6p1RLQ4_KQrckn7B9so</field>
+            <field name="initials">KE</field>
+            <field name="credential_id">SL-SYS-KE</field>
+            <field name="overall_progress">100</field>
+            <field name="status">Completed</field>
+            <field name="email">khaled.elsayed@shalabylabs.com</field>
+            <field name="phone">+20 111 889 0041</field>
+        </record>
+
+        <!-- Enrollments for Ahmed Mohamed -->
+        <record id="enr_ahmed_c1" model="lab.trainee.course">
+            <field name="trainee_id" ref="trainee_ahmed"/>
+            <field name="course_id" ref="course_1"/>
+            <field name="status">Completed</field>
+            <field name="progress">100</field>
+            <field name="score">92</field>
+            <field name="attempts_used">1</field>
+            <field name="start_date">2024-09-02</field>
+            <field name="completed_date">05 Sep 2024</field>
+            <field name="certificate_id_ref">SL-CERT-2024-0482-1</field>
+            <field name="certificate_issued_date">05 Sep 2024</field>
+        </record>
+
+        <record id="enr_ahmed_c2" model="lab.trainee.course">
+            <field name="trainee_id" ref="trainee_ahmed"/>
+            <field name="course_id" ref="course_2"/>
+            <field name="status">In Progress</field>
+            <field name="progress">40</field>
+            <field name="score">0</field>
+            <field name="attempts_used">0</field>
+            <field name="start_date">2024-09-06</field>
+        </record>
+
+        <record id="enr_ahmed_c3" model="lab.trainee.course">
+            <field name="trainee_id" ref="trainee_ahmed"/>
+            <field name="course_id" ref="course_3"/>
+            <field name="status">Locked</field>
+            <field name="progress">0</field>
+        </record>
+
+        <record id="enr_ahmed_c4" model="lab.trainee.course">
+            <field name="trainee_id" ref="trainee_ahmed"/>
+            <field name="course_id" ref="course_4"/>
+            <field name="status">Locked</field>
+            <field name="progress">0</field>
+        </record>
+
+        <record id="enr_ahmed_c5" model="lab.trainee.course">
+            <field name="trainee_id" ref="trainee_ahmed"/>
+            <field name="course_id" ref="course_5"/>
+            <field name="status">Locked</field>
+            <field name="progress">0</field>
+        </record>
+
+        <!-- Certificate for Course 1 -->
+        <record id="cert_c1" model="lab.certificate">
+            <field name="certificate_id">SL-CERT-2024-0482-1</field>
+            <field name="trainee_id" ref="trainee_ahmed"/>
+            <field name="course_id" ref="course_1"/>
+            <field name="issue_date">05 September 2024</field>
+            <field name="expiry_date">05 September 2026</field>
+            <field name="score">92</field>
+            <field name="passing_score">80</field>
+            <field name="is_orientation_master">False</field>
+            <field name="verification_code">VER-9824-OK</field>
+            <field name="authorized_signer">Dr. Amira Shalaby, MD, FRCPath</field>
+            <field name="authorized_signer_ar">أ.د. أميرة شلبي - استشاري التحاليل الطبية ومدير عام الجودة</field>
+            <field name="status">valid</field>
+        </record>
+
+        <!-- Initial Audit Logs -->
+        <record id="audit_1" model="lab.audit.log">
+            <field name="external_id">log-109</field>
+            <field name="timestamp">2024-09-26 11:14:02</field>
+            <field name="user_id_ref">SL-TRN-0012</field>
+            <field name="user_name">Dr. Sarah Mansour</field>
+            <field name="user_role">Training Admin</field>
+            <field name="action">Assigned Orientation Path</field>
+            <field name="action_ar">تعيين مسار التوجيه الإلزامي</field>
+            <field name="details">Assigned Mandatory Clinical Orientation Path to Ahmed Mohamed (SL-2024-0482)</field>
+            <field name="details_ar">تم تعيين مسار التوجيه الإلزامي للموظف أحمد محمد (SL-2024-0482)</field>
+            <field name="target">Trainee: Ahmed Mohamed</field>
+            <field name="ip_address">192.168.10.45</field>
+            <field name="status">Success</field>
+        </record>
+
+        <record id="audit_2" model="lab.audit.log">
+            <field name="external_id">log-108</field>
+            <field name="timestamp">2024-09-26 09:42:15</field>
+            <field name="user_id_ref">SL-2024-0482</field>
+            <field name="user_name">Ahmed Mohamed</field>
+            <field name="user_role">Trainee</field>
+            <field name="action">Assessment Passed</field>
+            <field name="action_ar">اجتياز الاختبار بنجاح</field>
+            <field name="details">Passed Course SP-100 Assessment with 92% (Attempt 1/3). Next course unlocked.</field>
+            <field name="details_ar">اجتاز اختبار المقرر SP-100 بنسبة 92% (المحاولة 1 من 3)، وفك قفل المقرر التالي.</field>
+            <field name="target">Course: SP-100</field>
+            <field name="ip_address">10.0.4.121</field>
+            <field name="status">Success</field>
+        </record>
+
+        <record id="audit_3" model="lab.audit.log">
+            <field name="external_id">log-107</field>
+            <field name="timestamp">2024-09-26 09:42:16</field>
+            <field name="user_id_ref">SYSTEM_AUTO</field>
+            <field name="user_name">LMS Automation Engine</field>
+            <field name="user_role">System Admin</field>
+            <field name="action">Certificate Generated</field>
+            <field name="action_ar">توليد شهادة معتمدة بالباركود</field>
+            <field name="details">Generated official Certificate SL-CERT-2024-0482-1 with QR verification badge.</field>
+            <field name="details_ar">تم إصدار الشهادة الرسمية برقم SL-CERT-2024-0482-1 مع رمز التحقق الإلكتروني QR.</field>
+            <field name="target">Cert: SL-CERT-2024-0482-1</field>
+            <field name="ip_address">127.0.0.1</field>
+            <field name="status">Success</field>
+        </record>
+
+        <!-- Forum Post -->
+        <record id="forum_1" model="lab.forum.post">
+            <field name="external_id">post-1</field>
+            <field name="author">Dr. Sarah Mansour</field>
+            <field name="author_ar">د. سارة منصور</field>
+            <field name="role">HEAD OF TRAINING</field>
+            <field name="role_ar">رئيسة التدريب والتطوير</field>
+            <field name="avatar_url">https://lh3.googleusercontent.com/aida-public/AB6AXuDcuHaEnB3yQGNi0mnbYRO7SDI5gaYsJqGWcLx6StdQ0g5QUDKvIo3qpQyLQc3nramXV9vHwnShnNM-8CLuLmiYfFQVbm_d_s8GRIIX4W4399ChKFkG1tDEGMdV8UxKV27Vndv1MpcHMDG5vURDI40lkAz6T8mcC5wwVdE1B_Ha0qcJrPt7yY8r41w812VpobVFEsA0eYqoSgPlnsKOcC5s8lW9f0jVW11XKgF_hRI-5LyBTf6aGN3PQw</field>
+            <field name="time_ago">2 hours ago</field>
+            <field name="time_ago_ar">منذ ساعتين</field>
+            <field name="content">Welcome to all newly appointed clinical specialists! Please remember that all 5 orientation modules must be completed sequentially before independent bench testing begins.</field>
+            <field name="content_ar">أهلاً بجميع الزملاء الجدد! نذكركم بأن المقررات الخمسة إلزامية ومتسلسلة ويجب اجتيازها بالكامل قبل استلام العمل المستقل.</field>
+            <field name="likes">24</field>
+            <field name="user_liked">True</field>
+            <field name="replies">7</field>
+        </record>
+
+        <!-- Core Competencies -->
+        <record id="comp_1" model="lab.competency">
+            <field name="external_id">c1</field>
+            <field name="name">Laboratory Organization &amp; Policies</field>
+            <field name="name_ar">التنظيم والسياسات المخبرية</field>
+            <field name="level">Verified Competency</field>
+            <field name="level_ar">كفاءة موثقة</field>
+            <field name="mastered">True</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="comp_2" model="lab.competency">
+            <field name="external_id">c2</field>
+            <field name="name">BSL-2 Biosafety Containment</field>
+            <field name="name_ar">الأمان الحيوي واحتواء BSL-2</field>
+            <field name="level">In Assessment</field>
+            <field name="level_ar">قيد التقييم</field>
+            <field name="mastered">False</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <!-- Performance Record -->
+        <record id="perf_1" model="lab.performance.record">
+            <field name="external_id">perf-1</field>
+            <field name="trainee_id" ref="trainee_ahmed"/>
+            <field name="title">New Employee Orientation &amp; Lab Organization (SP-100)</field>
+            <field name="title_ar">التهيئة والتعريف بأنظمة ومعايير المختبرات (SP-100)</field>
+            <field name="completed_date">Sep 05, 2024</field>
+            <field name="completed_date_ar">05 سبتمبر 2024</field>
+            <field name="score">92</field>
+            <field name="max_score">100</field>
+            <field name="summary">Successfully passed on First Attempt. Verified by Training Admin.</field>
+            <field name="summary_ar">تم الاجتياز بنجاح من المحاولة الأولى بنسبة 92%. موثق إلكترونياً.</field>
+            <field name="tags">Accredited, First Attempt, Orientation</field>
+            <field name="icon">verified</field>
+        </record>
+    </data>
+</odoo>

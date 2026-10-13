@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lab_course_all,lab.course.all,model_lab_course,base.group_user,1,1,1,1
+access_lab_course_material_all,lab.course.material.all,model_lab_course_material,base.group_user,1,1,1,1
+access_lab_lesson_all,lab.lesson.all,model_lab_lesson,base.group_user,1,1,1,1
+access_lab_lesson_note_all,lab.lesson.note.all,model_lab_lesson_note,base.group_user,1,1,1,1
+access_lab_quiz_question_all,lab.quiz.question.all,model_lab_quiz_question,base.group_user,1,1,1,1
+access_lab_quiz_attempt_all,lab.quiz.attempt.all,model_lab_quiz_attempt,base.group_user,1,1,1,1
+access_lab_trainee_all,lab.trainee.all,model_lab_trainee,base.group_user,1,1,1,1
+access_lab_trainee_course_all,lab.trainee.course.all,model_lab_trainee_course,base.group_user,1,1,1,1
+access_lab_certificate_all,lab.certificate.all,model_lab_certificate,base.group_user,1,1,1,1
+access_lab_audit_log_all,lab.audit.log.all,model_lab_audit_log,base.group_user,1,1,1,1
+access_lab_forum_post_all,lab.forum.post.all,model_lab_forum_post,base.group_user,1,1,1,1
+access_lab_competency_all,lab.competency.all,model_lab_competency,base.group_user,1,1,1,1
+access_lab_performance_record_all,lab.performance.record.all,model_lab_performance_record,base.group_user,1,1,1,1
+access_lab_system_settings_all,lab.system.settings.all,model_lab_system_settings,base.group_user,1,1,1,1
