@@ -6,17 +6,10 @@ This document provides complete documentation for the custom **LabCertify** Odoo
 
 ## 1. System Overview & Connection Architecture
 
-- **Odoo Instance**: Odoo 19 Enterprise / Community
-- **Host Port**: `http://localhost:8019/` (mapped to container port `8069`)
+- **Odoo Instance**: Odoo 19
+- **Host Port**: `http://localhost:8019/`
 - **Database**: `labcertify`
-- **Master Password**: `admin123`
-- **Database User**: `admin`
-- **Database Password**: `admin`
 - **Module Name**: `labcertify`
-- **Addons Location**: `/mnt/extra-addons/labcertify` (Host: `C:\odoo-projects\odoo19\addons\labcertify` & Workspace: `odoo_addons/labcertify`)
-- **CORS Support**: All endpoints return `Access-Control-Allow-Origin: *` with full preflight `OPTIONS` support.
-
----
 
 ## 2. Authentication & Session Context
 
@@ -32,8 +25,8 @@ To interact with database `labcertify`, client requests should establish an auth
   "method": "call",
   "params": {
     "db": "labcertify",
-    "login": "admin",
-    "password": "admin"
+    "login": "",
+    "password": ""
   }
 }
 ```
@@ -45,8 +38,8 @@ To interact with database `labcertify`, client requests should establish an auth
     "uid": 2,
     "is_system": true,
     "db": "labcertify",
-    "name": "Administrator",
-    "username": "admin"
+    "name": "",
+    "username": ""
   }
 }
 ```
