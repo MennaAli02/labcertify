@@ -3,7 +3,7 @@
  * Base URL: http://localhost:8019 or relative proxy via Vite (/api)
  */
 
-const BASE_URL = ''; // Relative path leverages Vite dev server proxy to http://localhost:8019
+const BASE_URL = typeof window !== 'undefined' ? '' : 'http://localhost:8019';
 
 let isSessionInitialized = false;
 let sessionInitPromise = null;

@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Clock, Award, Download, CheckCircle, Play, Lock, MessageSquare, ThumbsUp, Send, ChevronRight, Sparkles, FileText } from 'lucide-react';
 import { mockForumPosts } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
+import { labCertifyApi } from '../../services/api';
+
 export const CoachingModuleView = ({ onNavigate }) => {
     const { t, isRTL } = useLanguage();
     const [posts, setPosts] = useState(mockForumPosts);
+
+    // Fetch live forum posts from Odoo backend
+    useEffect(() => {
+        labCertifyApi.getForumPosts()
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    setPosts(data);
+                }
+            })
+            .catch(err => console.warn('[CoachingModule] Backend forum posts load:', err));
+    }, []);
+
     const [newComment, setNewComment] = useState('');
     const handleLike = (id) => {
         setPosts(prev => prev.map(p => {
@@ -17,6 +31,10 @@ export const CoachingModuleView = ({ onNavigate }) => {
             }
             return p;
         }));
+        // Send like to Odoo backend
+        labCertifyApi.likeForumPost(id).catch(err => {
+            console.warn('[CoachingModule] Backend like post failed:', err);
+        });
     };
     const handleAddComment = (e) => {
         e.preventDefault();
@@ -35,6 +53,14 @@ export const CoachingModuleView = ({ onNavigate }) => {
         };
         setPosts([post, ...posts]);
         setNewComment('');
+        // Send new post to Odoo backend
+        labCertifyApi.createForumPost(post).then(created => {
+            if (created && created.id) {
+                setPosts(prev => [created, ...prev.filter(p => p.id !== post.id)]);
+            }
+        }).catch(err => {
+            console.warn('[CoachingModule] Backend create post failed:', err);
+        });
     };
     return (<div className="space-y-8 animate-in fade-in duration-300 text-start">
       

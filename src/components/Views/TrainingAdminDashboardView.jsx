@@ -3,9 +3,23 @@ import { Users, Check, CheckCircle2, Clock, AlertTriangle, Search, UserPlus, Fil
 import { mockTraineeAccounts, mockSequentialCourses, mockPersonas } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
 import { TablePagination } from '../Common/TablePagination';
+import { labCertifyApi } from '../../services/api';
+
 export const TrainingAdminDashboardView = ({ user = mockPersonas.training_admin, onNavigate, onViewCertificate, onAddAuditLog, }) => {
     const { t, isRTL } = useLanguage();
     const [trainees, setTrainees] = useState(mockTraineeAccounts);
+
+    // Fetch live trainees from Odoo backend
+    useEffect(() => {
+        labCertifyApi.getTrainees()
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    setTrainees(data);
+                }
+            })
+            .catch(err => console.warn('[TrainingAdmin] Backend load trainees:', err));
+    }, []);
+
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedBranch, setSelectedBranch] = useState('All');
     const [selectedDept, setSelectedDept] = useState('All');
@@ -58,6 +72,10 @@ export const TrainingAdminDashboardView = ({ user = mockPersonas.training_admin,
         if (onAddAuditLog) {
             onAddAuditLog("Orientation Reminder Sent", "إرسال تذكير رسمي بالتدريب المتأخر", `Dispatched formal orientation overdue notification to ${trainee.name} (${trainee.employeeId})`, `تم إرسال إشعار تذكير رسمي باستكمال التدريب للموظف ${trainee.nameAr || trainee.name}`, `Trainee: ${trainee.name}`);
         }
+        // Send reminder via Odoo backend
+        labCertifyApi.sendTraineeReminder(trainee.id).catch(err => {
+            console.warn('[TrainingAdmin] Backend send reminder:', err);
+        });
     };
     const handleCreateAccountSubmit = (e) => {
         e.preventDefault();
@@ -103,6 +121,14 @@ export const TrainingAdminDashboardView = ({ user = mockPersonas.training_admin,
         if (onAddAuditLog) {
             onAddAuditLog("Trainee Account Created", "إنشاء حساب موظف وتعيين مسار التوجيه", `Created account for ${newAccount.name} (${newAccount.employeeId}) at branch ${newAccount.branch}`, `تم إنشاء حساب للموظف ${newAccount.nameAr} بالرقم الوظيفي ${newAccount.employeeId}`, `Trainee: ${newAccount.name}`);
         }
+        // Save to Odoo backend
+        labCertifyApi.createTrainee(newAccount).then(created => {
+            if (created && created.id) {
+                setTrainees(prev => [created, ...prev.filter(t => t.id !== newAccount.id)]);
+            }
+        }).catch(err => {
+            console.warn('[TrainingAdmin] Backend create trainee:', err);
+        });
     };
     const handleExportExcel = () => {
         const headers = ["Employee ID", "Full Name", "Department", "Branch", "Hire Date", "Orientation Window", "Status", "Progress %", "Courses Completed"];

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Download, FileText, ArrowRight, Layers, Clock, Subtitles, Plus, Trash2, ShieldCheck, Video, Award, Edit3, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { labCertifyApi } from '../../services/api';
+
 export const VideoLessonView = ({ onNavigate, initialCourseId, courses, lessons, onSelectCourseForQuiz, user }) => {
     const { t, isRTL, language } = useLanguage();
     // Selected course state (synced with initialCourseId)
@@ -31,7 +33,7 @@ export const VideoLessonView = ({ onNavigate, initialCourseId, courses, lessons,
     const [showSubtitles, setShowSubtitles] = useState(true);
     // Content tabs: Video, SOP Document, Presentation, Takeaways
     const [activeTab, setActiveTab] = useState('video');
-    // Interactive Personal Notes State (persisted to localStorage)
+    // Interactive Personal Notes State (persisted to localStorage + Odoo backend)
     const [notes, setNotes] = useState(() => {
         try {
             const saved = localStorage.getItem(`notes_${currentLesson?.id}`);
@@ -48,6 +50,19 @@ export const VideoLessonView = ({ onNavigate, initialCourseId, courses, lessons,
             return [];
         }
     });
+
+    // Sync lesson notes from Odoo backend
+    useEffect(() => {
+        if (!currentLesson?.id) return;
+        labCertifyApi.getLessonNotes(currentLesson.id)
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    setNotes(data);
+                }
+            })
+            .catch(err => console.warn('[VideoLessonView] Backend load notes:', err));
+    }, [currentLesson?.id]);
+
     const [newNoteText, setNewNoteText] = useState('');
     // Simulation timer for video scrub bar
     useEffect(() => {
@@ -94,6 +109,16 @@ export const VideoLessonView = ({ onNavigate, initialCourseId, courses, lessons,
         catch (err) {
             console.error(err);
         }
+        // Send to Odoo backend
+        labCertifyApi.addLessonNote(currentLesson.id, {
+            content: newNote.content,
+            timestamp: timeFormatted,
+            traineeId: user?.id
+        }).then(created => {
+            if (created && created.id) {
+                setNotes(prev => prev.map(n => n.id === newNote.id ? created : n));
+            }
+        }).catch(err => console.warn('[VideoLessonView] Backend add note failed:', err));
     };
     const handleDeleteNote = (id) => {
         if (!currentLesson)
@@ -106,6 +131,10 @@ export const VideoLessonView = ({ onNavigate, initialCourseId, courses, lessons,
         catch (err) {
             console.error(err);
         }
+        // Delete in Odoo backend
+        labCertifyApi.deleteLessonNote(id).catch(err => {
+            console.warn('[VideoLessonView] Backend delete note failed:', err);
+        });
     };
     const handleStartExam = () => {
         if (onSelectCourseForQuiz) {

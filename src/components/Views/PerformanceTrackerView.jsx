@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart2, Award, CheckCircle, Download, FileText, Sparkles, ExternalLink } from 'lucide-react';
 import { mockPerformanceHistory, mockCoreCompetencies, mockResources } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
+import { labCertifyApi } from '../../services/api';
+
 export const PerformanceTrackerView = ({ user, onNavigate }) => {
     const { t, isRTL } = useLanguage();
+    const [performanceHistory, setPerformanceHistory] = useState(mockPerformanceHistory);
+    const [competencies, setCompetencies] = useState(mockCoreCompetencies);
+    const [resources, setResources] = useState(mockResources);
+
+    useEffect(() => {
+        labCertifyApi.getPerformance()
+            .then(data => {
+                if (data && (data.history || data.competencies)) {
+                    if (Array.isArray(data.history) && data.history.length > 0) setPerformanceHistory(data.history);
+                    if (Array.isArray(data.competencies) && data.competencies.length > 0) setCompetencies(data.competencies);
+                } else if (Array.isArray(data) && data.length > 0) {
+                    setPerformanceHistory(data);
+                }
+            })
+            .catch(err => console.warn('[PerformanceTracker] Backend performance load:', err));
+
+        labCertifyApi.getResources()
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) setResources(data);
+            })
+            .catch(err => console.warn('[PerformanceTracker] Backend resources load:', err));
+    }, []);
     return (<div className="space-y-8 animate-in fade-in duration-300 text-start">
       
       {/* Header Banner */}

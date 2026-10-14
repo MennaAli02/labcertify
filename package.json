@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "vite build --mode development"
+    "lint": "vite build --mode development",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

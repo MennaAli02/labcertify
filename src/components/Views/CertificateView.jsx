@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Share2, ShieldCheck, CheckCircle2, QrCode, Copy, Check, Printer } from 'lucide-react';
 import { LOGO_URL, SIGNATURE_URL, mockOfficialCertificates } from '../../data/mockData';
 import { useLanguage } from '../../context/LanguageContext';
+import { labCertifyApi } from '../../services/api';
+
 export const CertificateView = ({ user, onNavigate, selectedCourseId = "course-1" }) => {
     const { t, isRTL } = useLanguage();
     const [copied, setCopied] = useState(false);
     const [shareToast, setShareToast] = useState(false);
     const [showQrModal, setShowQrModal] = useState(false);
-    // Look up certificate for selected course, or default to course 1 or master
-    const certRecord = mockOfficialCertificates[selectedCourseId] || mockOfficialCertificates["course-1"];
+    const [backendCert, setBackendCert] = useState(null);
+
+    // Fetch official certificate from Odoo backend
+    useEffect(() => {
+        if (!user?.id) return;
+        labCertifyApi.getCertificates(user.id)
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    const found = data.find(c => c.courseId === selectedCourseId) || data[0];
+                    if (found) setBackendCert(found);
+                }
+            })
+            .catch(err => console.warn('[CertificateView] Backend cert load:', err));
+    }, [user?.id, selectedCourseId]);
+
+    // Look up certificate for selected course, prioritizing real Odoo certificate
+    const fallbackRecord = mockOfficialCertificates[selectedCourseId] || mockOfficialCertificates["course-1"];
+    const certRecord = backendCert || fallbackRecord;
     const certId = certRecord.certificateId || `SL-CERT-2024-${user.employeeId.replace('SL-', '')}-1`;
     const handleCopyLink = () => {
         navigator.clipboard.writeText(`https://shalabylabs.org/verify/${certId}`);

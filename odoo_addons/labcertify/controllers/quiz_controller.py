@@ -22,14 +22,20 @@ class LabQuizController(http.Controller):
             if not course:
                 course = env['lab.course'].sudo().search([], limit=1)
 
-            opt1 = data.get('option1', '')
-            opt2 = data.get('option2', '')
-            opt3 = data.get('option3', '')
-            opt4 = data.get('option4', '')
+            options_input = data.get('options') or []
+            opt1 = data.get('option1') or (options_input[0] if len(options_input) > 0 else '')
+            opt2 = data.get('option2') or (options_input[1] if len(options_input) > 1 else '')
+            opt3 = data.get('option3') or (options_input[2] if len(options_input) > 2 else '')
+            opt4 = data.get('option4') or (options_input[3] if len(options_input) > 3 else '')
             options_list = [opt1, opt2, opt3, opt4]
 
+            ext_id = data.get('id') or f"q-{int(fields.Datetime.now().timestamp())}"
+            diff = data.get('difficulty', 'Basic')
+            if diff not in ('Basic', 'Intermediate', 'Advanced'):
+                diff = 'Basic'
+
             new_q = env['lab.quiz.question'].sudo().create({
-                'external_id': f"q-{int(fields.Datetime.now().timestamp())}",
+                'external_id': ext_id,
                 'course_id': course.id,
                 'question': data.get('question', ''),
                 'question_ar': data.get('questionAr', data.get('question', '')),
@@ -44,7 +50,7 @@ class LabQuizController(http.Controller):
                 'explanation': data.get('explanation', ''),
                 'explanation_ar': data.get('explanationAr', data.get('explanation', '')),
                 'module_ref': data.get('moduleRef', 'SOP Reference'),
-                'difficulty': data.get('difficulty', 'Basic'),
+                'difficulty': diff,
             })
 
             # Record audit log
