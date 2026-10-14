@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import http
+from odoo import http, fields
 from odoo.http import request
 from .cors_utils import json_response, error_response, parse_request_json, make_cors_options_response
 

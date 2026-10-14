@@ -15,39 +15,50 @@ class LabAuthController(http.Controller):
         password = data.get('password')
         role = data.get('role')
 
+        if not login:
+            return error_response('Email or username is required', status=400)
+
+        if not password:
+            return error_response('Password is required', status=400)
+
         env = request.env(user=1)
-        
-        # If logging in with standard Odoo credentials or role selector
-        if role:
-            trainee = env['lab.trainee'].sudo().search([('role', '=', role)], limit=1)
-            if trainee:
-                return json_response({
-                    'success': True,
-                    'user': trainee.to_dict(),
-                    'token': f'bearer-{trainee.external_id}'
-                })
+        login_str = str(login).strip()
 
-        # Match by email or employeeId or username
-        trainee = False
-        if login:
-            trainee = env['lab.trainee'].sudo().search([
-                '|', ('email', '=', login),
-                '|', ('employee_id', '=', login),
-                ('external_id', '=', login)
-            ], limit=1)
+        # Match by email, employeeId, or external_id
+        trainee = env['lab.trainee'].sudo().search([
+            '|', ('email', '=ilike', login_str),
+            '|', ('employee_id', '=ilike', login_str),
+            ('external_id', '=ilike', login_str)
+        ], limit=1)
 
+        # STRICT: Only registered authorized accounts can log in
         if not trainee:
-            # Fall back to default trainee persona
-            trainee = env['lab.trainee'].sudo().search([('role', '=', 'trainee')], limit=1)
+            return error_response('Account not found. Access is restricted to authorized personnel.', status=401)
 
-        if trainee:
-            return json_response({
-                'success': True,
-                'user': trainee.to_dict(),
-                'token': f'bearer-{trainee.external_id}'
-            })
+        # Role enforcement: if a role is requested, account role must match
+        if role and trainee.role != role:
+            role_labels = {
+                'trainee': 'Trainee',
+                'training_admin': 'Training Admin',
+                'system_admin': 'System Admin'
+            }
+            expected = role_labels.get(role, role)
+            actual = role_labels.get(trainee.role, trainee.role)
+            return error_response(f'Role mismatch: Account is registered as {actual}, cannot log in as {expected}.', status=401)
 
-        return error_response('Invalid login credentials', status=401)
+        # Password verification: standard clinical password is clinical2024 (and admin for admins)
+        valid_passwords = {'clinical2024'}
+        if trainee.role in ('training_admin', 'system_admin'):
+            valid_passwords.add('admin')
+
+        if str(password).strip() not in valid_passwords:
+            return error_response('Invalid password. Please check your credentials.', status=401)
+
+        return json_response({
+            'success': True,
+            'user': trainee.to_dict(),
+            'token': f'bearer-{trainee.external_id}'
+        })
 
     @http.route(['/api/personas'], type='http', auth='public', methods=['GET', 'OPTIONS'], csrf=False)
     def get_personas(self, **kwargs):

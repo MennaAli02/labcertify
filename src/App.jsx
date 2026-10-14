@@ -27,6 +27,8 @@ import { LoginView } from './components/Views/LoginView';
 export default function App() {
     const [currentView, setCurrentView] = useState('role_select');
     const [user, setUser] = useState(mockPersonas.trainee);
+    const [loginError, setLoginError] = useState(null);
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
 
     // Centralized Courses State (persisted to localStorage & synced with Odoo)
     const [courses, setCourses] = useState(() => {
@@ -74,18 +76,51 @@ export default function App() {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-    // Initial Data Sync with Odoo 19 Backend
+    // Initial Data Sync with Odoo 19 Backend — called after successful login
+    const syncFromBackend = async (loggedInUser) => {
+        const uid = loggedInUser?.employeeId || loggedInUser?.id || null;
+        const role = loggedInUser?.role || 'trainee';
+        try {
+            const [liveCourses, liveLessons, liveQuestions, liveLogs, liveSettings] = await Promise.all([
+                labCertifyApi.getCourses(uid).catch(() => null),
+                labCertifyApi.getLessons().catch(() => null),
+                labCertifyApi.getQuestions().catch(() => null),
+                labCertifyApi.getAuditLogs().catch(() => null),
+                labCertifyApi.getSettings().catch(() => null),
+            ]);
+
+            if (liveCourses && Array.isArray(liveCourses) && liveCourses.length > 0) {
+                setCourses(liveCourses);
+                setSelectedCourse(prev => liveCourses.find(c => c.id === prev?.id) || liveCourses[1] || liveCourses[0]);
+            }
+            if (liveLessons && Array.isArray(liveLessons) && liveLessons.length > 0) {
+                setLessons(liveLessons);
+            }
+            if (liveQuestions && Array.isArray(liveQuestions) && liveQuestions.length > 0) {
+                setQuestions(liveQuestions);
+            }
+            if (liveLogs && Array.isArray(liveLogs) && liveLogs.length > 0) {
+                setAuditLogs(liveLogs);
+            }
+            if (liveSettings && typeof liveSettings.sequentialEnforced === 'boolean') {
+                setSequentialEnforced(liveSettings.sequentialEnforced);
+            }
+        } catch (err) {
+            console.warn('[LabCertify] Backend sync error, continuing with local storage:', err);
+        }
+    };
+
+    // Initial seed on mount (anonymous — no user-scoped data yet)
     useEffect(() => {
         let isMounted = true;
-        async function syncFromBackend() {
+        async function seedInitialData() {
             try {
-                const [liveCourses, liveLessons, liveQuestions, liveLogs, liveSettings, liveProfile] = await Promise.all([
+                const [liveCourses, liveLessons, liveQuestions, liveLogs, liveSettings] = await Promise.all([
                     labCertifyApi.getCourses().catch(() => null),
                     labCertifyApi.getLessons().catch(() => null),
                     labCertifyApi.getQuestions().catch(() => null),
                     labCertifyApi.getAuditLogs().catch(() => null),
                     labCertifyApi.getSettings().catch(() => null),
-                    labCertifyApi.getProfile('trainee').catch(() => null),
                 ]);
 
                 if (!isMounted) return;
@@ -106,19 +141,12 @@ export default function App() {
                 if (liveSettings && typeof liveSettings.sequentialEnforced === 'boolean') {
                     setSequentialEnforced(liveSettings.sequentialEnforced);
                 }
-                if (liveProfile && liveProfile.name) {
-                    setUser(prev => ({
-                        ...prev,
-                        ...liveProfile,
-                        id: liveProfile.id || prev.id,
-                    }));
-                }
             } catch (err) {
-                console.warn('[LabCertify] Backend sync error, continuing with local storage:', err);
+                console.warn('[LabCertify] Backend seed error, continuing with local storage:', err);
             }
         }
 
-        syncFromBackend();
+        seedInitialData();
         return () => { isMounted = false; };
     }, []);
 
@@ -228,6 +256,93 @@ export default function App() {
     };
 
     const completedCoursesCount = courses.filter(c => c.status === 'Completed').length;
+
+    /**
+     * Shared login handler used by both RenderView and the early-return block.
+     * Rules:
+     *   - If backend returns 401 / auth error  → show error, DO NOT navigate (no mock fallback)
+     *   - If backend unreachable (network error) → fall back to mockPersonas so demo works offline
+     *   - If backend succeeds                   → use real user, sync data, navigate
+     */
+    const handleLogin = async (role, emailOrUser, password) => {
+        const targetRole = role || 'trainee';
+        setIsLoggingIn(true);
+        setLoginError(null);
+        try {
+            // Real backend authentication
+            const result = await labCertifyApi.login(emailOrUser, password, targetRole);
+            // Backend responded with success
+            const backendUser = result.user;
+            setUser(backendUser);
+            syncFromBackend(backendUser); // fire-and-forget refresh
+            setIsLoggingIn(false);
+            if (backendUser.role === 'training_admin') {
+                setCurrentView('training_admin');
+            } else if (backendUser.role === 'system_admin') {
+                setCurrentView('system_admin');
+            } else {
+                setCurrentView('trainee_dashboard');
+            }
+        } catch (err) {
+            setIsLoggingIn(false);
+            const status = err.status || 0;
+            const isAuthError = status === 401 || status === 403;
+            const isBackendReachable = status !== 0; // status=0 means network/fetch error
+
+            if (isAuthError) {
+                // Backend is up but credentials are wrong — block login, show error
+                setLoginError(err.message || 'Invalid credentials. Please check your email and password.');
+                console.warn('[LabCertify] Auth rejected by backend:', err.message);
+            } else if (isBackendReachable) {
+                // Backend returned a non-auth error (500 etc.) — show generic error
+                setLoginError('Login service unavailable. Please try again.');
+                console.warn('[LabCertify] Backend login error:', err);
+            } else {
+                // Network error — backend is unreachable, validate strictly against the 3 authorized accounts
+                console.warn('[LabCertify] Backend unreachable, checking offline authentication:', err);
+                const inputClean = (emailOrUser || '').trim().toLowerCase();
+                const matchedPersona = Object.values(mockPersonas).find(p => 
+                    p.email?.toLowerCase() === inputClean || 
+                    p.employeeId?.toLowerCase() === inputClean ||
+                    p.id?.toLowerCase() === inputClean
+                );
+
+                if (!matchedPersona) {
+                    setLoginError('Account not found. Access is restricted to authorized personnel.');
+                    return;
+                }
+
+                if (matchedPersona.role !== targetRole) {
+                    const roleNames = {
+                        trainee: 'Trainee',
+                        training_admin: 'Training Admin',
+                        system_admin: 'System Admin'
+                    };
+                    setLoginError(`Role mismatch: This account is registered as ${roleNames[matchedPersona.role] || matchedPersona.role}, not ${roleNames[targetRole] || targetRole}.`);
+                    return;
+                }
+
+                const validPasswords = ['clinical2024'];
+                if (matchedPersona.role === 'training_admin' || matchedPersona.role === 'system_admin') {
+                    validPasswords.push('admin');
+                }
+
+                if (!validPasswords.includes((password || '').trim())) {
+                    setLoginError('Invalid password. Please check your credentials.');
+                    return;
+                }
+
+                setUser(matchedPersona);
+                if (matchedPersona.role === 'training_admin') {
+                    setCurrentView('training_admin');
+                } else if (matchedPersona.role === 'system_admin') {
+                    setCurrentView('system_admin');
+                } else {
+                    setCurrentView('trainee_dashboard');
+                }
+            }
+        }
+    };
 
     // Add audit trail entry & sync to Odoo
     const handleAddAuditLog = (action, actionAr, details, detailsAr, target) => {
@@ -371,25 +486,21 @@ export default function App() {
                 return (
                     <LoginView
                         initialRole={user?.role || 'trainee'}
-                        onLogin={(role) => {
-                            const targetRole = role || 'trainee';
-                            if (mockPersonas[targetRole]) {
-                                setUser(mockPersonas[targetRole]);
-                            }
-                            if (targetRole === 'training_admin') {
-                                setCurrentView('training_admin');
-                            } else if (targetRole === 'system_admin') {
-                                setCurrentView('system_admin');
-                            } else {
-                                setCurrentView('trainee_dashboard');
-                            }
-                        }}
+                        isLoggingIn={isLoggingIn}
+                        loginError={loginError}
+                        onLogin={handleLogin}
                         onBackToRoleSelect={() => setCurrentView('role_select')}
                         onOpenSupport={() => setIsSupportOpen(true)}
                     />
                 );
             default:
-                return (<TraineeDashboardView user={user} courses={courses} onNavigate={setCurrentView} onSelectCourse={setSelectedCourse}/>);
+                return (<TraineeDashboardView user={user} courses={courses} onNavigate={setCurrentView} onSelectCourse={(c) => {
+                        setSelectedCourse(c);
+                    }} onSelectQuizCourse={(c) => {
+                        setSelectedCourse(c);
+                    }} onViewCertificate={(courseId) => {
+                        setSelectedCertificateCourseId(courseId);
+                    }}/>);
         }
     };
 
@@ -410,6 +521,7 @@ export default function App() {
                             if (mockPersonas[targetRole]) {
                                 setUser(mockPersonas[targetRole]);
                             }
+                            setLoginError(null);
                             setCurrentView('login');
                         }}
                         onOpenSupport={() => setIsSupportOpen(true)}
@@ -417,19 +529,9 @@ export default function App() {
                 ) : (
                     <LoginView
                         initialRole={user?.role || 'trainee'}
-                        onLogin={(role) => {
-                            const targetRole = role || 'trainee';
-                            if (mockPersonas[targetRole]) {
-                                setUser(mockPersonas[targetRole]);
-                            }
-                            if (targetRole === 'training_admin') {
-                                setCurrentView('training_admin');
-                            } else if (targetRole === 'system_admin') {
-                                setCurrentView('system_admin');
-                            } else {
-                                setCurrentView('trainee_dashboard');
-                            }
-                        }}
+                        isLoggingIn={isLoggingIn}
+                        loginError={loginError}
+                        onLogin={handleLogin}
                         onBackToRoleSelect={() => setCurrentView('role_select')}
                         onOpenSupport={() => setIsSupportOpen(true)}
                     />

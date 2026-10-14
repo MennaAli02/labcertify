@@ -192,9 +192,7 @@ class LabQuizController(http.Controller):
         next_course_id = None
 
         if passed:
-            # Trigger pass_course logic
-            course_ctl = LabCourseController()
-            # We can invoke internal pass
+            # Mark enrollment as completed
             enrollment.write({'status': 'Completed', 'progress': 100})
             course.write({'status': 'Completed', 'progress': 100})
 

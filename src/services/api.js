@@ -50,6 +50,7 @@ async function apiRequest(endpoint, options = {}) {
     const url = `${BASE_URL}${endpoint}`;
     const headers = {
         'Accept': 'application/json',
+        'X-Odoo-Database': 'labcertify',
         ...(options.headers || {})
     };
 
@@ -66,18 +67,70 @@ async function apiRequest(endpoint, options = {}) {
 
     if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`API error ${response.status} on ${endpoint}: ${errorText}`);
+        const err = new Error(`API error ${response.status} on ${endpoint}: ${errorText}`);
+        err.status = response.status;
+        throw err;
     }
 
     return response.json();
 }
 
+/**
+ * Dedicated fetch for /api/auth/login — does NOT bootstrap an Odoo admin session first.
+ * The user's own credentials are the auth event.
+ */
+async function loginRequest(endpoint, body) {
+    const url = `${BASE_URL}${endpoint}`;
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Odoo-Database': 'labcertify',
+        },
+        credentials: 'include',
+        body: JSON.stringify(body),
+    });
+
+    let data;
+    try {
+        data = await response.json();
+    } catch {
+        const err = new Error(`Login request failed with status ${response.status}`);
+        err.status = response.status;
+        throw err;
+    }
+
+    if (!response.ok || data.success === false) {
+        const err = new Error(data.error || data.message || 'Invalid credentials');
+        err.status = response.status || 401;
+        throw err;
+    }
+
+    return data;
+}
+
 export const labCertifyApi = {
     // Session & Auth
     ensureSession: ensureOdooSession,
-    
+
+    /**
+     * Authenticate a user by role, email/username, and password.
+     * Maps to POST /api/auth/login — uses its own fetch (not the admin-bootstrapped apiRequest).
+     * Throws with err.status=401 on invalid credentials.
+     */
+    login: (loginId, password, role) => loginRequest('/api/auth/login', {
+        login: loginId, password, role
+    }),
+
     getPersonas: () => apiRequest('/api/personas'),
-    getProfile: (role = 'trainee') => apiRequest(`/api/profile?role=${role}`),
+    getProfile: (role = 'trainee', employeeId = null) => {
+        const params = new URLSearchParams();
+        if (role) params.set('role', role);
+        if (employeeId) params.set('employeeId', employeeId);
+        const qs = params.toString();
+        return apiRequest(`/api/profile${qs ? `?${qs}` : ''}`);
+    },
     updateProfile: (profileData) => apiRequest('/api/profile', { method: 'PUT', body: profileData }),
 
     // Courses Curriculum

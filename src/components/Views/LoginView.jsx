@@ -26,7 +26,9 @@ export const LoginView = ({
   initialRole = 'trainee', 
   onLogin, 
   onBackToRoleSelect,
-  onOpenSupport 
+  onOpenSupport,
+  isLoggingIn: externalIsLoggingIn = false,
+  loginError = null,
 }) => {
   const { t, language, toggleLanguage, isRTL } = useLanguage();
   const { toggleTheme, isDark } = useTheme();
@@ -46,7 +48,10 @@ export const LoginView = ({
   const [password, setPassword] = useState('clinical2024');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [localIsSubmitting, setLocalIsSubmitting] = useState(false);
+
+  // Combined submitting state: either local (for UX) or external (backend call)
+  const isSubmitting = localIsSubmitting || externalIsLoggingIn;
 
   // Synchronize credentials when role changes
   useEffect(() => {
@@ -61,15 +66,20 @@ export const LoginView = ({
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
-    setIsSubmitting(true);
+    setLocalIsSubmitting(true);
     
-    // Simulate instantaneous smooth login
-    setTimeout(() => {
-      setIsSubmitting(false);
-      if (onLogin) {
-        onLogin(selectedRole, mockPersonas[selectedRole]);
+    // Call parent onLogin with (role, emailOrUser, password) — parent handles backend call
+    if (onLogin) {
+      const result = onLogin(selectedRole, emailOrUser, password);
+      // If onLogin is async, wait for it before clearing local state
+      if (result && typeof result.finally === 'function') {
+        result.finally(() => setLocalIsSubmitting(false));
+      } else {
+        setTimeout(() => setLocalIsSubmitting(false), 400);
       }
-    }, 300);
+    } else {
+      setTimeout(() => setLocalIsSubmitting(false), 300);
+    }
   };
 
   return (
@@ -233,6 +243,22 @@ export const LoginView = ({
                 {isRTL ? 'نسيت كلمة المرور؟' : 'Forgot password?'}
               </button>
             </div>
+
+            {/* Backend Error Message */}
+            {loginError && (
+              <div className="px-3 py-2 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-[11px] text-red-600 dark:text-red-400 font-medium flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                <span>
+                  {isRTL
+                    ? (loginError.includes('password') || loginError.includes('Password')
+                        ? 'كلمة المرور غير صحيحة. يرجى التأكد من البيانات والمحاولة مجدداً.'
+                        : loginError.includes('mismatch') || loginError.includes('Role')
+                        ? 'هذا الحساب لا يطابق الدور المحدد. يرجى اختيار الدور المناسب أو التأكد من الحساب.'
+                        : 'الحساب غير مسجل أو غير مصرح له بالدخول للنظام.')
+                    : loginError}
+                </span>
+              </div>
+            )}
 
             {/* Primary LOGIN Action Button */}
             <div className="pt-1">
