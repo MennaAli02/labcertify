@@ -21,9 +21,11 @@ import { PerformanceTrackerView } from './components/Views/PerformanceTrackerVie
 import { CertificateView } from './components/Views/CertificateView';
 import { LeadershipPathView } from './components/Views/LeadershipPathView';
 import { CoachingModuleView } from './components/Views/CoachingModuleView';
+import { RoleSelectionView } from './components/Views/RoleSelectionView';
+import { LoginView } from './components/Views/LoginView';
 
 export default function App() {
-    const [currentView, setCurrentView] = useState('trainee_dashboard');
+    const [currentView, setCurrentView] = useState('role_select');
     const [user, setUser] = useState(mockPersonas.trainee);
 
     // Centralized Courses State (persisted to localStorage & synced with Odoo)
@@ -346,15 +348,101 @@ export default function App() {
                 return <LeadershipPathView onNavigate={setCurrentView}/>;
             case 'coaching':
                 return <CoachingModuleView onNavigate={setCurrentView}/>;
+            case 'role_select':
+                return (
+                    <RoleSelectionView
+                        selectedRole={user?.role || 'trainee'}
+                        onSelectRole={(role) => {
+                            if (mockPersonas[role]) {
+                                setUser(mockPersonas[role]);
+                            }
+                        }}
+                        onConfirmRole={(role) => {
+                            const targetRole = role || user?.role || 'trainee';
+                            if (mockPersonas[targetRole]) {
+                                setUser(mockPersonas[targetRole]);
+                            }
+                            setCurrentView('login');
+                        }}
+                        onOpenSupport={() => setIsSupportOpen(true)}
+                    />
+                );
+            case 'login':
+                return (
+                    <LoginView
+                        initialRole={user?.role || 'trainee'}
+                        onLogin={(role) => {
+                            const targetRole = role || 'trainee';
+                            if (mockPersonas[targetRole]) {
+                                setUser(mockPersonas[targetRole]);
+                            }
+                            if (targetRole === 'training_admin') {
+                                setCurrentView('training_admin');
+                            } else if (targetRole === 'system_admin') {
+                                setCurrentView('system_admin');
+                            } else {
+                                setCurrentView('trainee_dashboard');
+                            }
+                        }}
+                        onBackToRoleSelect={() => setCurrentView('role_select')}
+                        onOpenSupport={() => setIsSupportOpen(true)}
+                    />
+                );
             default:
                 return (<TraineeDashboardView user={user} courses={courses} onNavigate={setCurrentView} onSelectCourse={setSelectedCourse}/>);
         }
     };
 
+    // When on Role Selection or Login screen, display the full immersive centered page experience
+    if (currentView === 'role_select' || currentView === 'login') {
+        return (
+            <div className="h-screen max-h-screen w-full max-w-full overflow-hidden bg-[#dee2e8] flex items-center justify-center">
+                {currentView === 'role_select' ? (
+                    <RoleSelectionView
+                        selectedRole={user?.role || 'trainee'}
+                        onSelectRole={(role) => {
+                            if (mockPersonas[role]) {
+                                setUser(mockPersonas[role]);
+                            }
+                        }}
+                        onConfirmRole={(role) => {
+                            const targetRole = role || user?.role || 'trainee';
+                            if (mockPersonas[targetRole]) {
+                                setUser(mockPersonas[targetRole]);
+                            }
+                            setCurrentView('login');
+                        }}
+                        onOpenSupport={() => setIsSupportOpen(true)}
+                    />
+                ) : (
+                    <LoginView
+                        initialRole={user?.role || 'trainee'}
+                        onLogin={(role) => {
+                            const targetRole = role || 'trainee';
+                            if (mockPersonas[targetRole]) {
+                                setUser(mockPersonas[targetRole]);
+                            }
+                            if (targetRole === 'training_admin') {
+                                setCurrentView('training_admin');
+                            } else if (targetRole === 'system_admin') {
+                                setCurrentView('system_admin');
+                            } else {
+                                setCurrentView('trainee_dashboard');
+                            }
+                        }}
+                        onBackToRoleSelect={() => setCurrentView('role_select')}
+                        onOpenSupport={() => setIsSupportOpen(true)}
+                    />
+                )}
+                <SupportModal isOpen={isSupportOpen} onClose={() => setIsSupportOpen(false)}/>
+            </div>
+        );
+    }
+
     return (<div className="h-screen w-full max-w-full overflow-x-hidden overflow-y-hidden bg-[#dee2e8] text-[#485261] flex flex-col selection:bg-[#6bbada]/30 selection:text-[#0b96c7] transition-colors duration-200">
       
       {/* Top Header Bar */}
-      <TopNavBar currentView={currentView} onNavigate={setCurrentView} user={user} onChangeUser={setUser} onOpenNotifications={() => setIsNotificationsOpen(true)} onOpenSupport={() => setIsSupportOpen(true)} onOpenSearch={() => setIsSearchOpen(true)} onToggleMobileMenu={() => setIsMobileNavOpen(!isMobileNavOpen)} onToggleSidebar={() => setIsSidebarOpen(prev => !prev)} isSidebarOpen={isSidebarOpen} unreadCount={2}/>
+      <TopNavBar currentView={currentView} onNavigate={setCurrentView} user={user} onChangeUser={setUser} onOpenNotifications={() => setIsNotificationsOpen(true)} onOpenSupport={() => setIsSupportOpen(true)} onOpenSearch={() => setIsSearchOpen(true)} onToggleMobileMenu={() => setIsMobileNavOpen(!isMobileNavOpen)} onToggleSidebar={() => setIsSidebarOpen(prev => !prev)} isSidebarOpen={isSidebarOpen} unreadCount={2} onLogout={() => setCurrentView('role_select')} />
 
       {/* Main Container Layout â€” spans full width without horizontal overflow */}
       <div className="flex-1 flex w-full max-w-full overflow-hidden min-w-0">

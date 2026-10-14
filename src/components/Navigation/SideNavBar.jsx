@@ -10,9 +10,11 @@ import {
   ShieldCheck, 
   UserCheck, 
   Settings,
-  Award
+  Award,
+  Sparkles
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { LabCertifyLogo } from '../Common/LabCertifyLogo';
 
 export const SideNavBar = ({ currentView, onNavigate, isMobileOpen, onCloseMobile, completedModulesCount, totalModulesCount, user, isOpen, onToggleCollapse, }) => {
     const { t, isRTL } = useLanguage();
@@ -160,7 +162,7 @@ export const SideNavBar = ({ currentView, onNavigate, isMobileOpen, onCloseMobil
             </div>
 
             {/* Footer Accreditation Info */}
-            <div className="pt-3 border-t border-[#c0cad8] mt-auto">
+            <div className="pt-2 border-t border-[#c0cad8] mt-auto">
               <div className="p-2.5 bg-[#dee2e8]/40 rounded-xl text-[11px] text-[#485261] space-y-1 border border-[#c0cad8]">
                 <div className="flex items-center justify-between font-semibold text-[#485261]">
                   <span>{isRTL ? 'معايير الاعتماد' : 'Accreditation'}</span>
@@ -212,11 +214,16 @@ export const SideNavBar = ({ currentView, onNavigate, isMobileOpen, onCloseMobil
             
             {/* Header in mobile drawer */}
             <div className="flex items-center justify-between pb-3 border-b border-[#c0cad8]">
-              <div className="flex items-center gap-2.5">
-                <img src="/sidebar-logo.png" alt="Shalaby Labs" className="w-8 h-8 object-contain rounded-md"/>
-                <div>
-                  <h2 className="text-xs font-bold text-[#485261] uppercase font-heading">{t.brandTitle}</h2>
-                  <p className="text-[10.5px] text-[#9995a6]">{t.brandSubtitle}</p>
+              <div className="flex items-center gap-2.5 cursor-pointer min-w-0 flex-1 pr-2" onClick={() => { onNavigate('dashboard'); onCloseMobile(); }}>
+                <img src="/logo.png" alt="Shalaby Labs" className="h-8 w-auto object-contain shrink-0" />
+                <div className="h-6 w-[1px] bg-[#c0cad8] shrink-0" />
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[11px] font-extrabold text-[#0B96C7] tracking-wider uppercase truncate leading-tight font-sans">
+                    {isRTL ? 'نظام LABCERTIFY CLINICAL LMS' : 'LABCERTIFY CLINICAL LMS'}
+                  </span>
+                  <span className="text-[10px] text-[#485261] font-medium truncate leading-tight mt-0.5">
+                    {isRTL ? 'نظام تدريب معامل شلبي' : 'Shalaby Labs Training System'}
+                  </span>
                 </div>
               </div>
               <button onClick={onCloseMobile} className="p-1.5 text-[#485261] hover:bg-[#dee2e8] rounded-lg">
@@ -225,7 +232,7 @@ export const SideNavBar = ({ currentView, onNavigate, isMobileOpen, onCloseMobil
             </div>
 
             {/* Nav items */}
-            <div className="space-y-1 flex-1 mt-4">
+            <div className="space-y-1 flex-1 mt-4 overflow-y-auto">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = currentView === item.id || (item.id === 'trainee_dashboard' && currentView === 'dashboard');
